@@ -8,17 +8,14 @@ use App\Models\TransaksiUmum;
 
 class TransaksiUmumController extends Controller
 {
-    public function index()
+    public function indexumum(Request $request)
     {
+        if ($request->ajax()) {
+            return DataTables::of(TransaksiUmum::query())->toJson();
+        }
+
         return view ('Transaksi.TransaksiDataUmum.index');
     }
 
-    public function getUmum()
-    {
-        $data = TransaksiUmum::select('*')
-                ->limit(100)
-                ->get();
-        return DataTables::of($data)->make(true);
 
-    }
 }

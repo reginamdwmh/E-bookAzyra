@@ -143,8 +143,8 @@ Route::get('/transaksi/data-pemesanan-online/lihat/{id_online}',[TransaksiPemesa
 
 
 //
-Route::get('/transaksi/data-umum',[TransaksiUmumController::class,'index']);
-Route::get('Umum',[TransaksiUmumController::class,'getUmum'])->name('getUmum')->middleware('auth');
+Route::get('/transaksi/data-umum',[TransaksiUmumController::class,'indexumum'])->name('indexumum')->middleware('auth');
+
 
 
 // Tabel Laporan Alat

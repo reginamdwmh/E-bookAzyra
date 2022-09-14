@@ -10,11 +10,17 @@ use Illuminate\Http\Request;
 
 class TransaksiBahanController extends Controller
 {
-    public function indextransaksibahan()
+    public function indextransaksibahan(Request $request)
     {
-        $transaksi_bahan = DB::table('transaksi_bahan')->paginate(5);
+        if ($request->ajax()) {
+            return DataTables::of(TransaksiBahanModel::query())->toJson();
+        }
 
-        return view ('Transaksi.TransaksiDataBahan.index',['transaksi_bahan' => $transaksi_bahan]);
+        return view ('Transaksi.TransaksiDataBahan.index');
+
+        // $transaksi_bahan = DB::table('transaksi_bahan')->paginate(5);
+
+        // return view ('Transaksi.TransaksiDataBahan.index',['transaksi_bahan' => $transaksi_bahan]);
     }
 
     public function tambahtransaksibahan()
