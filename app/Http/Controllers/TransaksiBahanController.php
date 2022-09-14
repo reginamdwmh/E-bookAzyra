@@ -12,15 +12,16 @@ class TransaksiBahanController extends Controller
 {
     public function indextransaksibahan(Request $request)
     {
-        if ($request->ajax()) {
-            return DataTables::of(TransaksiBahanModel::query())->toJson();
-        }
+        // if ($request->ajax()) {
+        //     return DataTables::of(TransaksiBahanModel::query())->toJson();
+        // }
 
-        return view ('Transaksi.TransaksiDataBahan.index');
+        // return view ('Transaksi.TransaksiDataBahan.index');
 
-        // $transaksi_bahan = DB::table('transaksi_bahan')->paginate(5);
+        $transaksi_bahan = TransaksiBahanModel::select('*')
+                            ->get();
 
-        // return view ('Transaksi.TransaksiDataBahan.index',['transaksi_bahan' => $transaksi_bahan]);
+        return view ('Transaksi.TransaksiDataBahan.index',['transaksi_bahan' => $transaksi_bahan]);
     }
 
     public function tambahtransaksibahan()

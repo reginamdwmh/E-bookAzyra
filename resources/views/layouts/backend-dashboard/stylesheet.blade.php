@@ -19,3 +19,12 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset('assets/AdminLTE/plugins/summernote/summernote-bs4.min.css')}}">
   <link rel="stylesheet" href="{{ asset('front_assets/css/sweetalert2.min.css') }}">
+
+	<!-- DataTables -->
+	<link rel="stylesheet" href="{{ asset('assets/AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.css')}}">
+
+	<!-- Select2 -->
+	<link rel="stylesheet" href="{{ asset('assets/AdminLTE/plugins/Select2/css/Select2.min.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/AdminLTE/plugins/Select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+
+	
