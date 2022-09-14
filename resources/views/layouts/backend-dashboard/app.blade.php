@@ -54,6 +54,12 @@
 </div>
 <!-- ./wrapper -->
 
+@if(session('status'))
+    <script>
+        Swal.fire("{{session('status')}}");
+    </script>
+@endif
+
 @include('layouts.backend-dashboard.javascript')
 </body>
 </html>

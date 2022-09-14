@@ -56,6 +56,9 @@
 <script src="{{ asset ('assets/AdminLTE/plugins/jquery-datatable/extensions/export/buttons.html5.min.js')}}"></script>
 <script src="{{ asset ('assets/AdminLTE/plugins/jquery-datatable/extensions/export/buttons.print.min.js')}}"></script>
 
+<script src="{{ asset('front_assets/js/sweetalert2.all.min.js') }}"></script>
+<script src="{{ asset('front_assets/js/sweetalert2.min.js') }}"></script>
+
 <script>
   $(function() {
     $("#example1").DataTable();
@@ -80,5 +83,7 @@
       theme: 'bootstrap4'
     })
   })
+
+    
 </script>
 

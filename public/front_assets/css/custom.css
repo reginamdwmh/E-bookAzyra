@@ -1,0 +1,28 @@
+.shoping__checkout ul li input {
+    background-color: transparent;
+    float: right;
+    position: relative;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: right;
+}
+
+.order-details label {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.order-details div {
+    font-size: 14px;
+    padding: 5px;
+}
+
+.ui-menu {
+    z-index: 3500 !important;
+}
+
+.whatsapp-chat {
+    bottom: 10px;
+    left: 10px;
+    position: fixed;
+}

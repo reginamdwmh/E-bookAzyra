@@ -19,8 +19,6 @@
         <div class="card-body">
             <div class="table-responsive">     
             
-           
-            
             <form action="/transaksi/data-penjualan-makanan/cari" method="GET" class="row">
                   <div class="col">
                     <a class="btn btn-success" href="{{route('tambahpenjualanmakanan')}}"><i class="fa fa-edit"></i>Tambah Data</a><br><br>
