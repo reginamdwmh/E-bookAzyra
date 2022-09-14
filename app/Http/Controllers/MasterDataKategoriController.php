@@ -12,7 +12,8 @@ class MasterDataKategoriController extends Controller
     
     public function indexkategori()
     {
-        $kategori = DB::table('kategori')->paginate(5);
+         $kategori = MasterDataKategoriModel::select('*')
+                 ->get();
 
         return view('MasterData.MasterDataKategori.index',['kategori' => $kategori]);
     }

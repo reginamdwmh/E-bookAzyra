@@ -14,7 +14,10 @@ class MasterDataMakananController extends Controller
 {
     public function indexmakanan()
     {   
-        $makanan = DB::table('makanan')->paginate(5);
+
+        $makanan = MasterDataMakananModel::select('*')
+                 ->get();
+        
         return view('MasterData.MasterDataMakanan.index',['makanan' => $makanan]);
     }
 

@@ -37,7 +37,7 @@
                         @endphp
                         @foreach($transaksi_pemesanan_online as $index => $tpo) 
                         <tr>
-                            <td>{{$index + $transaksi_pemesanan_online->firstItem()}}</td>
+                            <td>{{$no++}}</td>
                             <td>{{$tpo->kode_pemesanan}}</td>
                             <td>{{$tpo->keterangan_pemesanan}}</td>
                             <td>@currency($tpo->komisi)</td>

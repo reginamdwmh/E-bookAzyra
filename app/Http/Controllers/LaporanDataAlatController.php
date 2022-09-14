@@ -11,7 +11,8 @@ class LaporanDataAlatController extends Controller
 {
     public function indexlaporanalat()
     {
-        $transaksi_alat = DB::table('transaksi_alat')->paginate(10);
+         $transaksi_alat = TransaksiAlatModel::select('*')
+                            ->get();
 
         return view('Laporan.LaporanDataAlat.index',['transaksi_alat' => $transaksi_alat]);
     }

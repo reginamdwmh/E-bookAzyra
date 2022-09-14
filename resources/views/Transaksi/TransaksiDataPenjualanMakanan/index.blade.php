@@ -38,7 +38,7 @@
                         @endphp
                         @foreach($transaksi_penjualan_makanan as $index => $tpm) 
                         <tr>
-                            <td>{{$index + $transaksi_penjualan_makanan->firstItem()}}</td>
+                            <td>{{$no++}}</td>
                             <td>{{$tpm->nama_makanan}}</td>
                             <td>@currency($tpm->harga)</td>
                             <td>{{$tpm->jumlah}}</td>

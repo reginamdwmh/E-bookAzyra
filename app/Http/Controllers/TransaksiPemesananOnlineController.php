@@ -11,7 +11,8 @@ class TransaksiPemesananOnlineController extends Controller
 {
     public function indexpemesananonline()
     {
-        $transaksi_pemesanan_online = DB::table('transaksi_pemesanan_online')->paginate(5);
+        $transaksi_pemesanan_online = TransaksiPemesananOnline::select('*')
+                            ->get();
 
         return view ('Transaksi.TransaksiDataPemesananOnline.index', ['transaksi_pemesanan_online' => $transaksi_pemesanan_online]);
     }

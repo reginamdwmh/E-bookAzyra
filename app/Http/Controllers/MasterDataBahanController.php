@@ -10,7 +10,10 @@ class MasterDataBahanController extends Controller
 {
     public function indexbahan()
     {
-        $bahan = DB::table('bahan')->paginate(5);
+       
+        $bahan = MasterDataBahanModel::select('*')
+                 ->get();
+
         return view ('MasterData.MasterDataBahan.index',['bahan' => $bahan]);
     }
 

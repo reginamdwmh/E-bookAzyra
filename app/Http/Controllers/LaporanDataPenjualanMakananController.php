@@ -11,7 +11,9 @@ class LaporanDataPenjualanMakananController extends Controller
 {
     public function indexlaporanpenjualanmakanan()
     {
-        $transaksi_penjualan_makanan = DB::table('transaksi_penjualan_makanan')->paginate(10);
+         $transaksi_penjualan_makanan = TransaksiPenjualanMakanan::select('*')
+                            ->get();
+
 
         return view('Laporan.LaporanDataPenjualanMakanan.index',['transaksi_penjualan_makanan' => $transaksi_penjualan_makanan]);
     }

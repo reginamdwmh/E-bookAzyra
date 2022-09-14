@@ -10,7 +10,10 @@ class MasterDataPemesananController extends Controller
 {
     public function indexpemesanan()
     {
-        $pemesanan = DB::table('pemesanan')->paginate(5);
+      
+        $pemesanan = MasterDataPemesananModel::select('*')
+                 ->get();
+
         return view ('MasterData.MasterDataPemesanan.index',['pemesanan' => $pemesanan]);
     }
 

@@ -11,7 +11,9 @@ class TransaksiPenjualanMakananController extends Controller
 {
     public function indexpenjualanmakanan()
     {
-        $transaksi_penjualan_makanan = DB::table('transaksi_penjualan_makanan')->paginate(5);
+        $transaksi_penjualan_makanan = TransaksiPenjualanMakanan::select('*')
+                                    ->get();
+
 
         return view ('Transaksi.TransaksiDataPenjualanMakanan.index',['transaksi_penjualan_makanan' => $transaksi_penjualan_makanan]);
     }

@@ -2,3 +2,73 @@
 @section('title')
 
 @section('content')
+<section class="content">
+    <div class="card card-danger">
+        <div class="card-header">
+            <h3 class="card-title">
+                <i class="fa fa-table"></i> Laporan Data Transaksi Umum
+            </h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <div class="table-responsive">
+                
+                <form action="#" method="GET" class="row">
+                    <div class="col">
+                        <label for="label">Tanggal Awal</label>
+                        <input type="date" name="tglawal" id="tglawal" class="form-control"><br>
+                      
+                        <a href="#" onclick="this.href='/laporan/data-penjualan-makanan/cetak/'+document.getElementById('tglawal').value +
+                        '/' + document.getElementById('tglakhir').value" target="_blank" class="btn btn-primary">
+                        <i class="fa fa-print"></i>Cetak</a>
+                    </div>
+                    <div class="col">
+                        <label for="label">Tanggal Akhir</label>
+                        <input type="date" name="tglakhir" id="tglakhir" class="form-control">
+                        
+                    </div>
+                    <div class="col"><br>
+                        
+                    </div>
+                    <div class="col">
+                       
+                    </div>
+              </form>
+
+                <br>
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Makanan</th>
+                            <th>Harga</th>
+                            <th>Jumlah Penjualan</th>
+                            <th>Keterangan Pemesanan</th>
+                            <th>Jumlah Pemesanan</th>
+                            <th>Total</th>
+                            <th>Tanggal</th>
+                            <th>Aksi</th>
+                        </tr>
+                    
+                    </thead>
+                    <tbody>
+                        
+                        @foreach( $transaksi_umum as $tu) 
+                        <tr>
+                            <td>{{$no++}}</td>
+                            <td>{{$tu->nama_makanan}}</td>
+                            <td>@currency($tu->harga)</td>
+                            <td>{{$tu->jumlah_penjualan}}</td>
+                            <td>{{$tu->keterangan_pemesanan}}</td>
+                            <td>{{$tu->jumlah_pemesanan}}</td>
+                            <td>@currency($tu->total)</td>
+                            <td>{{$tu->created_at}}</td>
+                            
+                        </tr>
+                        @endforeach
+                    </tfoot>
+                </table>
+            </div>
+        </div>        
+</section>
+@endsection

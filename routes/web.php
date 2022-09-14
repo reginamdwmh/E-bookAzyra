@@ -131,7 +131,7 @@ Route::get('/transaksi/data-penjualan-makanan/hapus/{id_penjualan}',[TransaksiPe
 Route::get('/transaksi/data-penjualan-makanan/cari',[TransaksiPenjualanMakananController::class,'caripenjualanmakanan'])->name('caripenjualanmakanan')->middleware('auth');
 
 
-//Tabel Transaksi 
+//Tabel Transaksi Umum
 Route::get('/transaksi/data-pemesanan-online',[TransaksiPemesananOnlineController::class,'indexpemesananonline'])->name('indexpemesananonline')->middleware('auth');;
 Route::get('/transaksi/data-pemesanan-online/tambah',[TransaksiPemesananOnlineController::class,'tambahpemesananonline'])->name('tambahpemesananonline')->middleware('auth');
 Route::post('/transaksi/data-pemesanan-online/simpan',[TransaksiPemesananOnlineController::class,'simpanpemesananonline'])->name('simpanpemesananonline')->middleware('auth');
@@ -142,7 +142,7 @@ Route::get('/transaksi/data-pemesanan-online/cari',[TransaksiPemesananOnlineCont
 Route::get('/transaksi/data-pemesanan-online/lihat/{id_online}',[TransaksiPemesananOnlineController::class,'lihatpemesananonline'])->name('lihatpemesananonline')->middleware('auth');
 
 
-//
+//Tabel Transaksi Umum
 Route::get('/transaksi/data-umum',[TransaksiUmumController::class,'indexumum'])->name('indexumum')->middleware('auth');
 
 
@@ -167,7 +167,9 @@ Route::get('/laporan/data-penjualan-makanan/cetak/{tglawal}/{tglakhir}',[Laporan
 Route::get('/laporan/data-pemesanan-online',[LaporanDataPemesananOnlineController::class,'indexlaporanpemesananonline'])->name('indexlaporanpemesananonline')->middleware('auth');
 Route::get('/laporan/data-pemesanan-online/cetak/{tglawal}/{tglakhir}',[LaporanDataPemesananOnlineController::class,'cetaklaporantransaksipemesananonline'])->name('cetaklaporantransaksipemesananonline')->middleware('auth');
 
+//Tabel Laporan Umum
+Route::get('/laporan/data-umum',[LaporanDataUmumController::class,'indexlaporanumum'])->name('indexlaporanumum')->middleware('auth');
+// Route::get('/laporan/data-umum/cetak/{tglawal}/{tglakhir}',[LaporanDataUmumController::class,'cetaklaporantransaksipemesananonline'])->name('cetaklaporantransaksipemesananonline')->middleware('auth');
 
-Route::get('/laporan/data-umum',[LaporanDataUmumController::class,'index']);
 
 

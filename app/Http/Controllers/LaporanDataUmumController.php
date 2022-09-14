@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TransaksiUmum;
 use Illuminate\Http\Request;
 
 class LaporanDataUmumController extends Controller
 {
-    public function index()
+    public function indexlaporanpenjualanmakanan()
     {
-        return view('Laporan.LaporanDataUmum.index');
+         $transaksi_penjualan_makanan = TransaksiUmum::select('*')
+                                        ->get();
+
+        return view('Laporan.LaporanDataPenjualanMakanan.index',['transaksi_penjualan_makanan' => $transaksi_penjualan_makanan]);
     }
 }

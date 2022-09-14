@@ -10,7 +10,9 @@ class MasterDataAlatController extends Controller
 {
     public function indexalat()
     {
-        $alat = DB::table('alat')->paginate(5);
+         $alat = MasterDataAlatModel::select('*')
+                 ->get();
+
         return view ('MasterData.MasterDataAlat.index',['alat' => $alat]);
     }
 
