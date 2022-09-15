@@ -14,7 +14,7 @@
           <div class="table-responsive">
           <table class="table table-bordered table-hover">
             @foreach($transaksi_umum as $tu)
-              <form method="post" action="{{route('updatepenjualanmakanan')}}">
+              <form method="post" action="{{route('updatetransaksiumum')}}">
                 @csrf
                 <input type="hidden" name="id_penjualan" value="{{$tu->id_penjualan}}">
                 <div class="form-group">
@@ -35,7 +35,7 @@
                   <input type="number" id="harga_satuan" value="{{$tu->harga}}" onkeyup="sum();" name="harga" class="form-control" placeholder="Harga" required="">
                 </div>
                 <div class="form-group">
-                  <label>Jumlah Penjualan</label>
+                  <label>Penjualan</label>
                   <input type="number" id="jumlah_penjualan" value="{{$tu->jumlah_penjualan}}" onkeyup="sum();" name="jumlah_penjualan" class="form-control" placeholder="Jumlah Penjualan" required="">
                 </div>
                 <div class="form-group">
@@ -52,11 +52,11 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <label>Jumlah Pemesanan</label>
+                  <label>Pemesanan</label>
                   <input type="number" id="jumlah_pemesanan" value="{{$tu->jumlah_pemesanan}}" name="jumlah_pemesanan" class="form-control" placeholder="Jumlah Pemesanan" required="">
                 </div>
                 <div class="form-group">
-                  <label>Total</label>
+                  <label>Total Penjualan</label>
                   <input type="number" id="hasil" onkeyup="sum();" value="{{$tu->total}}" name="total" class="form-control" placeholder="Total" readonly>
                 </div>               
                 <div class="form-group text-right">

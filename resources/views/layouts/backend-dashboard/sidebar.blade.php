@@ -13,9 +13,11 @@
       <div class="image">
         <img src="{{ asset('assets/AdminLTE/dist/img/userlogo.png')}}" class="img-circle elevation-2" alt="User Image')}}">
       </div>
-      <div class="info">
+   
+      <div class="info" >
         <a href="/dashboard" class="d-block">Admin</a>
       </div>
+  
     </div>
 
     <!-- SidebarSearch Form -->

@@ -42,10 +42,10 @@
                             <th>No</th>
                             <th>Nama Makanan</th>
                             <th>Harga</th>
-                            <th>Jumlah Penjualan</th>
+                            <th>Penjualan</th>
                             <th>Keterangan Pemesanan</th>
-                            <th>Jumlah Pemesanan</th>
-                            <th>Total</th>
+                            <th>Pemesanan</th>
+                            <th>Total Penjualan</th>
                             <th>Tanggal</th>
                         </tr>
                     

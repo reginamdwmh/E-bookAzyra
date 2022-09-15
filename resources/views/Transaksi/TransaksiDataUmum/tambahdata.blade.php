@@ -30,7 +30,7 @@
                 <input type="number" id="harga_satuan" onkeyup="sum();" name="harga" class="form-control" placeholder="Harga" required="">
               </div>
               <div class="form-group">
-                <label>Jumlah Penjualan</label>
+                <label>Penjualan</label>
                 <input type="number" id="jumlah_penjualan" onkeyup="sum();" name="jumlah_penjualan" class="form-control" placeholder="Jumlah Penjualan" required="">
               </div>
               <div class="form-group">
@@ -43,11 +43,11 @@
                 </select>
               </div>
               <div class="form-group">
-                <label>Jumlah Pemesanan</label>
+                <label>Pemesanan</label>
                 <input type="number" id="jumlah_pemesanan" name="jumlah_pemesanan" class="form-control" placeholder="Jumlah Pemesanan" required="">
               </div>
               <div class="form-group">
-                <label>Total</label>
+                <label>Total Penjualan</label>
                 <input type="number" id="hasil" onkeyup="sum();" name="total" class="form-control" placeholder="Total" readonly>
               </div>
               <div class="form-group text-right">

@@ -13,7 +13,7 @@ class TransaksiUmumController extends Controller
 {
     public function indextransaksiumum(Request $request)
     {
-        $transaksi_umum = TransaksiUmum::select('*')
+        $transaksi_umum = TransaksiUmum::select('*',DB::raw("CONCAT(transaksi_umum.keterangan_pemesanan,' : ',transaksi_umum.jumlah_pemesanan) as mitra"))
                         ->get();
 
 
