@@ -47,12 +47,14 @@
                             <th>Jumlah Pemesanan</th>
                             <th>Total</th>
                             <th>Tanggal</th>
-                            <th>Aksi</th>
                         </tr>
                     
                     </thead>
                     <tbody>
                         
+                        @php
+                            $no = 1;
+                        @endphp
                         @foreach( $transaksi_umum as $tu) 
                         <tr>
                             <td>{{$no++}}</td>

@@ -78,16 +78,16 @@ class TransaksiBahanController extends Controller
 
 
 
-    public function caritransaksibahan(Request $request)
-    {
-        $cari = $request->cari;
+    // public function caritransaksibahan(Request $request)
+    // {
+    //     $cari = $request->cari;
 
-        $transaksi_bahan = DB :: table('transaksi_bahan')
-                        ->where('nama_bahan','like',"%".$cari."%")
-                        ->paginate(5);
+    //     $transaksi_bahan = DB :: table('transaksi_bahan')
+    //                     ->where('nama_bahan','like',"%".$cari."%")
+    //                     ->paginate(5);
         
-        return view ('Transaksi.TransaksiDataBahan.index', ['transaksi_bahan' => $transaksi_bahan]);
-    }
+    //     return view ('Transaksi.TransaksiDataBahan.index', ['transaksi_bahan' => $transaksi_bahan]);
+    // }
 
     // public function onchange(Request $request)
     // {

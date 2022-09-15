@@ -75,14 +75,14 @@ class TransaksiPenjualanMakananController extends Controller
     }
 
 
-    public function caripenjualanmakanan(Request $request)
-    {
-        $cari = $request->cari;
+    // public function caripenjualanmakanan(Request $request)
+    // {
+    //     $cari = $request->cari;
 
-        $transaksi_penjualan_makanan = DB :: table('transaksi_penjualan_makanan')
-                        ->where('nama_makanan','like',"%".$cari."%")
-                        ->paginate(5);
+    //     $transaksi_penjualan_makanan = DB :: table('transaksi_penjualan_makanan')
+    //                     ->where('nama_makanan','like',"%".$cari."%")
+    //                     ->paginate(5);
         
-        return view ('Transaksi.TransaksiDataPenjualanMakanan.index', ['transaksi_penjualan_makanan' => $transaksi_penjualan_makanan]);
-    }
+    //     return view ('Transaksi.TransaksiDataPenjualanMakanan.index', ['transaksi_penjualan_makanan' => $transaksi_penjualan_makanan]);
+    // }
 }

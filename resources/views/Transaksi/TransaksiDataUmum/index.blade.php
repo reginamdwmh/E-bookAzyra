@@ -13,7 +13,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <div>
-                    <a href="{{route('tambahpenjualanmakanan')}}" class="btn-btn-primary">
+                    <a href="{{route('tambahtransaksiumum')}}" class="btn-btn-primary">
                         <i class="fa fa-edit"></i> Tambah Data</a>
                 </div>
                 <br>
@@ -24,7 +24,7 @@
                             <th>Nama Makanan</th>
                             <th>Harga</th>
                             <th>Jumlah Penjualan</th>
-                            <th>Keterangan Pemesanan</th>
+                            <th>Mitra</th>
                             <th>Jumlah Pemesanan</th>
                             <th>Total</th>
                             <th>Tanggal</th>

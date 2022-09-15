@@ -60,7 +60,7 @@ Route::post('/master-data/data-kategori/simpan',[MasterDataKategoriController::c
 Route::get('/master-data/data-kategori/ubah/{id_kategori}',[MasterDataKategoriController::class,'ubahkategori'])->name('ubahkategori')->middleware('auth');
 Route::post('/master-data/data-kategori/update',[MasterDataKategoriController::class,'updatekategori'])->name('updatekategori')->middleware('auth');
 Route::get('/master-data/data-kategori/hapus/{id_kategori}',[MasterDataKategoriController::class,'hapuskategori'])->name('hapuskategori')->middleware('auth');
-// Route::get('/master-data/data-kategori/cari',[MasterDataKategoriController::class,'carikategori'])->name('carikategori')->middleware('auth');
+
 
 
 //Tabel Makanan
@@ -105,7 +105,7 @@ Route::post('/transaksi/data-alat/simpan',[TransaksiAlatController::class,'simpa
 Route::get('/transaksi/data-alat/ubah/{id_transaksialat}',[TransaksiAlatController::class,'ubahtransaksialat'])->name('ubahtransaksialat')->middleware('auth');
 Route::post('/transaksi/data-alat/update',[TransaksiAlatController::class,'updatetransaksialat'])->name('updatetransaksialat')->middleware('auth');
 Route::get('/transaksi/data-alat/hapus/{id_transaksialat}',[TransaksiAlatController::class,'hapustransaksialat'])->name('hapustransaksialat')->middleware('auth');
-Route::get('/transaksi/data-alat/cari',[TransaksiAlatController::class,'caritransaksialat'])->name('caritransaksialat')->middleware('auth');
+
 
 
 
@@ -116,8 +116,7 @@ Route::post('/transaksi/data-bahan/simpan',[TransaksiBahanController::class,'sim
 Route::get('/transaksi/data-bahan/ubah/{id_transaksibahan}',[TransaksiBahanController::class,'ubahtransaksibahan'])->name('ubahtransaksibahan')->middleware('auth');
 Route::post('/transaksi/data-bahan/update',[TransaksiBahanController::class,'updatetransaksibahan'])->name('updatetransaksibahan')->middleware('auth');
 Route::get('/transaksi/data-bahan/hapus/{id_transaksibahan}',[TransaksiBahanController::class,'hapustransaksibahan'])->name('hapustransaksibahan')->middleware('auth');
-Route::get('/transaksi/data-bahan/cari',[TransaksiBahanController::class,'caritransaksibahan'])->name('caritransaksibahan')->middleware('auth');
-// Route::get('TransaksiBahan',[TransaksiBahanController::class,'getTransaksiBahan'])->name('getTransaksiBahan')->middleware('auth');
+
 
 
 
@@ -128,7 +127,7 @@ Route::post('/transaksi/data-penjualan-makanan/simpan',[TransaksiPenjualanMakana
 Route::get('/transaksi/data-penjualan-makanan/ubah/{id_penjualan}',[TransaksiPenjualanMakananController::class,'ubahpenjualanmakanan'])->name('ubahpenjualanmakanan')->middleware('auth');
 Route::post('/transaksi/data-penjualan-makanan/update',[TransaksiPenjualanMakananController::class,'updatepenjualanmakanan'])->name('updatepenjualanmakanan')->middleware('auth');
 Route::get('/transaksi/data-penjualan-makanan/hapus/{id_penjualan}',[TransaksiPenjualanMakananController::class,'hapuspenjualanmakanan'])->name('hapuspenjualanmakanan')->middleware('auth');
-Route::get('/transaksi/data-penjualan-makanan/cari',[TransaksiPenjualanMakananController::class,'caripenjualanmakanan'])->name('caripenjualanmakanan')->middleware('auth');
+
 
 
 //Tabel Transaksi Umum
@@ -138,12 +137,17 @@ Route::post('/transaksi/data-pemesanan-online/simpan',[TransaksiPemesananOnlineC
 Route::get('/transaksi/data-pemesanan-online/ubah/{id_online}',[TransaksiPemesananOnlineController::class,'ubahpemesananonline'])->name('ubahpemesananonline')->middleware('auth');
 Route::post('/transaksi/data-pemesanan-online/update',[TransaksiPemesananOnlineController::class,'updatepemesananonline'])->name('updatepemesananonline')->middleware('auth');
 Route::get('/transaksi/data-pemesanan-online/hapus/{id_online}',[TransaksiPemesananOnlineController::class,'hapuspemesananonline'])->name('hapuspemesananonline')->middleware('auth');
-Route::get('/transaksi/data-pemesanan-online/cari',[TransaksiPemesananOnlineController::class,'caripemesananonline'])->name('caripemesananonline')->middleware('auth');
 Route::get('/transaksi/data-pemesanan-online/lihat/{id_online}',[TransaksiPemesananOnlineController::class,'lihatpemesananonline'])->name('lihatpemesananonline')->middleware('auth');
 
 
 //Tabel Transaksi Umum
-Route::get('/transaksi/data-umum',[TransaksiUmumController::class,'indexumum'])->name('indexumum')->middleware('auth');
+Route::get('/transaksi/data-umum',[TransaksiUmumController::class,'indextransaksiumum'])->name('indextransaksiumum')->middleware('auth');;
+Route::get('/transaksi/data-umum/tambah',[TransaksiUmumController::class,'tambahtransaksiumum'])->name('tambahtransaksiumum')->middleware('auth');
+Route::post('/transaksi/data-umum/simpan',[TransaksiUmumController::class,'simpantransaksiumum'])->name('simpantransaksiumum')->middleware('auth');
+Route::get('/transaksi/data-umum/ubah/{id_umum}',[TransaksiUmumController::class,'ubahtransaksiumum'])->name('ubahtransaksiumum')->middleware('auth');
+Route::post('/transaksi/data-umum/update',[TransaksiUmumController::class,'updatetransaksiumum'])->name('updatetransaksiumum')->middleware('auth');
+Route::get('/transaksi/data-umum/hapus/{id_umum}',[TransaksiUmumController::class,'hapustransaksiumum'])->name('hapustransaksiumum')->middleware('auth');
+Route::get('/transaksi/data-umum/lihat/{id_umum}',[TransaksiUmumController::class,'lihattransaksiumum'])->name('lihattransaksiumum')->middleware('auth');
 
 
 

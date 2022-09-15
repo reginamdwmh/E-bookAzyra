@@ -70,14 +70,14 @@ class TransaksiAlatController extends Controller
        return redirect()->route('indextransaksialat');
     }
 
-    public function caritransaksialat(Request $request)
-    {
-        $cari = $request->cari;
+    // public function caritransaksialat(Request $request)
+    // {
+    //     $cari = $request->cari;
 
-        $transaksi_alat = DB :: table('transaksi_alat')
-                        ->where('nama_alat','like',"%".$cari."%")
-                        ->paginate(5);
+    //     $transaksi_alat = DB :: table('transaksi_alat')
+    //                     ->where('nama_alat','like',"%".$cari."%")
+    //                     ->paginate(5);
         
-        return view ('Transaksi.TransaksiDataAlat.index', ['transaksi_alat' => $transaksi_alat]);
-    }
+    //     return view ('Transaksi.TransaksiDataAlat.index', ['transaksi_alat' => $transaksi_alat]);
+    // }
 }

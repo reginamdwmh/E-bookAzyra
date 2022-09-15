@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 
 class LaporanDataUmumController extends Controller
 {
-    public function indexlaporanpenjualanmakanan()
+    public function indexlaporanumum()
     {
-         $transaksi_penjualan_makanan = TransaksiUmum::select('*')
+         $transaksi_umum = TransaksiUmum::select('*')
                                         ->get();
 
-        return view('Laporan.LaporanDataPenjualanMakanan.index',['transaksi_penjualan_makanan' => $transaksi_penjualan_makanan]);
+        return view('Laporan.LaporanDataUmum.index',['transaksi_umum' => $transaksi_umum]);
     }
 }

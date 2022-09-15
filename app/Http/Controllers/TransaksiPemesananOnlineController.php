@@ -78,16 +78,16 @@ class TransaksiPemesananOnlineController extends Controller
     }
 
 
-    public function caripemesananonline(Request $request)
-    {
-        $cari = $request->cari;
+    // public function caripemesananonline(Request $request)
+    // {
+    //     $cari = $request->cari;
 
-        $transaksi_pemesanan_online = DB :: table('transaksi_pemesanan_online')
-                        ->where('keterangan_pemesanan','like',"%".$cari."%")
-                        ->paginate(5);
+    //     $transaksi_pemesanan_online = DB :: table('transaksi_pemesanan_online')
+    //                     ->where('keterangan_pemesanan','like',"%".$cari."%")
+    //                     ->paginate(5);
         
-        return view ('Transaksi.TransaksiDataPemesananOnline.index', ['transaksi_pemesanan_online' => $transaksi_pemesanan_online]);
-    }
+    //     return view ('Transaksi.TransaksiDataPemesananOnline.index', ['transaksi_pemesanan_online' => $transaksi_pemesanan_online]);
+    // }
 
     public function lihatpemesananonline($id_online)
     {
