@@ -74,8 +74,9 @@ class TransaksiUmumController extends Controller
                  ->update([
                     'nama_makanan' => $request->nama_makanan,
                     'harga' => $request->harga,
-                    'jumlah' => $request->jumlah,
-                    'diskon' => $request->diskon,
+                    'jumlah_penjualan' => $request->jumlah_penjualan,
+                    'keterangan_pemesanan' => $request->keterangan_pemesanan,
+                    'jumlah_pemesanan' => $request->jumlah_pemesanan,
                     'total' => $request->total,
                  ]);
         $makanan = MasterDataMakananModel::all(); 

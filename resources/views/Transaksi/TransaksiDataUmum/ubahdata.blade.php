@@ -16,7 +16,7 @@
             @foreach($transaksi_umum as $tu)
               <form method="post" action="{{route('updatetransaksiumum')}}">
                 @csrf
-                <input type="hidden" name="id_penjualan" value="{{$tu->id_penjualan}}">
+                <input type="hidden" name="id_umum" value="{{$tu->id_umum}}">
                 <div class="form-group">
                   <label>Nama Makanan</label>
                   <select name="nama_makanan" id="nama_makanan" class="form-control">

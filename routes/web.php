@@ -130,7 +130,7 @@ Route::get('/transaksi/data-penjualan-makanan/hapus/{id_penjualan}',[TransaksiPe
 
 
 
-//Tabel Transaksi Umum
+//Tabel Transaksi Pemesanan Online
 Route::get('/transaksi/data-pemesanan-online',[TransaksiPemesananOnlineController::class,'indexpemesananonline'])->name('indexpemesananonline')->middleware('auth');;
 Route::get('/transaksi/data-pemesanan-online/tambah',[TransaksiPemesananOnlineController::class,'tambahpemesananonline'])->name('tambahpemesananonline')->middleware('auth');
 Route::post('/transaksi/data-pemesanan-online/simpan',[TransaksiPemesananOnlineController::class,'simpanpemesananonline'])->name('simpanpemesananonline')->middleware('auth');
