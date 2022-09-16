@@ -11,4 +11,5 @@ class MasterDataPemesananModel extends Model
     protected $table ='pemesanan';
     protected $primaryKey = 'id_pemesanan';
     protected $fillable = ['keterangan_pemesanan'];
+
 }

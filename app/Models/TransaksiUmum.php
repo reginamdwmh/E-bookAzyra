@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\MasterDataMakananModel;
 
 class TransaksiUmum extends Model
 {
@@ -11,4 +12,9 @@ class TransaksiUmum extends Model
     protected $table ='transaksi_umum';
     protected $primaryKey = 'id_umum';
     protected $fillable = ['nama_makanan','harga','jumlah_penjualan','keterangan_pemesanan','jumlah_pemesanan','total'];
+
+    public function keterangan_pemesanan()
+    {
+        return $this->belongsToMany(MasterDataMakananModel::class)->withPivot('mitra');
+    }
 }

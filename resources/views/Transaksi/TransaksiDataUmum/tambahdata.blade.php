@@ -1,7 +1,6 @@
 @extends('layouts.backend-dashboard.app')
 @section('title')
 
-
 @section('content')
 <section class="content">
     <div class="card card-danger">
@@ -12,11 +11,12 @@
             </h5>
         </div>
         <div class="card-body">
-          <div class="table-responsive">
+          <div class="table">
           <table class="table table-bordered table-hover">
             <form method="post" action="{{route('simpantransaksiumum')}}" >
               @csrf
-              <div class="form-group">
+              <div class="row g-3">
+                <div class="col-sm-4">
                 <label>Nama Makanan</label>
                 <select name="nama_makanan" id="nama_makanan" class="form-control" >
                   <option value="">-Pilih-</option>
@@ -25,28 +25,54 @@
                   @endforeach
                 </select>
               </div>
-              <div class="form-group">
+              <div class="col-sm-4">
                 <label>Harga</label>
                 <input type="number" id="harga_satuan" onkeyup="sum();" name="harga" class="form-control" placeholder="Harga" required="">
               </div>
-              <div class="form-group">
+              <div class="col-sm-4">
                 <label>Penjualan</label>
                 <input type="number" id="jumlah_penjualan" onkeyup="sum();" name="jumlah_penjualan" class="form-control" placeholder="Jumlah Penjualan" required="">
               </div>
-              <div class="form-group">
-                <label>Mitra</label>
-                <select name="keterangan_pemesanan" id="keterangan_pemesanan" class="form-control" >
-                  <option value="">-Pilih-</option>
-                  @foreach ($pemesanan as $p)
-                  <option value="{{ $p->keterangan_pemesanan }}">{{$p->keterangan_pemesanan}}</option>
-                  @endforeach
-                </select>
               </div>
-              <div class="form-group">
-                <label>Pemesanan</label>
-                <input type="number" id="jumlah_pemesanan" name="jumlah_pemesanan" class="form-control" placeholder="Jumlah Pemesanan" required="">
+
+
+            
+              <table class="table" id="pesanans_table">
+                <thead>
+                  <tr>
+                    <th>Mitra</th>
+                    <th>Pemesanan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr id="pesanan0">
+                    <td>
+                      <select name="keterangan_pemesanan" id="keterangan_pemesanan" class="form-control" >
+                        <option value="">-Pilih-</option>
+                        @foreach ($pemesanan as $p)
+                        <option value="{{ $p->keterangan_pemesanan }}">{{$p->keterangan_pemesanan}}</option>
+                        @endforeach
+                      </select>
+                    </td>
+                    <td>
+                      <input type="number" id="jumlah_pemesanan" name="jumlah_pemesanan" class="form-control" placeholder="Jumlah Pemesanan" required="">
+                    </td>
+                  </tr>
+                  <tr id="pesanan1"></tr>
+                </tbody>
+            </table>
+
+            {{-- <div class="row">
+                  <div class="col-md-12">
+                      <button id="add_row" class="btn btn-default pull-left">+ Add Row</button>
+                      <button id='delete_row' class="pull-right btn btn-danger">- Delete Row</button>
+                  </div>
               </div>
-              <div class="form-group">
+          </div> --}}
+
+
+              <hr class="my-4">
+              <div class="col-sm-4">
                 <label>Total Penjualan</label>
                 <input type="number" id="hasil" onkeyup="sum();" name="total" class="form-control" placeholder="Total" readonly>
               </div>
@@ -82,8 +108,31 @@
     });
   });
 </script>
+
+{{-- <script>
+$(document).ready(function(){
+  let row_number = 1;
+  $("#add_row").click(function(e){
+    e.preventDefault();
+    let new_row_number = row_number - 1;
+    $('#pesanan' + row_number).html($('#pesanan' + new_row_number).html()).find('td:first-child');
+    $('#pesanans_table').append('<tr id="pesanan' + (row_number + 1) + '"></tr>');
+    row_number++;
+  });
+
+  $("#delete_row").click(function(e){
+    e.preventDefault();
+    if(row_number > 1){
+      $("#pesanan" + (row_number - 1)).html('');
+      row_number--;
+    }
+  });
+});
+</script> --}}
+
+
+
 </section>
 
 
 @endsection
-

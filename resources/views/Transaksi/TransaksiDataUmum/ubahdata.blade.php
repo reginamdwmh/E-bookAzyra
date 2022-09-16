@@ -11,13 +11,14 @@
             </h5>
         </div>
         <div class="card-body">
-          <div class="table-responsive">
+          <div class="table">
           <table class="table table-bordered table-hover">
             @foreach($transaksi_umum as $tu)
               <form method="post" action="{{route('updatetransaksiumum')}}">
                 @csrf
                 <input type="hidden" name="id_umum" value="{{$tu->id_umum}}">
-                <div class="form-group">
+                <div class="row g-3">
+                  <div class="col-sm-4">
                   <label>Nama Makanan</label>
                   <select name="nama_makanan" id="nama_makanan" class="form-control">
                     <option value="">-Pilih-</option>
@@ -29,16 +30,20 @@
                     @endif
                     @endforeach
                   </select>
-                </div>
-                <div class="form-group">
+                  </div>
+                  <div class="col-sm-4">
                   <label>Harga</label>
                   <input type="number" id="harga_satuan" value="{{$tu->harga}}" onkeyup="sum();" name="harga" class="form-control" placeholder="Harga" required="">
-                </div>
-                <div class="form-group">
+                  </div>
+                  <div class="col-sm-4">
                   <label>Penjualan</label>
                   <input type="number" id="jumlah_penjualan" value="{{$tu->jumlah_penjualan}}" onkeyup="sum();" name="jumlah_penjualan" class="form-control" placeholder="Jumlah Penjualan" required="">
+                  </div>
                 </div>
-                <div class="form-group">
+
+                <hr class="my-4">
+                <div class="row g-3">
+                  <div class="col-sm-4">
                   <label>Mitra</label>
                   <select name="keterangan_pemesanan" id="keterangan_pemesanan" class="form-control">
                     <option value="">-Pilih-</option>
@@ -51,11 +56,14 @@
                     @endforeach
                   </select>
                 </div>
-                <div class="form-group">
+                <div class="col-sm-4">
                   <label>Pemesanan</label>
                   <input type="number" id="jumlah_pemesanan" value="{{$tu->jumlah_pemesanan}}" name="jumlah_pemesanan" class="form-control" placeholder="Jumlah Pemesanan" required="">
                 </div>
-                <div class="form-group">
+                </div>
+
+                <hr class="my-4">
+                <div class="col-sm-4">
                   <label>Total Penjualan</label>
                   <input type="number" id="hasil" onkeyup="sum();" value="{{$tu->total}}" name="total" class="form-control" placeholder="Total" readonly>
                 </div>               

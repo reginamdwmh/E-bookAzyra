@@ -43,8 +43,7 @@
                             <th>Nama Makanan</th>
                             <th>Harga</th>
                             <th>Penjualan</th>
-                            <th>Keterangan Pemesanan</th>
-                            <th>Pemesanan</th>
+                            <th>Mitra</th>
                             <th>Total Penjualan</th>
                             <th>Tanggal</th>
                         </tr>
@@ -61,8 +60,7 @@
                             <td>{{$tu->nama_makanan}}</td>
                             <td>@currency($tu->harga)</td>
                             <td>{{$tu->jumlah_penjualan}}</td>
-                            <td>{{$tu->keterangan_pemesanan}}</td>
-                            <td>{{$tu->jumlah_pemesanan}}</td>
+                            <td>{{$tu->mitra}}</td>
                             <td>@currency($tu->total)</td>
                             <td>{{$tu->created_at}}</td>
                             

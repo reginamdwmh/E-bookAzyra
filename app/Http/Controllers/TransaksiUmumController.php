@@ -36,7 +36,17 @@ class TransaksiUmumController extends Controller
 
     public function simpantransaksiumum(Request $request)
     {
-        
+        // $transaksi_umum = TransaksiUmum::create($request->all());
+
+        // $keterangan_pemesanan = $request->input('keterangan_pemesanan',[]);
+        // $jumlah_pemesanan = $request->input('jumlah_pemesanan',[]);
+        // for ($pesanan=0; $pesanan < count((is_countable($keterangan_pemesanan)?$keterangan_pemesanan:[])); $pesanan++){
+        //     if ($keterangan_pemesanan[$pesanan] != ''){
+        //         $transaksi_umum->keterangan_pemesanan()->attach($keterangan_pemesanan[$pesanan], $jumlah_pemesanan[$pesanan]);
+        //     }
+        //     return redirect()->route('tambahtransaksiumum');
+        // }
+        // return redirect()->route('tambahtransaksiumum');
         $transaksi_umum = TransaksiUmum::create([
             'nama_makanan' => $request->nama_makanan,
             'harga' => $request->harga,
