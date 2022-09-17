@@ -25,7 +25,7 @@
                     @if(old('keterangan_pemesanan', $tpo->keterangan_pemesanan == $o->keterangan_pemesanan))
                     <option value="{{ $o->keterangan_pemesanan }}" selected>{{$o->keterangan_pemesanan}}</option>
                     @else
-                     <option value="{{ $o->keterangan_pemesanan }}" >{{$o->keterangan_pemesanan}}</option>
+                     <option value="{{ $o->keterangan_pemesanan }}" data-biaya_admin="{{$tpo->biaya_admin}}" data-ongkir="{{$tpo->ongkir}}">{{$o->keterangan_pemesanan}}</option>
                     @endif
                     @endforeach
                   </select>
@@ -78,7 +78,21 @@
   }
     </script>
 
-  
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script>
+  // Ambil dari atribut data
+  $(document).ready(function() {
+    $('#keterangan_pemesanan').on('change', function() {
+      const selected = $(this).find('option:selected');
+      const nb = selected.data('biaya_admin');
+      const nc = selected.data('ongkir'); 
+      
+      $("#admin").val(nb);
+      $("#biaya_ongkir").val(nc);
+    });
+  });
+</script>
   
  </section>
 @endsection

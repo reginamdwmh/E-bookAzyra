@@ -21,6 +21,14 @@
                   <label>keterangan Pemesanan</label>
                   <input type="text" id="keterangan_pemesanan" name="keterangan_pemesanan" value="{{$p->keterangan_pemesanan}}" class="form-control" placeholder="Keterangan Pemesanan" required="">
                 </div>
+                <div class="form-group">
+                  <label>Biaya Admin</label><span style="color: red">*tanpa %</span>
+                  <input type="text" id="biaya_admin" name="biaya_admin" value="{{$p->biaya_admin}}" class="form-control" placeholder="Biaya Admin" required="">
+                </div>
+                <div class="form-group">
+                  <label>Ongkir</label>
+                  <input type="text" id="ongkir" name="ongkir" value="{{$p->ongkir}}" class="form-control" placeholder="Ongkir" required="">
+                </div>
                 <div class="form-group text-right">
                   <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update Data</button>
                 </div>

@@ -150,7 +150,6 @@ Route::get('/transaksi/data-umum/hapus/{id_umum}',[TransaksiUmumController::clas
 Route::get('/transaksi/data-umum/lihat/{id_umum}',[TransaksiUmumController::class,'lihattransaksiumum'])->name('lihattransaksiumum')->middleware('auth');
 
 
-
 // Tabel Laporan Alat
 Route::get('/laporan/data-alat',[LaporanDataAlatController::class,'indexlaporanalat'])->name('indexlaporanalat')->middleware('auth');
 Route::get('/laporan/data-alat/cetak/{tglawal}/{tglakhir}',[LaporanDataAlatController::class,'cetaklaporantransaksialat'])->name('cetaklaporantransaksialat')->middleware('auth');

@@ -16,6 +16,8 @@ class CreatePemesananTable extends Migration
         Schema::create('pemesanan', function (Blueprint $table) {
             $table->increments('id_pemesanan');
             $table->string('keterangan_pemesanan');
+            $table->integer('biaya_admin');
+            $table->integer('ongkir');
             $table->timestamps();
         });
     }

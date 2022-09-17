@@ -22,6 +22,8 @@
                         <tr>
                             <th>No</th>
                             <th>Keterangan</th>
+                            <th>Biaya Admin</th>
+                            <th>Ongkir</th>
                             <th>Aksi</th>
                         </tr>
                     
@@ -35,6 +37,8 @@
                          <tr>
                              <td>{{$no++}}</td>
                              <td>{{$p->keterangan_pemesanan}}</td>
+                             <td>{{$p->biaya_admin}}%</td>
+                             <td>@currency($p->ongkir)</td>
                              <td>
                              <a href="/master-data/data-pemesanan/ubah/{{$p->id_pemesanan}}" title="Ubah" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
                              <a href="/master-data/data-pemesanan/hapus/{{$p->id_pemesanan}}" onclick="return confirm('Apakah Anda Yakin Menghapus Data?');" title="Hapus" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>

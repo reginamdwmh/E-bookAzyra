@@ -108,8 +108,8 @@
     });
   });
 </script>
-
-{{-- <script>
+{{-- 
+<script>
 $(document).ready(function(){
   let row_number = 1;
   $("#add_row").click(function(e){

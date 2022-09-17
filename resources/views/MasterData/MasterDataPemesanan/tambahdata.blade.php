@@ -17,7 +17,15 @@
               @csrf
               <div class="form-group">
                 <label>Keterangan Pemesanan</label>
-                <input type="text" id="keterangan_pemesanan" name="keterangan_pemesanan" class="form-control" placeholder="keterangan Pemesanan" required="">
+                <input type="text" id="keterangan_pemesanan" name="keterangan_pemesanan" class="form-control" placeholder="Keterangan Pemesanan" required="">
+              </div>
+              <div class="form-group">
+                <label>Biaya Admin</label><span style="color: red">*tanpa %</span>
+                <input type="text" id="biaya_admin" name="biaya_admin" class="form-control" value="0" required="">
+              </div>
+              <div class="form-group">
+                <label>Ongkir</label>
+                <input type="text" id="ongkir" name="ongkir" class="form-control" value="0" required="">
               </div>
               <div class="form-group text-right">
                 <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan Data</button>

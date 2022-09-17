@@ -20,8 +20,8 @@
                 <label>Keterangan Pemesanan</label>
                 <select name="keterangan_pemesanan" id="keterangan_pemesanan" class="form-control" >
                   <option value="">-Pilih-</option>
-                  @foreach ($transaksi_pemesanan_online as $tpm)
-                  <option value="{{ $tpm->keterangan_pemesanan }}">{{$tpm->keterangan_pemesanan}}</option>
+                  @foreach ($transaksi_pemesanan_online as $tpo)
+                  <option value="{{ $tpo->keterangan_pemesanan }}" data-biaya_admin="{{$tpo->biaya_admin}}" data-ongkir="{{$tpo->ongkir}}">{{$tpo->keterangan_pemesanan}}</option>
                   @endforeach
                 </select>
               </div>
@@ -80,6 +80,21 @@
       document.getElementById('komisi').value=potongan;
       document.getElementById('hasil').value=total;
   }
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script>
+  // Ambil dari atribut data
+  $(document).ready(function() {
+    $('#keterangan_pemesanan').on('change', function() {
+      const selected = $(this).find('option:selected');
+      const nb = selected.data('biaya_admin');
+      const nc = selected.data('ongkir'); 
+      
+      $("#admin").val(nb);
+      $("#biaya_ongkir").val(nc);
+    });
+  });
 </script>
 
 </section>

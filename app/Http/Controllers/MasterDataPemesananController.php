@@ -27,6 +27,8 @@ class MasterDataPemesananController extends Controller
 
         $pemesanan = MasterDataPemesananModel::create([
             'keterangan_pemesanan' => $request->keterangan_pemesanan,
+            'biaya_admin' => $request->biaya_admin,
+            'ongkir' => $request->ongkir,
         ]);
 
         return redirect()->route('indexpemesanan');
@@ -53,7 +55,9 @@ class MasterDataPemesananController extends Controller
     {
        $pemesanan = MasterDataPemesananModel::where('id_pemesanan', $request->id_pemesanan)
                  ->update([
-                    'keterangan_kategori' => $request->keterangan_kategori,
+                    'keterangan_pemesanan' => $request->keterangan_pemesanan,
+                    'biaya_admin' => $request->biaya_admin,
+                    'ongkir' => $request->ongkir,
 
                  ]);
     

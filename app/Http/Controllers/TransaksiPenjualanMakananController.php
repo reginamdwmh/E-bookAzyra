@@ -28,7 +28,29 @@ class TransaksiPenjualanMakananController extends Controller
 
     public function simpanpenjualanmakanan(Request $request)
     {
-        
+        // $request->validate([
+        //     'nama_makanan' => 'required',
+        //     'harga' => 'required',
+        //     'jumlah' => 'required',
+        //     'diskon' => 'required',
+        //     'total' => 'required'
+        //  ]);
+         
+        //  $count = count($request->nama_makanan);
+     
+        //  for ($i=0; $i < $count; $i++) { 
+        //    $task = new TransaksiPenjualanMakanan();
+        //    $task->nama_makanan = $request->nama_makanan[$i];
+        //    $task->harga = $request->harga[$i];
+        //    $task->jumlah = $request->jumlah[$i];
+        //    $task->diskon = $request->diskon[$i];
+        //    $task->total = $request->total[$i];
+        //    $task->save();
+        //  }
+     
+        //  return redirect()->route('tambahpenjualanmakanan');
+
+
         $transaksi_penjualan_makanan = TransaksiPenjualanMakanan::create([
             'nama_makanan' => $request->nama_makanan,
             'harga' => $request->harga,

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreOrderRequest;
 use Yajra\DataTables\Facades\DataTables;
 use App\Models\TransaksiUmum;
 use Illuminate\Support\Facades\DB;
@@ -13,17 +14,21 @@ class TransaksiUmumController extends Controller
 {
     public function indextransaksiumum(Request $request)
     {
+        // $transaksi_umum = TransaksiUmum::with('pemesanan')->get();
+
+        // return view('Transaksi.TransaksiDataUmum.index', compact('transaksi_umum'));
+
         $transaksi_umum = TransaksiUmum::select('*',DB::raw("CONCAT(transaksi_umum.keterangan_pemesanan,' : ',transaksi_umum.jumlah_pemesanan) as mitra"))
                         ->get();
 
 
         return view ('Transaksi.TransaksiDataUmum.index',['transaksi_umum' => $transaksi_umum]);
 
-        // if ($request->ajax()) {
-        //     return DataTables::of(TransaksiUmum::query())->toJson();
-        // }
+        if ($request->ajax()) {
+            return DataTables::of(TransaksiUmum::query())->toJson();
+        }
 
-        // return view ('Transaksi.TransaksiDataUmum.index');
+        return view ('Transaksi.TransaksiDataUmum.index');
     }
     public function tambahtransaksiumum()
     {
@@ -34,19 +39,22 @@ class TransaksiUmumController extends Controller
     }
 
 
-    public function simpantransaksiumum(Request $request)
+    public function simpantransaksiumum(StoreOrderRequest $request)
     {
+
         // $transaksi_umum = TransaksiUmum::create($request->all());
 
-        // $keterangan_pemesanan = $request->input('keterangan_pemesanan',[]);
-        // $jumlah_pemesanan = $request->input('jumlah_pemesanan',[]);
-        // for ($pesanan=0; $pesanan < count((is_countable($keterangan_pemesanan)?$keterangan_pemesanan:[])); $pesanan++){
-        //     if ($keterangan_pemesanan[$pesanan] != ''){
-        //         $transaksi_umum->keterangan_pemesanan()->attach($keterangan_pemesanan[$pesanan], $jumlah_pemesanan[$pesanan]);
+        // $keterangan_pemesanan = $request->input('keterangan_pemesanan', []);
+        // $jumlah_pemesanan = $request->input('jumlah_pemesanan', []);
+        // for ($pesanan=0; $pesanan < count($keterangan_pemesanan); $pesanan++) {
+        //     if ($keterangan_pemesanan[$pesanan] != '') {
+        //         $transaksi_umum->pemesanan()->attach($keterangan_pemesanan[$pesanan], ['jumlah' => $jumlah_pemesanan[$pesanan]]);
         //     }
-        //     return redirect()->route('tambahtransaksiumum');
         // }
+
         // return redirect()->route('tambahtransaksiumum');
+
+        
         $transaksi_umum = TransaksiUmum::create([
             'nama_makanan' => $request->nama_makanan,
             'harga' => $request->harga,
@@ -57,6 +65,8 @@ class TransaksiUmumController extends Controller
         ]);
         
         return redirect()->route('tambahtransaksiumum');
+
+       
     }
 
     public function hapustransaksiumum($id_umum)

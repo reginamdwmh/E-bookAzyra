@@ -13,8 +13,9 @@ class TransaksiUmum extends Model
     protected $primaryKey = 'id_umum';
     protected $fillable = ['nama_makanan','harga','jumlah_penjualan','keterangan_pemesanan','jumlah_pemesanan','total'];
 
-    public function keterangan_pemesanan()
-    {
-        return $this->belongsToMany(MasterDataMakananModel::class)->withPivot('mitra');
-    }
+    // public function pemesanan()
+    // {
+    //     return $this->belongsToMany(MasterDataMakananModel::class)->withPivot('jumlah');
+    // }
+
 }

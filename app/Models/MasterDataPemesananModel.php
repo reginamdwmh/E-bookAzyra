@@ -10,6 +10,6 @@ class MasterDataPemesananModel extends Model
     use HasFactory;
     protected $table ='pemesanan';
     protected $primaryKey = 'id_pemesanan';
-    protected $fillable = ['keterangan_pemesanan'];
+    protected $fillable = ['keterangan_pemesanan','biaya_admin','ongkir'];
 
 }
