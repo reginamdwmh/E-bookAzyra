@@ -11,4 +11,5 @@ class MasterDataMakananModel extends Model
     protected $table ='makanan';
     protected $primaryKey = 'id_makanan';
     protected $fillable = ['nama_kategori','nama_makanan','harga','image'];
+
 }
