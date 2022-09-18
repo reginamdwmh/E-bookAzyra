@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreOrderRequest;
 use Yajra\DataTables\Facades\DataTables;
 use App\Models\TransaksiUmum;
 use Illuminate\Support\Facades\DB;
@@ -18,17 +17,24 @@ class TransaksiUmumController extends Controller
 
         // return view('Transaksi.TransaksiDataUmum.index', compact('transaksi_umum'));
 
+
+        // $transaksi_umum = TransaksiUmum::with(['pemesanan'])->get();
+        // return view('Transaksi.TransaksiDataUmum.index', [
+        //     'transaksi_umum' => $transaksi_umum
+        // ]);
+
+
         $transaksi_umum = TransaksiUmum::select('*',DB::raw("CONCAT(transaksi_umum.keterangan_pemesanan,' : ',transaksi_umum.jumlah_pemesanan) as mitra"))
                         ->get();
 
 
         return view ('Transaksi.TransaksiDataUmum.index',['transaksi_umum' => $transaksi_umum]);
 
-        if ($request->ajax()) {
-            return DataTables::of(TransaksiUmum::query())->toJson();
-        }
+        // if ($request->ajax()) {
+        //     return DataTables::of(TransaksiUmum::query())->toJson();
+        // }
 
-        return view ('Transaksi.TransaksiDataUmum.index');
+        // return view ('Transaksi.TransaksiDataUmum.index');
     }
     public function tambahtransaksiumum()
     {
@@ -39,7 +45,7 @@ class TransaksiUmumController extends Controller
     }
 
 
-    public function simpantransaksiumum(StoreOrderRequest $request)
+    public function simpantransaksiumum(Request $request)
     {
 
         // $transaksi_umum = TransaksiUmum::create($request->all());
@@ -48,11 +54,45 @@ class TransaksiUmumController extends Controller
         // $jumlah_pemesanan = $request->input('jumlah_pemesanan', []);
         // for ($pesanan=0; $pesanan < count($keterangan_pemesanan); $pesanan++) {
         //     if ($keterangan_pemesanan[$pesanan] != '') {
-        //         $transaksi_umum->pemesanan()->attach($keterangan_pemesanan[$pesanan], ['jumlah' => $jumlah_pemesanan[$pesanan]]);
+        //         $transaksi_umum->attach($keterangan_pemesanan[$pesanan],$jumlah_pemesanan[$pesanan]);
         //     }
         // }
 
         // return redirect()->route('tambahtransaksiumum');
+
+
+
+        // $this->validate($request, [
+        //     'nama_makanan' => 'required|string',
+        //     'harga' => 'required|integer',
+        //     'jumlah_penjualan' => 'required|integer',
+        //     'keterangan_pemesanan' => 'required|string',
+        //     'jumlah_pemesanan' => 'required|integer',
+        //     'total' => 'required|integer',
+        // ],[],[
+        //     'nama_makanan' => 'nama makanan',
+        //     'harga' => 'harga',
+        //     'jumlah_penjualan' => 'jumlah penjualan',
+        //     'keterangan_pemesanan' => 'keterangan pemesanan',
+        //     'jumlah_pemesanan' => 'jumlah pemesanan',
+        //     'total' => 'total',
+        // ]);
+        // DB::beginTransaction();
+        // try {
+        //     $transaksi_umum = TransaksiUmum::create([
+        //         'nama_makanan' => $request -> nama_makanan,
+        //         'harga' => $request -> harga,
+        //         'jumlah_penjualan' => $request -> jumlah_penjualan,
+        //         'total' => $request -> total,
+        //     ]);
+        //     $transaksi_umum->pemesanan()->createMany($this->setFieldPemesanan($request));
+        //     return redirect()->route('indextransaksiumum');
+        // } catch (\Throwable $th) {
+        //     DB::rollBack();
+        //     dd("Create failed:" . $th->getMessage());
+        // } finally {
+        //     DB::commit();
+        // }
 
         
         $transaksi_umum = TransaksiUmum::create([

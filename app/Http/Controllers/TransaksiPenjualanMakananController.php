@@ -51,15 +51,34 @@ class TransaksiPenjualanMakananController extends Controller
         //  return redirect()->route('tambahpenjualanmakanan');
 
 
-        $transaksi_penjualan_makanan = TransaksiPenjualanMakanan::create([
-            'nama_makanan' => $request->nama_makanan,
-            'harga' => $request->harga,
-            'jumlah' => $request->jumlah,
-            'diskon' => $request->diskon,
-            'total' => $request->total,
+
+
+        $request->validate([
+            'addMoreInputFields.*.nama_makanan' => 'required',
+            'addMoreInputFields.*.harga' => 'required',
+            'addMoreInputFields.*.jumlah' => 'required',
+            'addMoreInputFields.*.diskon' => 'required',
+            'addMoreInputFields.*.total' => 'required',
         ]);
-        
+
+        foreach ($request->addMoreInputFields as $key => $value) {
+            TransaksiPenjualanMakanan::create($value);
+        }
+
         return redirect()->route('tambahpenjualanmakanan');
+
+
+
+
+        // $transaksi_penjualan_makanan = TransaksiPenjualanMakanan::create([
+        //     'nama_makanan' => $request->nama_makanan,
+        //     'harga' => $request->harga,
+        //     'jumlah' => $request->jumlah,
+        //     'diskon' => $request->diskon,
+        //     'total' => $request->total,
+        // ]);
+        
+        // return redirect()->route('tambahpenjualanmakanan');
     }
 
     public function hapuspenjualanmakanan($id_penjualan)

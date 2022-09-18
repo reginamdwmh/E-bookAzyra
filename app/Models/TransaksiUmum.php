@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\MasterDataMakananModel;
 
 class TransaksiUmum extends Model
 {
@@ -16,6 +15,11 @@ class TransaksiUmum extends Model
     // public function pemesanan()
     // {
     //     return $this->belongsToMany(MasterDataMakananModel::class)->withPivot('jumlah');
+    // }
+
+    // public function pemesanan()
+    // {
+    //     return $this->hasMany(MasterDataPemesananModel::class);
     // }
 
 }

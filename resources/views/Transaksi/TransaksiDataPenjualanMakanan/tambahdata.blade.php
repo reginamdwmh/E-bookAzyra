@@ -2,7 +2,7 @@
 @section('title')
 
 
-@section('content')
+{{-- @section('content')
 <section class="content">
     <div class="card card-danger">
         <div class="card-header">
@@ -77,11 +77,11 @@
 </section>
 
 
-@endsection
+@endsection --}}
 
 
 
-{{-- @section('content')
+@section('content')
 <section class="content">
     <div class="card card-danger">
         <div class="card-header">
@@ -92,86 +92,47 @@
         </div>
         <div class="card-body">
           <div class="table-responsive">
-          <table class="table table-bordered table-hover" id="table">
-            <form method="post" action="{{route('simpanpenjualanmakanan')}}">
+            <form action="{{ route('simpanpenjualanmakanan') }}" method="POST">
               @csrf
-
-              <tr>
-                  <td>Makanan</td>
-                  <td>Harga</td>
-                  <td>Jumlah</td>
-                  <td>Diskon <span style="color: red">*tanpa %</span></td>
-                  <td>Total</td>
-                  <td><button class="btn btn-success" id="tambah">+</button></td>
-              </tr>
-
-              <tr>
-              <td>
-                <select name="nama_makanan" id="nama_makanan" class="form-control" >
-                  <option value="">-Pilih-</option>
-                  @foreach ($transaksi_penjualan_makanan as $tpm)
-                  <option value="{{ $tpm->nama_makanan }}" data-harga="{{$tpm->harga}}">{{$tpm->nama_makanan}}</option>
-                  @endforeach
-                </select>
-              </td>
-              <td>
-                <input type="number" id="harga_satuan" onkeyup="sum();" name="harga" class="form-control" placeholder="Harga" required="">
-              </td>
-              <td>
-                <input type="number" id="jumlah_harga" onkeyup="sum();" name="jumlah" class="form-control" placeholder="Jumlah" required="">
-              </td>
-              <td>
-                <input type="number" id="diskon_makanan" onkeyup="sum();" name="diskon" class="form-control" value="0">
-              </td>
-              <td>
-                <input type="number" id="hasil" onkeyup="sum();" name="total" class="form-control" placeholder="Total" readonly>
-              </td>
-              <td><button class="btn-sm btn-danger" id="hapus">-</button></td>
-            </tr> 
-            
-              
+              <table class="table table-bordered" id="dynamicAddRemove">
+                <tr>
+                    <th>Nama Makanan</th>
+                    <th>Harga</th>
+                    <th>Jumlah</th>
+                    <th>Diskon</th>
+                    <th>Total</th>
+                </tr>
+                <tr>
+                    <td>
+                      <input type="text" name="addMoreInputFields[0][nama_makanan]" placeholder="Enter nama makanan" class="form-control" id="nama_makanan"/>
+                    </td>
+                    <td>
+                      <input type="text" name="addMoreInputFields[0][harga]" placeholder="Enter harga" class="form-control" id="harga"  onkeyup="sum();" />
+                    </td>
+                    <td>
+                      <input type="text" name="addMoreInputFields[0][jumlah]" placeholder="Enter jumlah" class="form-control" id="jumlah"  onkeyup="sum();" />
+                    </td>
+                    <td>
+                      <input type="text" name="addMoreInputFields[0][diskon]" placeholder="Enter diskon" class="form-control" id="diskon"  onkeyup="sum();" />
+                    </td>
+                    <td>
+                      <input type="text" name="addMoreInputFields[0][total]" placeholder="Enter total" class="form-control" id="total"  onkeyup="sum();" />
+                    </td>
+                    <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">+</button></td>
+                </tr>
+            </table>
+            <div class="form-group text-right">
+              <a href="/transaksi/data-penjualan-makanan" title="Kembali" class="btn btn-primary"><i class="fa fa-back"></i>Kembali</a>
+              <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan Data</button>
+            </div>
             </form>
-        </table>
-        <div class="">
-          <a href="/transaksi/data-penjualan-makanan" title="Kembali" class="btn btn-primary"><i class="fa fa-back"></i>Kembali</a>
-          <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan Data</button>
+          </div>
         </div>
     </div>
-  </div>
-</div>
 
-<script src="{{ asset('assets/AdminLTE/plugins/jquery/jquery.min.js') }}"></script>
-
-
-<script>
-  function sum(){
-    var harga = document.getElementById('harga_satuan').value;
-    var jumlah = document.getElementById('jumlah_harga').value;
-    var diskon = document.getElementById('diskon_makanan').value;
-    var total = (parseInt(harga) * parseInt(jumlah)) - (((parseInt(harga) * parseInt(jumlah))*parseInt(diskon))/100);
-
-      document.getElementById('hasil').value=total;
-  }
-</script>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-<script>
-  // Ambil dari atribut data
-  $(document).ready(function() {
-    $('#nama_makanan').on('change', function() {
-      const selected = $(this).find('option:selected');
-      const nb = selected.data('harga'); 
-
-      $("#harga_satuan").val(nb);
-    });
-  });
-</script>
-
-<script>
+{{-- <script>
   $(document).ready(function () {
     let baris = 1
-
     $(document).on('click' , '#tambah', function() {
       baris = baris + 1
       var html = "<tr id ='baris'" + baris + ">"
@@ -183,12 +144,9 @@
           html += "<td><input type='number' id='hasil' onkeyup='sum();' name='total' class='form-control' placeholder='Total' readonly></td>"
           html += "<td><button class='btn-sm btn-danger' data-row='baris'" + baris +" id='hapus'>-</button></td>"
           html += "<tr>"
-
           $('#table').append(html);
     })
-
   })
-
     $(document).on('change', '#nama_makanan', function() {
       let price = $(this).data('satuan');
       const selected = $(this).find('option:selected');
@@ -196,16 +154,55 @@
  
     $('#harga_satuan' + price).val(nb);
   })
-
   $(document).on('click', '#hapus' , function (){
     let hapus = $(this).data('row');
     $('#' + hapus).remove();
   })
+</script> --}}
 
+<script>
+  function sum(){
+      var harga = document.getElementById('harga').value;
+      var jumlah = document.getElementById('jumlah').value;
+      var diskon = document.getElementById('diskon').value;
+      var total = (parseInt(harga) * parseInt(jumlah)) - (((parseInt(harga) * parseInt(jumlah))*parseInt(diskon))/100);
 
+        document.getElementById('total').value=total;
+  };
 </script>
 
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script>
+  // Ambil dari atribut data
+  $(document).ready(function() {
+    $('#nama_makanan').on('change', function() {
+      const selected = $(this).find('option:selected');
+      const nb = selected.data('harga'); 
+      
+      $("#harga_satuan").val(nb);
+    });
+  });
+</script>
+
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript">
+    var i = 0;
+    $("#dynamic-ar").click(function () {
+        ++i;
+        $("#dynamicAddRemove").append('<tr><td><input type="text" name="addMoreInputFields[' + i + '][nama_makanan]" placeholder="Enter subject" class="form-control" /></td><td><input type="text" name="addMoreInputFields[' + i + '][harga]" placeholder="Enter subject" class="form-control" id="addMoreInputFields[' + i + '][harga]"  onkeyup="sum();"/></td><td><input type="text" name="addMoreInputFields[' + i + '][jumlah]" placeholder="Enter subject" class="form-control" id="addMoreInputFields[' + i + '][harga]"  onkeyup="sum();"/></td><td><input type="text" name="addMoreInputFields[' + i + '][diskon]" placeholder="Enter subject" class="form-control" id="addMoreInputFields[' + i + '][harga]"  onkeyup="sum();"/></td><td><input type="text" name="addMoreInputFields[' + i + '][total]" placeholder="Enter subject" class="form-control" id="addMoreInputFields[' + i + '][harga]"  onkeyup="sum();"/></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>'
+        );
+      
+    });
+      
+
+    $(document).on('click', '.remove-input-field', function () {
+        $(this).parents('tr').remove();
+    });
+</script>
 </section>
 
-
-@endsection --}}
+@endsection

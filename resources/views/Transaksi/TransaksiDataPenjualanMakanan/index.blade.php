@@ -21,7 +21,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Bahan</th>
+                            <th>Nama Makanan</th>
                             <th>Harga</th>
                             <th>Jumlah</th>
                             <th>Diskon</th>

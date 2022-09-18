@@ -42,6 +42,8 @@
                             <td>{{$tu->nama_makanan}}</td>
                             <td>@currency($tu->harga)</td>
                             <td>{{$tu->jumlah_penjualan}}</td>
+                           
+                            
                             <td>{{ $tu->mitra }}</td>
                             {{-- <td>
                                 <ul>
@@ -50,6 +52,8 @@
                                     @endforeach
                                 </ul>
                             </td> --}}
+                            
+                            
                             <td>@currency($tu->total)</td>
                             <td>{{$tu->created_at}}</td>
                             <td>

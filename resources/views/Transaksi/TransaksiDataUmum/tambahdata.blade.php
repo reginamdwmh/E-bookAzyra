@@ -62,13 +62,13 @@
                 </tbody>
             </table>
 
-            {{-- <div class="row">
+            <div class="row">
                   <div class="col-md-12">
                       <button id="add_row" class="btn btn-default pull-left">+ Add Row</button>
                       <button id='delete_row' class="pull-right btn btn-danger">- Delete Row</button>
                   </div>
               </div>
-          </div> --}}
+          </div>
 
 
               <hr class="my-4">
@@ -108,7 +108,7 @@
     });
   });
 </script>
-{{-- 
+
 <script>
 $(document).ready(function(){
   let row_number = 1;
@@ -128,7 +128,7 @@ $(document).ready(function(){
     }
   });
 });
-</script> --}}
+</script>
 
 
 

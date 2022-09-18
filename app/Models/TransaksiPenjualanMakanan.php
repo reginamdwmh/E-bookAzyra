@@ -11,5 +11,5 @@ class TransaksiPenjualanMakanan extends Model
     protected $table ='transaksi_penjualan_makanan';
     protected $primaryKey = 'id_penjualan';
     protected $fillable = ['nama_makanan','harga','jumlah','diskon','total'];
-    protected $guarded=[];
+    
 }
