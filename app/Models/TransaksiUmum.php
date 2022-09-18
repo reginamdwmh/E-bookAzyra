@@ -17,9 +17,9 @@ class TransaksiUmum extends Model
     //     return $this->belongsToMany(MasterDataMakananModel::class)->withPivot('jumlah');
     // }
 
-    // public function pemesanan()
-    // {
-    //     return $this->hasMany(MasterDataPemesananModel::class);
-    // }
+    public function Pemesanan()
+    {
+        return $this->hasMany(MasterDataPemesananModel::class);
+    }
 
 }

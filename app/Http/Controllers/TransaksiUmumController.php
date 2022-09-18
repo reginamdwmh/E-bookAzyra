@@ -60,54 +60,58 @@ class TransaksiUmumController extends Controller
 
         // return redirect()->route('tambahtransaksiumum');
 
+        $request->validate([
+            'nama_makanan' => 'required',
+            'harga' => 'required',
+            'jumlah' => 'required',
+            'jumlah_penjualan' => 'required',
+            'addMoreInputFields.*.keterangan_pemesanan' =>'required',
+            'addMoreInputFields.*.jumlah_pemesanan' => 'required',
+            'total' => 'required',
+        ]);
+            foreach ($request->addMoreInputFields as $key => $value) {
+                TransaksiUmum::create([
+                'nama_makanan' => $request -> nama_makanan,
+                'harga' => $request -> harga,
+                'jumlah_penjualan' => $request -> jumlah_penjualan,
+                'addMoreInputFields.*.keterangan_pemesanan' => $request -> $value,
+                'addMoreInputFields.*.jumlah_pemesanan' => $request -> $value,
+                'total' => $request -> total,
+            ]);
+            return redirect()->route('tambahtransaksiumum');
+            
 
-
-        // $this->validate($request, [
-        //     'nama_makanan' => 'required|string',
-        //     'harga' => 'required|integer',
-        //     'jumlah_penjualan' => 'required|integer',
-        //     'keterangan_pemesanan' => 'required|string',
-        //     'jumlah_pemesanan' => 'required|integer',
-        //     'total' => 'required|integer',
-        // ],[],[
-        //     'nama_makanan' => 'nama makanan',
-        //     'harga' => 'harga',
-        //     'jumlah_penjualan' => 'jumlah penjualan',
-        //     'keterangan_pemesanan' => 'keterangan pemesanan',
-        //     'jumlah_pemesanan' => 'jumlah pemesanan',
-        //     'total' => 'total',
+        // $request->validate([
+        //     'nama_makanan' => 'required',
+        //     'harga' => 'required',
+        //     'jumlah' => 'required',
+        //     'jumlah_penjualan' => 'required',
+        //     'addMoreInputFields.*.keterangan_pemesanan' =>'required',
+        //     'addMoreInputFields.*.jumlah_pemesanan' => 'required',
+        //     'total' => 'required',
         // ]);
-        // DB::beginTransaction();
-        // try {
-        //     $transaksi_umum = TransaksiUmum::create([
-        //         'nama_makanan' => $request -> nama_makanan,
-        //         'harga' => $request -> harga,
-        //         'jumlah_penjualan' => $request -> jumlah_penjualan,
-        //         'total' => $request -> total,
-        //     ]);
-        //     $transaksi_umum->pemesanan()->createMany($this->setFieldPemesanan($request));
-        //     return redirect()->route('indextransaksiumum');
-        // } catch (\Throwable $th) {
-        //     DB::rollBack();
-        //     dd("Create failed:" . $th->getMessage());
-        // } finally {
-        //     DB::commit();
+
+       
+        // foreach ($request->addMoreInputFields as $key => $value) {
+        //     TransaksiUmum::create($request->all($value));
         // }
 
+        // return redirect()->route('tambahtransaksiumum');
         
-        $transaksi_umum = TransaksiUmum::create([
-            'nama_makanan' => $request->nama_makanan,
-            'harga' => $request->harga,
-            'jumlah_penjualan' => $request->jumlah_penjualan,
-            'keterangan_pemesanan' => $request->keterangan_pemesanan,
-            'jumlah_pemesanan' => $request->jumlah_pemesanan,
-            'total' => $request->total,
-        ]);
+        // $transaksi_umum = TransaksiUmum::create([
+        //     'nama_makanan' => $request->nama_makanan,
+        //     'harga' => $request->harga,
+        //     'jumlah_penjualan' => $request->jumlah_penjualan,
+        //     'keterangan_pemesanan' => $request->keterangan_pemesanan,
+        //     'jumlah_pemesanan' => $request->jumlah_pemesanan,
+        //     'total' => $request->total,
+        // ]);
         
-        return redirect()->route('tambahtransaksiumum');
+        // return redirect()->route('tambahtransaksiumum');
 
        
     }
+}
 
     public function hapustransaksiumum($id_umum)
     {

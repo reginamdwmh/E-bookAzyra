@@ -43,7 +43,7 @@
                             <td>@currency($tu->harga)</td>
                             <td>{{$tu->jumlah_penjualan}}</td>
                            
-                            
+
                             <td>{{ $tu->mitra }}</td>
                             {{-- <td>
                                 <ul>

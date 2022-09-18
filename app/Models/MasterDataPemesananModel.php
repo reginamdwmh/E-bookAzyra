@@ -12,8 +12,8 @@ class MasterDataPemesananModel extends Model
     protected $primaryKey = 'id_pemesanan';
     protected $fillable = ['keterangan_pemesanan','biaya_admin','ongkir'];
 
-    // public function transaksi_umum()
-    // {
-    //     return $this->belongsTo(TransaksiUmum::class);
-    // }
+    public function transaksi_umum()
+    {
+        return $this->belongsTo(TransaksiUmum::class);
+    }
 }
