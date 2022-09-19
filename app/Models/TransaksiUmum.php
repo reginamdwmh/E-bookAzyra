@@ -10,16 +10,16 @@ class TransaksiUmum extends Model
     use HasFactory;
     protected $table ='transaksi_umum';
     protected $primaryKey = 'id_umum';
-    protected $fillable = ['nama_makanan','harga','jumlah_penjualan','keterangan_pemesanan','jumlah_pemesanan','total'];
+    protected $fillable = ['nama_makanan','harga','jumlah_penjualan','total'];
 
     // public function pemesanan()
     // {
     //     return $this->belongsToMany(MasterDataMakananModel::class)->withPivot('jumlah');
     // }
 
-    public function Pemesanan()
-    {
-        return $this->hasMany(MasterDataPemesananModel::class);
-    }
+    // public function pemesanans()
+    // {
+    //     return $this->hasMany(MasterDataPemesananModel::class);
+    // }
 
 }

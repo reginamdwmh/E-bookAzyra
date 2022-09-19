@@ -44,14 +44,14 @@
                             <td>{{$tu->jumlah_penjualan}}</td>
                            
 
-                            <td>{{ $tu->mitra }}</td>
-                            {{-- <td>
+                            {{-- <td>{{ $tu->mitra }}</td> --}}
+                            <td>
                                 <ul>
-                                    @foreach ($transaksi_umum->pemesanan as $item)
-                                    <li>{{$tu->keterangan_pemesanan}} {{$tu->pivot->mitra}}</li>
-                                    @endforeach
+                                    
+                                    <li>{{$tu->keterangan_pemesanan}} : {{$tu->jumlah_pemesanan}}</li>
+                                    
                                 </ul>
-                            </td> --}}
+                            </td>
                             
                             
                             <td>@currency($tu->total)</td>
