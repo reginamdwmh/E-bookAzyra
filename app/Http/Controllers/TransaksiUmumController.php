@@ -127,7 +127,7 @@ class TransaksiUmumController extends Controller
     // }
         
     //     return redirect()->route('indextransaksiumum');
-dd($request);
+
         // validasi
             $transaksi_umum = $request->validate([
                 'nama_makanan' => 'required',

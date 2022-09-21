@@ -146,7 +146,7 @@ $(document).ready(function(){
       </div>
       <div class="card-body">
         <div class="table">
-          <table class="table table-bordered table-hover">
+
           <form method="post" action="{{route('simpantransaksiumum')}}" >
             @csrf
             <div class="row g-3">
@@ -168,6 +168,7 @@ $(document).ready(function(){
               <input type="number" id="jumlah_penjualan" onkeyup="sum();" name="jumlah_penjualan" class="form-control" placeholder="Jumlah Penjualan" required="">
             </div>
             </div>
+          
 
 
           
@@ -207,7 +208,7 @@ $(document).ready(function(){
               <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan Data</button>
             </div>
           </form>  
-      </table>
+     
   </div>
 </div>
 </div>
@@ -246,9 +247,6 @@ $(document).ready(function(){
       );
 
   });
-
-  
-
 
   $(document).on('click', '.remove-input-field', function () {
       $(this).parents('tr').remove();
