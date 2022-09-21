@@ -133,8 +133,6 @@ $(document).ready(function(){
 
 
 </section>
-
-
 @endsection --}}
 
 @section('content')
@@ -193,17 +191,10 @@ $(document).ready(function(){
                   <td>
                     <input type="number" id="jumlah_pemesanan" name="addMoreInputFields[0][jumlah_pemesanan]" class="form-control" placeholder="Jumlah Pemesanan" required="">
                   </td>
+                  <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">+</button></td>
                 </tr>
-                <tr></tr>
               </tbody>
           </table>
-
-          <div class="row">
-                <div class="col-md-12">
-                    <button id="dynamic-ar" class="btn btn-default pull-left">+ Add Row</button>
-                </div>
-            </div>
-        </div>
 
 
             <hr class="my-4">
@@ -248,25 +239,20 @@ $(document).ready(function(){
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript">
-    var i = 0;
-    $("#dynamic-ar").click(function () {
-        ++i;
-        $("#dynamicAddRemove").append('<tr><td><select name="addMoreInputFields[' + i + '][keterangan_pemesanan]" id="keterangan_pemesanan" class="form-control" ><option value="">-Pilih-</option>@foreach ($pemesanan as $p)<option value="{{ $p->keterangan_pemesanan }}">{{$p->keterangan_pemesanan}}</option>@endforeach</select></td><td><input type="number" id="jumlah_pemesanan" name="addMoreInputFields[' + i + '][jumlah_pemesanan]" class="form-control" placeholder="Jumlah Pemesanan" required=""></td><td><button  class="pull-right btn btn-danger remove-input-field">- Delete Row</button></td></tr>'
-        );
-        
-    // $('#nama_makanan').on('change', function() {
-    //   const selected = $(this).find('option:selected');
-    //   const nb = selected.data('harga'); 
-      
-    //   $("#harga_satuan").val(nb);
-    // });
+  var i = 0;
+  $("#dynamic-ar").click(function () {
+      ++i;
+      $("#dynamicAddRemove").append('<tr><td><select name="addMoreInputFields[' + i + '][keterangan_pemesanan]" id="keterangan_pemesanan" class="form-control" ><option value="">-Pilih-</option>@foreach ($pemesanan as $p)<option value="{{ $p->keterangan_pemesanan }}">{{$p->keterangan_pemesanan}}</option>@endforeach</select></td><td><input type="number" id="jumlah_pemesanan" name="addMoreInputFields[' + i + '][jumlah_pemesanan]" class="form-control" placeholder="Jumlah Pemesanan" required=""></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>'
+      );
 
-    });
+  });
 
-    $(document).on('click', '.remove-input-field', function () {
-        $(this).parents('tr').remove();
-    });
+  
 
+
+  $(document).on('click', '.remove-input-field', function () {
+      $(this).parents('tr').remove();
+  });
 </script>
 
 </section>
