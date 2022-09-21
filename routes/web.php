@@ -172,7 +172,7 @@ Route::get('/laporan/data-pemesanan-online/cetak/{tglawal}/{tglakhir}',[LaporanD
 
 //Tabel Laporan Umum
 Route::get('/laporan/data-umum',[LaporanDataUmumController::class,'indexlaporanumum'])->name('indexlaporanumum')->middleware('auth');
-// Route::get('/laporan/data-umum/cetak/{tglawal}/{tglakhir}',[LaporanDataUmumController::class,'cetaklaporantransaksipemesananonline'])->name('cetaklaporantransaksipemesananonline')->middleware('auth');
+Route::get('/laporan/data-umum/cetak/{tglawal}/{tglakhir}',[LaporanDataUmumController::class,'cetaklaporantransaksiumum'])->name('cetaklaporantransaksiumum')->middleware('auth');
 
 
 

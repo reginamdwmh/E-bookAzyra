@@ -266,6 +266,7 @@ $(document).ready(function(){
     $(document).on('click', '.remove-input-field', function () {
         $(this).parents('tr').remove();
     });
+
 </script>
 
 </section>

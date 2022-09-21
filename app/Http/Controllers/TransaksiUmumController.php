@@ -8,15 +8,14 @@ use App\Models\TransaksiUmum;
 use Illuminate\Support\Facades\DB;
 use App\Models\MasterDataMakananModel;
 use App\Models\MasterDataPemesananModel;
+use App\Models\TransaksiUmumDetail;
 
 class TransaksiUmumController extends Controller
 {
     public function indextransaksiumum(Request $request)
     {
-        // $transaksi_umum = TransaksiUmum::with(['pemesanans'])->get();
-        // return view('Transaksi.TransaksiDataUmum.index', [
-        //     'transaksi_umum' => $transaksi_umum
-        // ]);
+        // $transaksi_umum = TransaksiUmum::with('keterangan_pemesanan','jumlah_pemesanan')->get();
+        // return view ('Transaksi.TransaksiDataUmum.index', compact('transaksi_umum'));
 
 
         // $transaksi_umum = TransaksiUmum::with(['pemesanan'])->get();
@@ -31,11 +30,19 @@ class TransaksiUmumController extends Controller
         // return view ('Transaksi.TransaksiDataUmum.index');
 
 
-        $transaksi_umum = TransaksiUmum::select('*',DB::raw("CONCAT(transaksi_umum.keterangan_pemesanan,' : ',transaksi_umum.jumlah_pemesanan) as mitra"))
-                        ->get();
+        // $transaksi_umum = TransaksiUmum::select('*',DB::raw("CONCAT(transaksi_umum.keterangan_pemesanan,' : ',transaksi_umum.jumlah_pemesanan) as mitra"))
+        //                 ->get();
 
 
-        return view ('Transaksi.TransaksiDataUmum.index',['transaksi_umum' => $transaksi_umum]);
+        // return view ('Transaksi.TransaksiDataUmum.index',['transaksi_umum' => $transaksi_umum]);
+
+        $transaksi_umum = TransaksiUmum::select('*')
+        ->get();
+        
+        $transaksi_umum_detail = TransaksiUmumDetail::select('*')
+        ->get();
+        
+        return view ('Transaksi.TransaksiDataUmum.index',['transaksi_umum' => $transaksi_umum , 'transaksi_umum_detail' => $transaksi_umum_detail]);
 
         
     }
@@ -95,32 +102,58 @@ class TransaksiUmumController extends Controller
         // } finally {
         //     DB::commit();
         // }
-        $request->validate([
-            'nama_makanan' => 'required',
-            'harga' => 'required',
-            'jumlah_penjualan' => 'required',
-            'addMoreInputFields.*.keterangan_pemesanan' => 'required',
-            'addMoreInputFields.*.jumlah_pemesanan' => 'required',
-            'total' => 'required',
-        ]);
-        $transaksi_umum = TransaksiUmum::make($request->all());
-
-        foreach ($request->input('addMoreInputFields') as $key => $value) {
-            TransaksiUmum::create([
-            'nama_makanan' => $request->nama_makanan,
-            'harga' => $request->harga,
-            'jumlah_penjualan' => $request->jumlah_penjualan,
-            'keterangan_pemesanan' => $value['keterangan_pemesanan'],
-            'jumlah_pemesanan' => $value['jumlah_pemesanan'],
-            'total' => $request->total,
-        
-        ]);
-    }
-        
-        return redirect()->route('indextransaksiumum');
 
 
+    //     $request->validate([
+    //         'nama_makanan' => 'required',
+    //         'harga' => 'required',
+    //         'jumlah_penjualan' => 'required',
+    //         'addMoreInputFields.*.keterangan_pemesanan' => 'required',
+    //         'addMoreInputFields.*.jumlah_pemesanan' => 'required',
+    //         'total' => 'required',
+    //     ]);
+    //     $transaksi_umum = TransaksiUmum::make($request->all());
+
+    //     foreach ($request->input('addMoreInputFields') as $key => $value) {
+    //         TransaksiUmum::create([
+    //         'nama_makanan' => $request->nama_makanan,
+    //         'harga' => $request->harga,
+    //         'jumlah_penjualan' => $request->jumlah_penjualan,
+    //         'keterangan_pemesanan' => $value['keterangan_pemesanan'],
+    //         'jumlah_pemesanan' => $value['jumlah_pemesanan'],
+    //         'total' => $request->total,
         
+    //     ]);
+    // }
+        
+    //     return redirect()->route('indextransaksiumum');
+
+        // validasi
+            $transaksi_umum = $request->validate([
+                'nama_makanan' => 'required',
+                'harga' => 'required',
+                'jumlah_penjualan' => 'required',
+                'addMoreInputFields.*.keterangan_pemesanan' => 'required',
+                'addMoreInputFields.*.jumlah_pemesanan' => 'required',
+                'total' => 'required',
+            ]);
+            $TransaksiUmum = TransaksiUmum::create($transaksi_umum);
+
+            foreach ($request->addMoreInputFields as $key => $value) {
+                $value['id_umum'] = $TransaksiUmum->id_umum; 
+                TransaksiUmumDetail::create($value);
+                
+
+            }
+                // insert ke tabel transaksi umum:
+                
+
+            
+        
+            return redirect()->route('indextransaksiumum');
+
+
+
         // $transaksi_umum = TransaksiUmum::create([
         //     'nama_makanan' => $request->nama_makanan,
         //     'harga' => $request->harga,
@@ -134,6 +167,8 @@ class TransaksiUmumController extends Controller
 
 
     }
+
+
 
     public function hapustransaksiumum($id_umum)
     {

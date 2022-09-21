@@ -65,7 +65,7 @@ class TransaksiPenjualanMakananController extends Controller
             TransaksiPenjualanMakanan::create($value);
         }
 
-        return redirect()->route('tambahpenjualanmakanan');
+        return redirect()->route('indexpenjualanmakanan');
 
 
 

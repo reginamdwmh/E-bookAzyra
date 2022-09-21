@@ -18,7 +18,7 @@
                         <label for="label">Tanggal Awal</label>
                         <input type="date" name="tglawal" id="tglawal" class="form-control"><br>
                       
-                        <a href="#" onclick="this.href='/laporan/data-penjualan-makanan/cetak/'+document.getElementById('tglawal').value +
+                        <a href="#" onclick="this.href='/laporan/data-umum/cetak/'+document.getElementById('tglawal').value +
                         '/' + document.getElementById('tglakhir').value" target="_blank" class="btn btn-primary">
                         <i class="fa fa-print"></i>Cetak</a>
                     </div>
@@ -52,20 +52,28 @@
                     <tbody>
                         
                         @php
-                            $no = 1;
+                        $no = 1;
                         @endphp
-                        @foreach( $transaksi_umum as $tu) 
-                        <tr>
-                            <td>{{$no++}}</td>
-                            <td>{{$tu->nama_makanan}}</td>
-                            <td>@currency($tu->harga)</td>
-                            <td>{{$tu->jumlah_penjualan}}</td>
-                            <td>{{$tu->mitra}}</td>
-                            <td>@currency($tu->total)</td>
-                            <td>{{$tu->created_at}}</td>
-                            
-                        </tr>
-                        @endforeach
+                          @foreach($transaksi_umum as $tu) 
+                          <tr>
+                              <td>{{$no++}}</td>
+                              <td>{{$tu->nama_makanan}}</td>
+                              <td>@currency($tu->harga)</td>
+                              <td>{{$tu->jumlah_penjualan}}</td>
+                              <td>
+                                <ul>
+                                    @foreach ( $transaksi_umum_detail as $tud)
+                                        <li>{{$tud->keterangan_pemesanan}} : {{$tud->jumlah_pemesanan}}</li>
+                                    @endforeach
+                                    
+                                    
+                                </ul>
+                              </td>
+                              <td>@currency($tu->total)</td>
+                              <td>{{$tu->created_at}}</td>
+                              
+                          </tr>
+                          @endforeach
                     </tfoot>
                 </table>
             </div>

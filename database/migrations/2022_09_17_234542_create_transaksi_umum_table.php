@@ -18,8 +18,6 @@ class CreateTransaksiUmumTable extends Migration
             $table->string('nama_makanan');
             $table->integer('harga');
             $table->integer('jumlah_penjualan');
-            $table->string('keterangan_pemesanan');
-            $table->integer('jumlah_pemesanan');
             $table->integer('total');
             $table->timestamps();
         });

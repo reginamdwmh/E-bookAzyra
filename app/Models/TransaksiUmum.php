@@ -12,9 +12,15 @@ class TransaksiUmum extends Model
     protected $primaryKey = 'id_umum';
     protected $fillable = ['nama_makanan','harga','jumlah_penjualan','total'];
 
-    // public function pemesanan()
+
+    public function get_transaksiumumdetail(){  
+        return $this->hasMany(TransaksiUmumDetail::class);  
+    } 
+
+    // public function transaksidetailumum()
     // {
-    //     return $this->belongsToMany(MasterDataMakananModel::class)->withPivot('jumlah');
+    //     return $this->belongsToMany(MasterDataMakananModel::class)->withPivot('
+    //     keterangan_pemmesanan','jumlah_pemesanan');
     // }
 
     // public function pemesanans()

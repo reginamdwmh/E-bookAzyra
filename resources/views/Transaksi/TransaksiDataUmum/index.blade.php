@@ -42,13 +42,15 @@
                             <td>{{$tu->nama_makanan}}</td>
                             <td>@currency($tu->harga)</td>
                             <td>{{$tu->jumlah_penjualan}}</td>
-                           
+            
 
                             {{-- <td>{{ $tu->mitra }}</td> --}}
                             <td>
                                 <ul>
+                                    @foreach ( $transaksi_umum_detail as $tud)
+                                        <li>{{$tud->keterangan_pemesanan}} : {{$tud->jumlah_pemesanan}}</li>
+                                    @endforeach
                                     
-                                    <li>{{$tu->keterangan_pemesanan}} : {{$tu->jumlah_pemesanan}}</li>
                                     
                                 </ul>
                             </td>
