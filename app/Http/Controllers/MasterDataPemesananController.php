@@ -64,13 +64,13 @@ class MasterDataPemesananController extends Controller
        return redirect()->route('indexpemesanan');
     }
 
-    public function lihatpemesanan($id_pemesanan)
-    {
-        $pemesanan = MasterDataPemesananModel::select('*')
-                                 ->where('id_pemesanan',$id_pemesanan)
-                                 ->get();
+    // public function lihatpemesanan($id_pemesanan)
+    // {
+    //     $pemesanan = MasterDataPemesananModel::select('*')
+    //                              ->where('id_pemesanan',$id_pemesanan)
+    //                              ->get();
 
 
-        return view ('MasterData.MasterDataPemesanan.lihatdata', ['pemesanan' => $pemesanan],compact('pemesanan'));
-    }
+    //     return view ('MasterData.MasterDataPemesanan.lihatdata', ['pemesanan' => $pemesanan],compact('pemesanan'));
+    // }
 }

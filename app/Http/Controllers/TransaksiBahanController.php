@@ -76,6 +76,16 @@ class TransaksiBahanController extends Controller
        return redirect()->route('indextransaksibahan');
     }
 
+    // public function lihattransaksibahan($id_transaksibahan)
+    // {
+    //     $transaksi_bahan = TransaksiBahanModel::select('*')
+    //                              ->where('id_transaksibahan',$id_transaksibahan)
+    //                              ->get();
+
+
+    //     return view ('Transaksi.TransaksiDataBahan.lihatdata', ['transaksi_bahan' => $transaksi_bahan],compact('transaksi_bahan'));
+    // }
+
 
 
     // public function caritransaksibahan(Request $request)

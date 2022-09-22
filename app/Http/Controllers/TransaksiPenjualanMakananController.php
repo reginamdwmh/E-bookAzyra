@@ -115,6 +115,16 @@ class TransaksiPenjualanMakananController extends Controller
        return redirect()->route('indexpenjualanmakanan');
     }
 
+    // public function lihatpenjualanmakanan($id_penjualan)
+    // {
+    //     $transaksi_penjualan_makanan = TransaksiPenjualanMakanan::select('*')
+    //                              ->where('id_penjualan',$id_penjualan)
+    //                              ->get();
+    //     $makanan = MasterDataMakananModel::all();
+
+    //     return view ('Transaksi.TransaksiDataPenjualanMakanan.lihatdata', ['transaksi_penjualan_makanan' => $transaksi_penjualan_makanan,'makanan' => $makanan],compact('makanan'));
+    // }
+
 
     // public function caripenjualanmakanan(Request $request)
     // {

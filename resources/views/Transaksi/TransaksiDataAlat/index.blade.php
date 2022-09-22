@@ -44,6 +44,7 @@
                             <td>@currency($a->total)</td>
                             <td>{{$a->created_at}}</td>
                             <td>
+                            {{-- <a href="/transaksi/data-alat/lihat/{{$a->id_transaksialat}}" title="Lihat" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a> --}}
                             <a href="/transaksi/data-alat/ubah/{{$a->id_transaksialat}}" title="Ubah" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
                             <a href="/transaksi/data-alat/hapus/{{$a->id_transaksialat}}" onclick="return confirm('Apakah Anda Yakin Menghapus Data?');" title="Hapus" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                             </td>

@@ -70,6 +70,16 @@ class TransaksiAlatController extends Controller
        return redirect()->route('indextransaksialat');
     }
 
+    // public function lihattransaksialat($id_transaksialat)
+    // {
+    //     $transaksi_alat = TransaksiAlatModel::select('*')
+    //                              ->where('id_transaksialat',$id_transaksialat)
+    //                              ->get();
+
+
+    //     return view ('Transaksi.TransaksiDataAlat.lihatdata', ['transaksi_alat' => $transaksi_alat],compact('transaksi_alat'));
+    // }
+
     // public function caritransaksialat(Request $request)
     // {
     //     $cari = $request->cari;

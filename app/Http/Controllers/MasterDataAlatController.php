@@ -60,14 +60,14 @@ class MasterDataAlatController extends Controller
        return redirect()->route('indexalat');
     }
 
-    public function lihatalat($id_alat)
-    {
-        $alat = MasterDataAlatModel::select('*')
-                                 ->where('id_alat',$id_alat)
-                                 ->get();
+    // public function lihatalat($id_alat)
+    // {
+    //     $alat = MasterDataAlatModel::select('*')
+    //                              ->where('id_alat',$id_alat)
+    //                              ->get();
 
 
-        return view ('MasterData.MasterDataAlat.lihatdata', ['alat' => $alat],compact('alat'));
-    }
+    //     return view ('MasterData.MasterDataAlat.lihatdata', ['alat' => $alat],compact('alat'));
+    // }
     
 }

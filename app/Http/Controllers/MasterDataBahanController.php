@@ -61,13 +61,13 @@ class MasterDataBahanController extends Controller
        return redirect()->route('indexbahan');
     }
 
-    public function lihatbahan($id_bahan)
-    {
-        $bahan = MasterDataBahanModel::select('*')
-                                 ->where('id_bahan',$id_bahan)
-                                 ->get();
+    // public function lihatbahan($id_bahan)
+    // {
+    //     $bahan = MasterDataBahanModel::select('*')
+    //                              ->where('id_bahan',$id_bahan)
+    //                              ->get();
 
 
-        return view ('MasterData.MasterDataBahan.lihatdata', ['bahan' => $bahan],compact('bahan'));
-    }
+    //     return view ('MasterData.MasterDataBahan.lihatdata', ['bahan' => $bahan],compact('bahan'));
+    // }
 }

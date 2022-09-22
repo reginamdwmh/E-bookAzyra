@@ -238,4 +238,13 @@ class TransaksiUmumController extends Controller
     // }
 
 
+    // public function lihattransaksiumum($id_umum)
+    // {
+    //     $transaksi_umum = TransaksiUmum::select('*')
+    //                              ->where('id_umum',$id_umum)
+    //                              ->get();
+    //     $transaksi_umum_detail = TransaksiUmumDetail::all();
+
+    //     return view ('Transaksi.TransaksiDataUmum.lihatdata', ['transaksi_umum' => $transaksi_umum],compact('transaksi_umum_detail'));
+    // }
 }
