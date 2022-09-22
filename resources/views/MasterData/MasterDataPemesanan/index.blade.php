@@ -40,6 +40,7 @@
                              <td>{{$p->biaya_admin}}%</td>
                              <td>@currency($p->ongkir)</td>
                              <td>
+                             <a href="/master-data/data-pemesanan/lihat/{{$p->id_pemesanan}}" title="Lihat" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
                              <a href="/master-data/data-pemesanan/ubah/{{$p->id_pemesanan}}" title="Ubah" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
                              <a href="/master-data/data-pemesanan/hapus/{{$p->id_pemesanan}}" onclick="return confirm('Apakah Anda Yakin Menghapus Data?');" title="Hapus" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                              </td>

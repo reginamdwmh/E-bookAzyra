@@ -44,6 +44,7 @@
                                  <img src="{{asset('storage/'. $m->image)}}" width="150px">
                              </td>
                              <td>
+                             <a href="/master-data/data-makanan/lihat/{{$m->id_makanan}}" title="Lihat" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
                              <a href="/master-data/data-makanan/ubah/{{$m->id_makanan}}" title="Ubah" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
                              <a href="/master-data/data-makanan/hapus/{{$m->id_makanan}}" onclick="return confirm('Apakah Anda Yakin Menghapus Data?');" title="Hapus" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                              </td>

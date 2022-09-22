@@ -13,6 +13,6 @@ class TransaksiUmumDetail extends Model
     protected $fillable = ['id_umum','keterangan_pemesanan','jumlah_pemesanan'];
 
     public function get_transaksiumum(){  
-        return $this->belongsTo(TransaksiUmum::class);  
+        return $this->belongsTo(TransaksiUmum::class, 'id_umum');  
     }  
 }

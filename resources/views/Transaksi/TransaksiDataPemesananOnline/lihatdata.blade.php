@@ -14,7 +14,7 @@
           <div class="table-responsive">
           <table class="table table-bordered table-hover">
             @foreach($transaksi_pemesanan_online as $tpo)
-            <form method="post" action="{{route('updatepemesananonline')}}">
+            <form>
               @csrf
               <input type="hidden" name="id_online" value="{{$tpo->id_online}}">
               <div class="form-group">

@@ -47,7 +47,7 @@
                             {{-- <td>{{ $tu->mitra }}</td> --}}
                             <td>
                                 <ul>
-                                    @foreach ( $transaksi_umum_detail as $tud)
+                                    @foreach ( $tu->get_transaksiumumdetail as $tud)
                                         <li>{{$tud->keterangan_pemesanan}} : {{$tud->jumlah_pemesanan}}</li>
                                     @endforeach
                                     

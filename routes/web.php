@@ -60,8 +60,7 @@ Route::post('/master-data/data-kategori/simpan',[MasterDataKategoriController::c
 Route::get('/master-data/data-kategori/ubah/{id_kategori}',[MasterDataKategoriController::class,'ubahkategori'])->name('ubahkategori')->middleware('auth');
 Route::post('/master-data/data-kategori/update',[MasterDataKategoriController::class,'updatekategori'])->name('updatekategori')->middleware('auth');
 Route::get('/master-data/data-kategori/hapus/{id_kategori}',[MasterDataKategoriController::class,'hapuskategori'])->name('hapuskategori')->middleware('auth');
-
-
+Route::get('/master-data/data-kategori/lihat/{id_kategori}',[MasterDataKategoriController::class,'lihatkategori'])->name('lihatkategori')->middleware('auth');
 
 //Tabel Makanan
 Route::get('/master-data/data-makanan',[MasterDataMakananController::class,'indexmakanan'])->name('indexmakanan')->middleware('auth');
@@ -70,6 +69,7 @@ Route::post('/master-data/data-makanan/simpan',[MasterDataMakananController::cla
 Route::get('/master-data/data-makanan/ubah/{id_makanan}',[MasterDataMakananController::class,'ubahmakanan'])->name('ubahmakanan')->middleware('auth');
 Route::post('/master-data/data-makanan/update',[MasterDataMakananController::class,'updatemakanan'])->name('updatemakanan')->middleware('auth');
 Route::get('/master-data/data-makanan/hapus/{id_makanan}',[MasterDataMakananController::class,'hapusmakanan'])->name('hapusmakanan')->middleware('auth');
+Route::get('/master-data/data-makanan/lihat/{id_makanan}',[MasterDataMakananController::class,'lihatmakanan'])->name('lihatmakanan')->middleware('auth');
 
 //Tabel Bahan
 Route::get('/master-data/data-bahan',[MasterDataBahanController::class,'indexbahan'])->name('indexbahan')->middleware('auth');
@@ -78,6 +78,8 @@ Route::post('/master-data/data-bahan/simpan',[MasterDataBahanController::class,'
 Route::get('/master-data/data-bahan/ubah/{id_bahan}',[MasterDataBahanController::class,'ubahbahan'])->name('ubahbahan')->middleware('auth');
 Route::post('/master-data/data-bahan/update',[MasterDataBahanController::class,'updatebahan'])->name('updatebahan')->middleware('auth');
 Route::get('/master-data/data-bahan/hapus/{id_bahan}',[MasterDataBahanController::class,'hapusbahan'])->name('hapusbahan')->middleware('auth');
+Route::get('/master-data/data-bahan/lihat/{id_bahan}',[MasterDataBahanController::class,'lihatbahan'])->name('lihatbahan')->middleware('auth');
+
 
 //Tabel Alat
 Route::get('/master-data/data-alat',[MasterDataAlatController::class,'indexalat'])->name('indexalat')->middleware('auth');
@@ -86,6 +88,8 @@ Route::post('/master-data/data-alat/simpan',[MasterDataAlatController::class,'si
 Route::get('/master-data/data-alat/ubah/{id_alat}',[MasterDataAlatController::class,'ubahalat'])->name('ubahalat')->middleware('auth');
 Route::post('/master-data/data-alat/update',[MasterDataAlatController::class,'updatealat'])->name('updatealat')->middleware('auth');
 Route::get('/master-data/data-alat/hapus/{id_alat}',[MasterDataAlatController::class,'hapusalat'])->name('hapusalat')->middleware('auth');
+Route::get('/master-data/data-alat/lihat/{id_alat}',[MasterDataAlatController::class,'lihatalat'])->name('lihatalat')->middleware('auth');
+
 
 //Tabel Pemesanan
 Route::get('/master-data/data-pemesanan',[MasterDataPemesananController::class,'indexpemesanan'])->name('indexpemesanan')->middleware('auth');
@@ -94,6 +98,7 @@ Route::post('/master-data/data-pemesanan/simpan',[MasterDataPemesananController:
 Route::get('/master-data/data-pemesanan/ubah/{id_pemesanan}',[MasterDataPemesananController::class,'ubahpemesanan'])->name('ubahpemesanan')->middleware('auth');
 Route::post('/master-data/data-pemesanan/update',[MasterDataPemesananController::class,'updatepemesanan'])->name('updatepemesanan')->middleware('auth');
 Route::get('/master-data/data-pemesanan/hapus/{id_pemesanan}',[MasterDataPemesananController::class,'hapuspemesanan'])->name('hapuspemesanan')->middleware('auth');
+Route::get('/master-data/data-pemesanan/lihat/{id_pemesanan}',[MasterDataPemesananController::class,'lihatpemesanan'])->name('lihatpemesanan')->middleware('auth');
 
 
 

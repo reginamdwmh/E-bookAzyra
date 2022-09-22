@@ -79,5 +79,15 @@ class MasterDataMakananController extends Controller
 
        return redirect()->route('indexmakanan');
     }
+
+    public function lihatmakanan($id_makanan)
+    {
+        $makanan = MasterDataMakananModel::select('*')
+                                 ->where('id_makanan',$id_makanan)
+                                 ->get();
+
+
+        return view ('MasterData.MasterDatamakanan.lihatdata', ['makanan' => $makanan],compact('makanan'));
+    }
 }
 

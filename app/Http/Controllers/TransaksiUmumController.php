@@ -12,7 +12,7 @@ use App\Models\TransaksiUmumDetail;
 
 class TransaksiUmumController extends Controller
 {
-    public function indextransaksiumum(Request $request)
+    public function indextransaksiumum()
     {
         // $transaksi_umum = TransaksiUmum::with('keterangan_pemesanan','jumlah_pemesanan')->get();
         // return view ('Transaksi.TransaksiDataUmum.index', compact('transaksi_umum'));
@@ -36,16 +36,32 @@ class TransaksiUmumController extends Controller
 
         // return view ('Transaksi.TransaksiDataUmum.index',['transaksi_umum' => $transaksi_umum]);
 
-        $transaksi_umum = TransaksiUmum::select('*')
-        ->get();
+
+
+        $transaksi_umum = TransaksiUmum::with('get_transaksiumumdetail')->get();
         
-        $transaksi_umum_detail = TransaksiUmumDetail::select('*')
-        ->get();
+        return view('Transaksi.TransaksiDataUmum.index', compact('transaksi_umum'));
         
-        return view ('Transaksi.TransaksiDataUmum.index',['transaksi_umum' => $transaksi_umum , 'transaksi_umum_detail' => $transaksi_umum_detail]);
+
+
+
+
+
+
+
+
+
+        // $transaksi_umum = TransaksiUmum::select('*')
+        // ->get();
+        
+        // $transaksi_umum_detail = TransaksiUmumDetail::with('get_transaksiumum')
+        // ->get();
+        
+        // return view ('Transaksi.TransaksiDataUmum.index',['transaksi_umum' => $transaksi_umum,  'transaksi_umum_detail' => $transaksi_umum_detail]);
 
         
     }
+    
     public function tambahtransaksiumum()
     {
         $makanan = MasterDataMakananModel::all();
@@ -173,6 +189,8 @@ class TransaksiUmumController extends Controller
     public function hapustransaksiumum($id_umum)
     {
         $transaksi_umum = TransaksiUmum::where('id_umum',$id_umum)
+                ->delete();
+        $transaksi_umum_detail = TransaksiUmumDetail::where('id_umum',$id_umum)
                 ->delete();
         
         return redirect()->route('indextransaksiumum');

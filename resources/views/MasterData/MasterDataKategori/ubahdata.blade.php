@@ -18,11 +18,11 @@
                 @csrf
                 <input type="hidden" name="id_kategori" value="{{$k->id_kategori}}">
                 <div class="form-group">
-                  <label>Kode</label>
+                  <label>Kode Kategori</label>
                   <input type="text" id="kode_kategori" name="kode_kategori" value="{{$k->kode_kategori}}" class="form-control" placeholder="Kode" required="">
                 </div>
                 <div class="form-group">
-                  <label>Nama</label>
+                  <label>Nama Kategori</label>
                   <input type="text" id="nama_kategori" name="nama_kategori" value="{{$k->nama_kategori}}" class="form-control" placeholder="Nama" required="">
                 </div>
                 <div class="form-group">

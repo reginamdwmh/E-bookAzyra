@@ -14,7 +14,7 @@ class TransaksiUmum extends Model
 
 
     public function get_transaksiumumdetail(){  
-        return $this->hasMany(TransaksiUmumDetail::class);  
+        return $this->hasMany(TransaksiUmumDetail::class, 'id_umum');  
     } 
 
     // public function transaksidetailumum()

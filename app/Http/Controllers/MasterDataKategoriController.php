@@ -63,4 +63,14 @@ class MasterDataKategoriController extends Controller
     
        return redirect()->route('indexkategori');
     }
+
+    public function lihatkategori($id_kategori)
+    {
+        $kategori = MasterDataKategoriModel::select('*')
+                                 ->where('id_kategori',$id_kategori)
+                                 ->get();
+
+
+        return view ('MasterData.MasterDataKategori.lihatdata', ['kategori' => $kategori],compact('kategori'));
+    }
 }
