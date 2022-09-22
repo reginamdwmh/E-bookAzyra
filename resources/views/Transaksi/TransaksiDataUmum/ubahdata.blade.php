@@ -12,7 +12,7 @@
         </div>
         <div class="card-body">
           <div class="table">
-          <table class="table table-bordered table-hover">
+          
             @foreach($transaksi_umum as $tu)
               <form method="post" action="{{route('updatetransaksiumum')}}">
                 @csrf
@@ -40,39 +40,60 @@
                   <input type="number" id="jumlah_penjualan" value="{{$tu->jumlah_penjualan}}" onkeyup="sum();" name="jumlah_penjualan" class="form-control" placeholder="Jumlah Penjualan" required="">
                   </div>
                 </div>
+                </div>
 
-                <hr class="my-4">
-                <div class="row g-3">
+
+
+
+
+                <table class="table" id="dynamicAddRemove">
+                  
+                  <div class="row g-3">
                   <div class="col-sm-4">
-                  <label>Mitra</label>
-                  <select name="keterangan_pemesanan" id="keterangan_pemesanan" class="form-control">
-                    <option value="">-Pilih-</option>
-                    @foreach($pemesanan as $p)
-                    @if(old('keterangan_pemesanan', $tu->keterangan_pemesanan == $p->keterangan_pemesanan))
-                    <option value="{{ $p->keterangan_pemesanan }}" selected>{{$p->keterangan_pemesanan}}</option>
-                    @else
-                     <option value="{{ $p->keterangan_pemesanan }}" data-harga="{{$p->harga}}" >{{$p->keterangan_pemesanan}}</option>
-                    @endif
-                    @endforeach
-                  </select>
-                </div>
-                <div class="col-sm-4">
-                  <label>Pemesanan</label>
-                  <input type="number" id="jumlah_pemesanan" value="{{$tu->jumlah_pemesanan}}" name="jumlah_pemesanan" class="form-control" placeholder="Jumlah Pemesanan" required="">
-                </div>
-                </div>
-
+                  <thead>
+                    <tr>
+                      <th>Mitra</th>
+                      <th>Pemesanan</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      @foreach($tu->get_transaksiumumdetail as $tud)
+                    <input type="hidden" name="id_transaksi_umum_detail" value="{{$tud->id_transaksi_umum_detail}}">
+                    <input type="hidden" name="id_umum" value="{{$tud->id_umum}}">
+                      <td>
+                        <select name="addMoreInputFields[0][keterangan_pemesanan]" id="keterangan_pemesanan" class="form-control">
+                          <option value="">-Pilih-</option>
+                          @foreach($pemesanan as $p)
+                          @if(old('keterangan_pemesanan', $tud->keterangan_pemesanan == $p->keterangan_pemesanan))
+                          <option value="{{ $p->keterangan_pemesanan }}" selected>{{$p->keterangan_pemesanan}}</option>
+                          @else
+                           <option value="{{ $p->keterangan_pemesanan }}" data-harga="{{$p->harga}}" >{{$p->keterangan_pemesanan}}</option>
+                          @endif
+                          @endforeach
+                        </select>
+                      </td>
+                      <td>
+                        <input type="number" id="jumlah_pemesanan" value="{{$tud->jumlah_pemesanan}}" name="addMoreInputFields[0][jumlah_pemesanan]" class="form-control" placeholder="Jumlah Pemesanan" required="">
+                      </td>
+                        <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">+</button></td>   
+                    </tr>
+                  </tbody>
+                  @endforeach
+                </table>
+                
+                
                 <hr class="my-4">
                 <div class="col-sm-4">
                   <label>Total Penjualan</label>
                   <input type="number" id="hasil" onkeyup="sum();" value="{{$tu->total}}" name="total" class="form-control" placeholder="Total" readonly>
-                </div>               
+                </div>      
                 <div class="form-group text-right">
                   <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update Data</button>
                 </div>
               </form>
             @endforeach
-          </table>
+          
           </div>
         </div>
     </div>
@@ -99,6 +120,23 @@
       });
     });
   </script>
+
+  <!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript">
+  var i = 0;
+  $("#dynamic-ar").click(function () {
+      ++i;
+      $("#dynamicAddRemove").append('<tr><td><select name="addMoreInputFields[' + i + '][keterangan_pemesanan]" id="keterangan_pemesanan" class="form-control" ><option value="">-Pilih-</option>@foreach ($pemesanan as $p)<option value="{{ $p->keterangan_pemesanan }}">{{$p->keterangan_pemesanan}}</option>@endforeach</select></td><td><input type="number" id="jumlah_pemesanan" name="addMoreInputFields[' + i + '][jumlah_pemesanan]" class="form-control" placeholder="Jumlah Pemesanan" required=""></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>'
+      );
+
+  });
+
+  $(document).on('click', '.remove-input-field', function () {
+      $(this).parents('tr').remove();
+  });
+</script>
   
  </section>
 @endsection
