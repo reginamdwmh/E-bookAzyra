@@ -55,14 +55,16 @@
                     </tr>
                   </thead>
                   <tbody>
-                  @if(old('get_transaksiumumdetail',$tu->get_transaksiumumdetail))
-                    @foreach(old('get_transaksiumumdetail',$tu->get_transaksiumumdetail) as $key => $gt)
+                  {{-- @if(old('get_transaksiumumdetail',$tu->get_transaksiumumdetail)) --}}
+                    {{-- @foreach(old('get_transaksiumumdetail',$tu->get_transaksiumumdetail) as $key => $gt) --}}
+                    @foreach($tu->get_transaksiumumdetail as $tud)
                     <tr>
+                     
                       <td>
-                        <select name="addMoreInputFields[{{ $key }}][keterangan_pemesanan]" id="keterangan_pemesanan" class="form-control">
+                        <select name="addMoreInputFields[0][keterangan_pemesanan]" id="keterangan_pemesanan" class="form-control">
                           <option value="">-Pilih-</option>
                           @foreach($pemesanan as $p)
-                          @if(old('keterangan_pemesanan', $gt->keterangan_pemesanan == $p->keterangan_pemesanan))
+                          @if(old('keterangan_pemesanan', $tud->keterangan_pemesanan == $p->keterangan_pemesanan))
                           <option value="{{ $p->keterangan_pemesanan }}" selected>{{$p->keterangan_pemesanan}}</option>
                           @else
                            <option value="{{ $p->keterangan_pemesanan }}" data-harga="{{$p->harga}}" >{{$p->keterangan_pemesanan}}</option>
@@ -71,14 +73,16 @@
                         </select>
                       </td>
                       <td>
-                        <input type="number" id="jumlah_pemesanan" value="{{$gt->jumlah_pemesanan}}" name="addMoreInputFields[{{ $key }}][jumlah_pemesanan]" class="form-control" placeholder="Jumlah Pemesanan" required="">
+                        <input type="number" id="jumlah_pemesanan" value="{{$tud->jumlah_pemesanan}}" name="addMoreInputFields[0][jumlah_pemesanan]" class="form-control" placeholder="Jumlah Pemesanan" required="">
                       </td>
                       <td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td> 
+                    
                     </tr>
                     @endforeach
-                    @else
+                    {{-- @endforeach --}}
+                    {{-- @else
                     <tr>
-                      @foreach ($tu->get_transaksiumumdetail as $tud)
+                      @foreach ($tu->get_transaksiumumdetail as $key => $tud)
                       <input type="hidden" name="id_transaksi_umum_detail" value="{{$tud->id_transaksi_umum_detail}}">
                       <input type="hidden" name="id_umum" value="{{$tud->id_umum}}">
                         <td>
@@ -88,7 +92,7 @@
                             @if(old('keterangan_pemesanan', $tud->keterangan_pemesanan == $p->keterangan_pemesanan))
                             <option value="{{ $p->keterangan_pemesanan }}" selected>{{$p->keterangan_pemesanan}}</option>
                             @else
-                            <option value="{{ $p->keterangan_pemesanan }}" data-harga="{{$p->harga}}" >{{$p->keterangan_pemesanan}}</option>
+                            <option value="{{ $p->keterangan_pemesanan}}" data-harga="{{$p->harga}}" >{{$p->keterangan_pemesanan}}</option>
                             @endif
                             @endforeach
                           </select>
@@ -97,9 +101,10 @@
                           <input type="number" id="jumlah_pemesanan" value="{{$tud->jumlah_pemesanan}}" name="addMoreInputFields[0][jumlah_pemesanan]" class="form-control" placeholder="Jumlah Pemesanan" required="">
                         </td>
                         <td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td> 
-                      @endforeach
-                      </tr>
-                    @endif
+                      
+                      </tr> --}}
+                      {{-- @endforeach --}}
+                    {{-- @endif --}}
                   </tbody>
                 </table>
                 

@@ -134,18 +134,26 @@ class TransaksiUmumController extends Controller
         ]);     
         
         unset($validatedData['addMoreInputFields']);
+        
         $TransaksiUmum = TransaksiUmum::where('id_umum', $transaksi_umum->id_umum)
             ->update($validatedData);
-
         
-        foreach ($request->addMoreInputFields as $key => $value) {
-            // $value['id_umum'] = $TransaksiUmum->id_umum; 
-            TransaksiUmumDetail::where('id_umum', $transaksi_umum_detail->id_umum)->update($value);
+        foreach ($request->input('addMoreInputFields') as $key => $value) {
+            dd($value);
+        TransaksiUmumDetail::where('id_umum', $transaksi_umum_detail->id_umum)
+            ->update($value);
+        
+        // foreach ($request->addMoreInputFields as $key => $value) {
+        //     // $value['id_umum'] = $TransaksiUmum->id_umum; 
+        //     dd($value);
+        //     TransaksiUmumDetail::where('id_umum', $transaksi_umum_detail->id_umum)
             
-
+        //     ->update($value);
+            
+        
         }
-
         return redirect()->route('indextransaksiumum');
+        
 
 
 
@@ -164,7 +172,7 @@ class TransaksiUmumController extends Controller
     //              compact('makanan','pemesanan');
     
     //    return redirect()->route('indextransaksiumum');
-    }
+
 
 
     // public function lihattransaksiumum($id_umum)
@@ -176,4 +184,5 @@ class TransaksiUmumController extends Controller
 
     //     return view ('Transaksi.TransaksiDataUmum.lihatdata', ['transaksi_umum' => $transaksi_umum],compact('transaksi_umum_detail'));
     // }
+}
 }
