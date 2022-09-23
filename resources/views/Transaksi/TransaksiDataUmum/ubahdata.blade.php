@@ -14,7 +14,7 @@
           <div class="table">
           
             @foreach($transaksi_umum as $tu)
-              <form method="post" action="{{route('updatetransaksiumum')}}">
+              <form method="post" action="{{route('updatetransaksiumum',['id_umum' => $tu->id_umum ])}}">
                 @csrf
                 <input type="hidden" name="id_umum" value="{{$tu->id_umum}}">
                 <div class="row g-3">
@@ -40,32 +40,29 @@
                   <input type="number" id="jumlah_penjualan" value="{{$tu->jumlah_penjualan}}" onkeyup="sum();" name="jumlah_penjualan" class="form-control" placeholder="Jumlah Penjualan" required="">
                   </div>
                 </div>
-                </div>
+                
 
 
 
 
 
                 <table class="table" id="dynamicAddRemove">
-                  
-                  <div class="row g-3">
-                  <div class="col-sm-4">
                   <thead>
-                    <tr>
+                    <tr >
                       <th>Mitra</th>
                       <th>Pemesanan</th>
+                      <th><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">+</button></th>
                     </tr>
                   </thead>
                   <tbody>
+                  @if(old('get_transaksiumumdetail',$tu->get_transaksiumumdetail))
+                    @foreach(old('get_transaksiumumdetail',$tu->get_transaksiumumdetail) as $key => $gt)
                     <tr>
-                      @foreach($tu->get_transaksiumumdetail as $tud)
-                    <input type="hidden" name="id_transaksi_umum_detail" value="{{$tud->id_transaksi_umum_detail}}">
-                    <input type="hidden" name="id_umum" value="{{$tud->id_umum}}">
                       <td>
-                        <select name="addMoreInputFields[0][keterangan_pemesanan]" id="keterangan_pemesanan" class="form-control">
+                        <select name="addMoreInputFields[{{ $key }}][keterangan_pemesanan]" id="keterangan_pemesanan" class="form-control">
                           <option value="">-Pilih-</option>
                           @foreach($pemesanan as $p)
-                          @if(old('keterangan_pemesanan', $tud->keterangan_pemesanan == $p->keterangan_pemesanan))
+                          @if(old('keterangan_pemesanan', $gt->keterangan_pemesanan == $p->keterangan_pemesanan))
                           <option value="{{ $p->keterangan_pemesanan }}" selected>{{$p->keterangan_pemesanan}}</option>
                           @else
                            <option value="{{ $p->keterangan_pemesanan }}" data-harga="{{$p->harga}}" >{{$p->keterangan_pemesanan}}</option>
@@ -74,12 +71,36 @@
                         </select>
                       </td>
                       <td>
-                        <input type="number" id="jumlah_pemesanan" value="{{$tud->jumlah_pemesanan}}" name="addMoreInputFields[0][jumlah_pemesanan]" class="form-control" placeholder="Jumlah Pemesanan" required="">
+                        <input type="number" id="jumlah_pemesanan" value="{{$gt->jumlah_pemesanan}}" name="addMoreInputFields[{{ $key }}][jumlah_pemesanan]" class="form-control" placeholder="Jumlah Pemesanan" required="">
                       </td>
-                        <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">+</button></td>   
+                      <td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td> 
                     </tr>
+                    @endforeach
+                    @else
+                    <tr>
+                      @foreach ($tu->get_transaksiumumdetail as $tud)
+                      <input type="hidden" name="id_transaksi_umum_detail" value="{{$tud->id_transaksi_umum_detail}}">
+                      <input type="hidden" name="id_umum" value="{{$tud->id_umum}}">
+                        <td>
+                          <select name="addMoreInputFields[0][keterangan_pemesanan]" id="keterangan_pemesanan" class="form-control">
+                            <option value="">-Pilih-</option>
+                            @foreach($pemesanan as $p)
+                            @if(old('keterangan_pemesanan', $tud->keterangan_pemesanan == $p->keterangan_pemesanan))
+                            <option value="{{ $p->keterangan_pemesanan }}" selected>{{$p->keterangan_pemesanan}}</option>
+                            @else
+                            <option value="{{ $p->keterangan_pemesanan }}" data-harga="{{$p->harga}}" >{{$p->keterangan_pemesanan}}</option>
+                            @endif
+                            @endforeach
+                          </select>
+                        </td>
+                        <td>
+                          <input type="number" id="jumlah_pemesanan" value="{{$tud->jumlah_pemesanan}}" name="addMoreInputFields[0][jumlah_pemesanan]" class="form-control" placeholder="Jumlah Pemesanan" required="">
+                        </td>
+                        <td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td> 
+                      @endforeach
+                      </tr>
+                    @endif
                   </tbody>
-                  @endforeach
                 </table>
                 
                 
@@ -128,7 +149,7 @@
   var i = 0;
   $("#dynamic-ar").click(function () {
       ++i;
-      $("#dynamicAddRemove").append('<tr><td><select name="addMoreInputFields[' + i + '][keterangan_pemesanan]" id="keterangan_pemesanan" class="form-control" ><option value="">-Pilih-</option>@foreach ($pemesanan as $p)<option value="{{ $p->keterangan_pemesanan }}">{{$p->keterangan_pemesanan}}</option>@endforeach</select></td><td><input type="number" id="jumlah_pemesanan" name="addMoreInputFields[' + i + '][jumlah_pemesanan]" class="form-control" placeholder="Jumlah Pemesanan" required=""></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>'
+      $("#dynamicAddRemove").append('<tr><td><select name="addMoreInputFields[' + i + '][keterangan_pemesanan]" id="keterangan_pemesanan" class="form-control" ><option value="">-Pilih-</option>@foreach ($pemesanan as $p)<option value="{{ $p->keterangan_pemesanan }}">{{$p->keterangan_pemesanan}}</option>@endforeach</select></td><td><input type="number" id="jumlah_pemesanan" " name="addMoreInputFields[' + i + '][jumlah_pemesanan]" class="form-control" placeholder="Jumlah Pemesanan" required=""></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td> </tr>'
       );
 
   });

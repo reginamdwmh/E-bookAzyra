@@ -151,7 +151,7 @@ Route::get('/transaksi/data-umum',[TransaksiUmumController::class,'indextransaks
 Route::get('/transaksi/data-umum/tambah',[TransaksiUmumController::class,'tambahtransaksiumum'])->name('tambahtransaksiumum')->middleware('auth');
 Route::post('/transaksi/data-umum/simpan',[TransaksiUmumController::class,'simpantransaksiumum'])->name('simpantransaksiumum')->middleware('auth');
 Route::get('/transaksi/data-umum/ubah/{id_umum}',[TransaksiUmumController::class,'ubahtransaksiumum'])->name('ubahtransaksiumum')->middleware('auth');
-Route::post('/transaksi/data-umum/update',[TransaksiUmumController::class,'updatetransaksiumum'])->name('updatetransaksiumum')->middleware('auth');
+Route::post('/transaksi/data-umum/update/{id_umum}',[TransaksiUmumController::class,'updatetransaksiumum'])->name('updatetransaksiumum')->middleware('auth');
 Route::get('/transaksi/data-umum/hapus/{id_umum}',[TransaksiUmumController::class,'hapustransaksiumum'])->name('hapustransaksiumum')->middleware('auth');
 // Route::get('/transaksi/data-umum/lihat/{id_umum}',[TransaksiUmumController::class,'lihattransaksiumum'])->name('lihattransaksiumum')->middleware('auth');
 

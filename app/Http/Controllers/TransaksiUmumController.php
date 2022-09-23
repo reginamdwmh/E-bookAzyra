@@ -73,6 +73,7 @@ class TransaksiUmumController extends Controller
 
     public function simpantransaksiumum(Request $request)
     {
+       
         // validasi
             $transaksi_umum = $request->validate([
                 'nama_makanan' => 'required',
@@ -90,8 +91,6 @@ class TransaksiUmumController extends Controller
                 
 
             }
-
-        
             return redirect()->route('indextransaksiumum');
 
     }
@@ -100,10 +99,11 @@ class TransaksiUmumController extends Controller
 
     public function hapustransaksiumum($id_umum)
     {
+        $transaksi_umum_detail = TransaksiUmumDetail::where('id_umum', $id_umum)
+                ->delete();
         $transaksi_umum = TransaksiUmum::where('id_umum',$id_umum)
                 ->delete();
-        $transaksi_umum_detail = TransaksiUmumDetail::where('id_umum',$id_umum)
-                ->delete();
+        
         
         return redirect()->route('indextransaksiumum');
     }
@@ -121,38 +121,29 @@ class TransaksiUmumController extends Controller
 
     public function updatetransaksiumum(Request $request, $id_umum)
     {
-        $transaksi_umum = TransaksiUmum::find($id_umum);
-        $rules = [
+       
+        $transaksi_umum_detail = TransaksiUmumDetail::find($id_umum);
+        $transaksi_umum = TransaksiUmum::with('get_transaksiumumdetail')->find($id_umum);
+        $validatedData = $request->validate([
             'nama_makanan' => 'required',
             'harga' => 'required',
             'jumlah_penjualan' => 'required',
             'addMoreInputFields.*.keterangan_pemesanan' => 'required',
             'addMoreInputFields.*.jumlah_pemesanan' => 'required',
             'total' => 'required',
-        ];
-        $validatedData = $request->validate($rules);
-
+        ]);     
+        
+        unset($validatedData['addMoreInputFields']);
         $TransaksiUmum = TransaksiUmum::where('id_umum', $transaksi_umum->id_umum)
             ->update($validatedData);
 
+        
         foreach ($request->addMoreInputFields as $key => $value) {
-            $value['id_umum'] = $TransaksiUmum->id_umum; 
-            TransaksiUmumDetail::create($value);
+            // $value['id_umum'] = $TransaksiUmum->id_umum; 
+            TransaksiUmumDetail::where('id_umum', $transaksi_umum_detail->id_umum)->update($value);
             
 
         }
-
-
-
-
-
-
-
-
-
-        $makanan = MasterDataMakananModel::all();
-        $pemesanan = MasterDataPemesananModel::all();
-                    compact('makanan','pemesanan');
 
         return redirect()->route('indextransaksiumum');
 
