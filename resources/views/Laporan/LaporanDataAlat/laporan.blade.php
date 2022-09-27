@@ -19,7 +19,7 @@
         <p align="center"><b>LAPORAN DATA TRANSAKSI ALAT</b></p>
         <table class="static" align="center" rules="all" border="1px" style="width: 95%;">
             <tr>
-
+                <th>No</th>
                 <th>Tanggal</th>
                 <th>Nama Alat</th>
                 <th>Harga</th>
@@ -28,10 +28,12 @@
                 
             @php
                 $total_akhir = 0;
+                $no = 1;
             @endphp
             </tr>
             @foreach($tanggal as $ta) 
             <tr>
+                <td><center>{{$no++}}</center></td>
                 <td><center>{{$ta->created_at->format('d/m/Y')}}</center></td>    
                 <td>{{$ta->nama_alat}}</td>
                 <td><center>@currency($ta->harga)</center></td>
@@ -44,7 +46,7 @@
             @endforeach
             <tr>
                 
-                <td colspan="4"><center>Total</center></td>
+                <td colspan="5"><center>Total</center></td>
                 <td><center>Rp.{{ number_format($total_akhir) }}</center></td>
             
             </tr>

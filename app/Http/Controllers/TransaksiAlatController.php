@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\MasterDataAlatModel;
 use Illuminate\Support\Facades\DB;
 use App\Models\TransaksiAlatModel;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class TransaksiAlatController extends Controller
 {
@@ -33,7 +34,7 @@ class TransaksiAlatController extends Controller
             'jumlah' => $request->jumlah,
             'total' => $request->total,
         ]);
-        
+        Alert::success('Success', 'Data Berhasil Disimpan');
         return redirect()->route('tambahtransaksialat');
     }
 
@@ -41,7 +42,7 @@ class TransaksiAlatController extends Controller
     {
         $transaksi_alat = TransaksiAlatModel::where('id_transaksialat',$id_transaksialat)
                 ->delete();
-        
+        Alert::success('Success', 'Data Berhasil Dihapus');
         return redirect()->route('indextransaksialat');
     }
 
@@ -66,7 +67,7 @@ class TransaksiAlatController extends Controller
                  ]);
         $alat = MasterDataAlatModel::all();          
                  compact('alat');
-    
+        Alert::success('Success', 'Data Berhasil Diubah');
        return redirect()->route('indextransaksialat');
     }
 

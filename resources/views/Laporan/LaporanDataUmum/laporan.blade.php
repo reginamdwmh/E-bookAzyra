@@ -19,7 +19,7 @@
         <p align="center"><b>LAPORAN DATA TRANSAKSI UMUM</b></p>
         <table class="static" align="center" rules="all" border="1px" style="width: 95%;">
             <tr>
-
+                <th>No</th>
                 <th>Tanggal</th>
                 <th>Nama Makanan</th>
                 <th>Harga</th>
@@ -29,23 +29,25 @@
                 
             @php
                 $total_akhir = 0;
+                $no = 1 ;
             @endphp
             </tr>
             @foreach($tanggal as $tb) 
             <tr>
+                <td><center>{{$no++}}</center></td>
                 <td><center>{{$tb->created_at->format('d/m/Y')}}</center></td>    
                 <td>{{$tb->nama_makanan}}</td>
                 <td><center>@currency($tb->harga)</center></td>
                 <td><center>{{$tb->jumlah_penjualan}}</center></td>
                 <td>
                     <ul>
-                        @foreach ( $transaksi_umum_detail as $tud)
+                        @foreach ( $tb->get_transaksiumumdetail as $tud)
                             <li>{{$tud->keterangan_pemesanan}} : {{$tud->jumlah_pemesanan}}</li>
                         @endforeach
                         
                         
                     </ul>
-                  </td>
+                </td>
                 @php
                     $total_akhir += $tb->total;
                 @endphp
@@ -54,7 +56,7 @@
             @endforeach
             <tr>
                 
-                <td colspan="5"><center>Total</center></td>
+                <td colspan="6"><center>Total</center></td>
                 <td><center>Rp.{{ number_format($total_akhir) }}</center></td>
             
             </tr>

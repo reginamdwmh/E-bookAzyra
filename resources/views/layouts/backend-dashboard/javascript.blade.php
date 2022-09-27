@@ -44,7 +44,7 @@
 <!-- AdminLTE App -->
 <script src="{{ asset ('assets/AdminLTE/dist/js/adminlte.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{ asset ('assets/AdminLTE/dist/js/demo.js')}}"></script>
+{{-- <script src="{{ asset ('assets/AdminLTE/dist/js/demo.js')}}"></script> --}}
 <!-- page script -->
 <script src="{{ asset ('assets/AdminLTE/plugins/jQuery-datatable/extensions/export/dataTables.buttons.min.js')}}"></script>
 <script src="{{ asset ('assets/AdminLTE/plugins/jquery-datatable/extensions/export/buttons.flash.min.js')}}"></script>
@@ -79,4 +79,5 @@
     })
   })
 </script>
+
 

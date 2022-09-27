@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\MasterDataPemesananModel;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class MasterDataPemesananController extends Controller
 {
@@ -30,7 +31,7 @@ class MasterDataPemesananController extends Controller
             'biaya_admin' => $request->biaya_admin,
             'ongkir' => $request->ongkir,
         ]);
-
+        Alert::success('Success', 'Data Berhasil Disimpan');
         return redirect()->route('indexpemesanan');
     }
 
@@ -38,7 +39,7 @@ class MasterDataPemesananController extends Controller
     {
         $pemesanan = MasterDataPemesananModel::where('id_pemesanan',$id_pemesanan)
                 ->delete();
-        
+        Alert::success('Success', 'Data Berhasil Dihapus');
         return redirect()->route('indexpemesanan');
     }
 
@@ -60,7 +61,7 @@ class MasterDataPemesananController extends Controller
                     'ongkir' => $request->ongkir,
 
                  ]);
-    
+        Alert::success('Success', 'Data Berhasil Diubah');
        return redirect()->route('indexpemesanan');
     }
 

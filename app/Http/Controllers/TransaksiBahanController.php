@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\TransaksiBahanModel;
 use App\Models\MasterDataBahanModel;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class TransaksiBahanController extends Controller
 {
@@ -39,7 +40,7 @@ class TransaksiBahanController extends Controller
             'jumlah' => $request->jumlah,
             'total' => $request->total,
         ]);
-        
+        Alert::success('Success', 'Data Berhasil Disimpan');
         return redirect()->route('tambahtransaksibahan');
     }
 
@@ -47,7 +48,7 @@ class TransaksiBahanController extends Controller
     {
         $transaksi_bahan = TransaksiBahanModel::where('id_transaksibahan',$id_transaksibahan)
                 ->delete();
-        
+        Alert::success('Success', 'Data Berhasil Dihapus');
         return redirect()->route('indextransaksibahan');
     }
 
@@ -72,7 +73,7 @@ class TransaksiBahanController extends Controller
                  ]);
         $bahan = MasterDataBahanModel::all();          
                  compact('bahan');
-    
+        Alert::success('Success', 'Data Berhasil Diupdate');
        return redirect()->route('indextransaksibahan');
     }
 
@@ -87,17 +88,6 @@ class TransaksiBahanController extends Controller
     // }
 
 
-
-    // public function caritransaksibahan(Request $request)
-    // {
-    //     $cari = $request->cari;
-
-    //     $transaksi_bahan = DB :: table('transaksi_bahan')
-    //                     ->where('nama_bahan','like',"%".$cari."%")
-    //                     ->paginate(5);
-        
-    //     return view ('Transaksi.TransaksiDataBahan.index', ['transaksi_bahan' => $transaksi_bahan]);
-    // }
 
     // public function onchange(Request $request)
     // {

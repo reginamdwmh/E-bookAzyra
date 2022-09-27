@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\MasterDataBahanModel;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class MasterDataBahanController extends Controller
 {
@@ -29,7 +30,7 @@ class MasterDataBahanController extends Controller
             'harga' => $request->harga,
             
         ]);
-
+        Alert::success('Success', 'Data Berhasil Disimpan');
         return redirect()->route('indexbahan');
     }
 
@@ -37,7 +38,7 @@ class MasterDataBahanController extends Controller
     {
         $bahan = MasterDataBahanModel::where('id_bahan',$id_bahan)
                 ->delete();
-        
+        Alert::success('Success', 'Data Berhasil Dihapus');       
         return redirect()->route('indexbahan');
     }
 
@@ -57,7 +58,7 @@ class MasterDataBahanController extends Controller
                     'nama_bahan' => $request->nama_bahan,
                     'harga' => $request->harga,
                  ]);
-    
+        Alert::success('Success', 'Data Berhasil Diubah');    
        return redirect()->route('indexbahan');
     }
 

@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\MasterDataKategoriModel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;;
-
+use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class MasterDataKategoriController extends Controller
 {
@@ -31,7 +31,7 @@ class MasterDataKategoriController extends Controller
             'keterangan_kategori' => $request->keterangan_kategori,
         ]);
 
-
+        Alert::success('Success', 'Data Berhasil Disimpan');
         return redirect()->route('indexkategori');
     }
 
@@ -40,6 +40,7 @@ class MasterDataKategoriController extends Controller
         $kategori = MasterDataKategoriModel::where('id_kategori',$id_kategori)
                 ->delete();
         
+        Alert::success('Success', 'Data Berhasil Dihapus');
         return redirect()->route('indexkategori');
     }
 
@@ -61,6 +62,7 @@ class MasterDataKategoriController extends Controller
                     'keterangan_kategori' => $request->keterangan_kategori,
                  ]);
     
+        Alert::success('Success', 'Data Berhasil Diubah');
        return redirect()->route('indexkategori');
     }
 

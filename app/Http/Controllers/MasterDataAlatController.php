@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\MasterDataAlatModel;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class MasterDataAlatController extends Controller
 {
@@ -28,7 +29,8 @@ class MasterDataAlatController extends Controller
             'harga' => $request->harga,
             
         ]);
-
+        
+        Alert::success('Success', 'Data Berhasil Disimpan');
         return redirect()->route('indexalat');
     }
 
@@ -36,10 +38,10 @@ class MasterDataAlatController extends Controller
     {
         $alat = MasterDataAlatModel::where('id_alat',$id_alat)
                 ->delete();
-        
+        Alert::success('Success', 'Data Berhasil Dihapus');
         return redirect()->route('indexalat');
     }
-
+    
     public function ubahalat($id_alat)
     {
         $alat =MasterDataAlatModel::select('*')
@@ -56,7 +58,7 @@ class MasterDataAlatController extends Controller
                     'nama_alat' => $request->nama_alat,
                     'harga' => $request->harga,
                  ]);
-    
+        Alert::success('Success', 'Data Berhasil Diubah');    
        return redirect()->route('indexalat');
     }
 

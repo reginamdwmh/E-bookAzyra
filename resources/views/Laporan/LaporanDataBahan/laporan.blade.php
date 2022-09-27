@@ -19,7 +19,7 @@
         <p align="center"><b>LAPORAN DATA TRANSAKSI BAHAN</b></p>
         <table class="static" align="center" rules="all" border="1px" style="width: 95%;">
             <tr>
-
+                <th>No</th>
                 <th>Tanggal</th>
                 <th>Nama Bahan</th>
                 <th>Harga</th>
@@ -28,10 +28,12 @@
                 
             @php
                 $total_akhir = 0;
+                $no = 1;
             @endphp
             </tr>
             @foreach($tanggal as $tb) 
             <tr>
+                <td><center>{{$no++}}</center></td>
                 <td><center>{{$tb->created_at->format('d/m/Y')}}</center></td>    
                 <td>{{$tb->nama_bahan}}</td>
                 <td><center>@currency($tb->harga)</center></td>
@@ -44,7 +46,7 @@
             @endforeach
             <tr>
                 
-                <td colspan="4"><center>Total</center></td>
+                <td colspan="5"><center>Total</center></td>
                 <td><center>Rp.{{ number_format($total_akhir) }}</center></td>
             
             </tr>

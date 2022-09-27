@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Routing\Redirector;
 use Illuminate\Http\Request;
 use App\Models\UsersModel;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UsersController extends Controller
 {
@@ -32,7 +33,7 @@ class UsersController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
-
+        Alert::success('Success', 'Data Berhasil Disimpan');
         return redirect()->route('index');
     }
 
@@ -40,7 +41,7 @@ class UsersController extends Controller
     {
         $users = UsersModel::where('id',$id)
                 ->delete();
-        
+        Alert::success('Success', 'Data Berhasil Dihapus');        
         return redirect()->route('index');
     }
 
@@ -61,7 +62,7 @@ class UsersController extends Controller
                     'email' => $request->email,
                     'password' => bcrypt($request->password),
                  ]);
-    
+        Alert::success('Success', 'Data Berhasil Diubah');
        return redirect()->route('index');
     }
 }

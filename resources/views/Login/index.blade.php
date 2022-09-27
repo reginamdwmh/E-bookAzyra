@@ -19,6 +19,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition login-page bg-gradient-danger">
+	
 	<div class="login-box">
 		<!--/.Login-Logo -->
 		<div class="card">
@@ -38,7 +39,7 @@
 						<input type="text" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="name@example.com" id="email" autofocus required value="{{ old('email') }}">
 						<div class="input-group-append">
 							<div class="input-group-text">
-								
+								<span class="fas fa-user"></span>
 							</div>
 						</div>
 						@error('email')
@@ -52,6 +53,7 @@
 						<input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Password" required>
 						<div class="input-group-append">
 							<div class="input-group-text">
+								<span class="fas fa-lock"></span>
 							</div>
 						</div>
 						@error('password')
@@ -60,6 +62,7 @@
 						</div>
 						@enderror
 					</div>
+					
 					<div class="row">
 						<div class="col-12">
 							<button class="w-100 btn-lg btn-success" type="submit">
@@ -83,6 +86,6 @@
 	<!-- Alert -->
 	<script src="{{ asset('assets/AdminLTE/plugins/alert.js')}}"></script>
 
-
+	@include('sweetalert::alert')
 </body>
 </html>

@@ -22,14 +22,17 @@ class LoginController extends Controller
             'email' => ['required','email'],
             'password' => ['required'],
         ]);
+        
 
         if(Auth::attempt($credentials)) {
-            $request->session()->regenerate();
+            Alert::success('Login Berhasil');
+            $request->session()->regenerate();         
             return redirect()->intended('/dashboard');
+            
         }
 
-
-        return back()->with('status', 'Login Failed!');
+        Alert::error('Error', 'Login Gagal');
+        return back();
     }
 
     

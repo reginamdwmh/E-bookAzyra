@@ -19,7 +19,7 @@
         <p align="center"><b>LAPORAN DATA TRANSAKSI PENJUALAN MAKANAN</b></p>
         <table class="static" align="center" rules="all" border="1px" style="width: 95%;">
             <tr>
-
+                <th>No</th>
                 <th>Tanggal</th>
                 <th>Kode Pemesanan</th>
                 <th>Keterangan Pemesanan</th>
@@ -30,10 +30,12 @@
             @php
                 $komisi_akhir = 0;
                 $pendapatan_akhir = 0;
+                $no = 1;
             @endphp
             </tr>
             @foreach($tanggal as $tb) 
             <tr>
+                <td><center>{{$no++}}</center></td>
                 <td><center>{{$tb->created_at->format('d/m/Y')}}</center></td>    
                 <td><center>{{$tb->kode_pemesanan}}</center></td>
                 <td><center>{{$tb->keterangan_pemesanan}}</center></td>
@@ -47,7 +49,7 @@
             @endforeach
             <tr>
                 
-                <td colspan="3"><center>Total</center></td>
+                <td colspan="4"><center>Total</center></td>
                 <td><center>Rp.{{ number_format($komisi_akhir) }}</center></td>
                 <td><center>Rp.{{ number_format($pendapatan_akhir) }}</center></td>
             

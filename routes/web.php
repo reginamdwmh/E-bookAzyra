@@ -46,7 +46,7 @@ Route::get('/dashboard',[DashboardController::class,'index']);
 Route::get('/contact',[ContactController::class,'index']);
 
 //Tabel Users
-Route::get('/users',[UsersController::class,'index'])->name('index')->middleware('auth');;
+Route::get('/users',[UsersController::class,'index'])->name('index')->middleware('auth');
 Route::get('/users/tambah',[UsersController::class,'tambahusers'])->name('tambahusers')->middleware('auth');
 Route::post('/users/simpan',[UsersController::class,'simpanusers'])->name('simpanusers')->middleware('auth');
 Route::get('/users/ubah/{id}',[UsersController::class,'ubahusers'])->name('ubahusers')->middleware('auth');

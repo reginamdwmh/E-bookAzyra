@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\TransaksiPenjualanMakanan;
 use App\Models\MasterDataMakananModel;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class TransaksiPenjualanMakananController extends Controller
 {
@@ -64,7 +65,7 @@ class TransaksiPenjualanMakananController extends Controller
         foreach ($request->addMoreInputFields as $key => $value) {
             TransaksiPenjualanMakanan::create($value);
         }
-
+        Alert::success('Success', 'Data Berhasil Disimpan');
         return redirect()->route('indexpenjualanmakanan');
 
 
@@ -85,7 +86,7 @@ class TransaksiPenjualanMakananController extends Controller
     {
         $transaksi_penjualan_makanan = TransaksiPenjualanMakanan::where('id_penjualan',$id_penjualan)
                 ->delete();
-        
+        Alert::success('Success', 'Data Berhasil Dihapus');
         return redirect()->route('indexpenjualanmakanan');
     }
 
@@ -111,7 +112,7 @@ class TransaksiPenjualanMakananController extends Controller
                  ]);
         $makanan = MasterDataMakananModel::all();          
                  compact('makanan');
-    
+        Alert::success('Success', 'Data Berhasil Diubah'); 
        return redirect()->route('indexpenjualanmakanan');
     }
 
@@ -125,15 +126,4 @@ class TransaksiPenjualanMakananController extends Controller
     //     return view ('Transaksi.TransaksiDataPenjualanMakanan.lihatdata', ['transaksi_penjualan_makanan' => $transaksi_penjualan_makanan,'makanan' => $makanan],compact('makanan'));
     // }
 
-
-    // public function caripenjualanmakanan(Request $request)
-    // {
-    //     $cari = $request->cari;
-
-    //     $transaksi_penjualan_makanan = DB :: table('transaksi_penjualan_makanan')
-    //                     ->where('nama_makanan','like',"%".$cari."%")
-    //                     ->paginate(5);
-        
-    //     return view ('Transaksi.TransaksiDataPenjualanMakanan.index', ['transaksi_penjualan_makanan' => $transaksi_penjualan_makanan]);
-    // }
 }

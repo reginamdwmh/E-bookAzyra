@@ -8,7 +8,7 @@ use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-
+use RealRashid\SweetAlert\Facades\Alert;
 
 class MasterDataMakananController extends Controller
 {
@@ -35,7 +35,7 @@ class MasterDataMakananController extends Controller
             'harga' => $request->harga,
             'image' => $request->image->store('makanan-foto'),
         ]);
-
+        Alert::success('Success', 'Data Berhasil Disimpan');
         return redirect()->route('indexmakanan');
     }
 
@@ -43,7 +43,7 @@ class MasterDataMakananController extends Controller
     {
         $makanan = MasterDataMakananModel::where('id_makanan',$id_makanan)
                 ->delete();
-       
+        Alert::success('Success', 'Data Berhasil Dihapus');       
         return redirect()->route('indexmakanan'); 
     }
 
@@ -76,7 +76,7 @@ class MasterDataMakananController extends Controller
         //     }
         //     $makanan['image'] = $request->file('image')->store('makanan-foto');
         // }
-
+        Alert::success('Success', 'Data Berhasil Diubah');
        return redirect()->route('indexmakanan');
     }
 

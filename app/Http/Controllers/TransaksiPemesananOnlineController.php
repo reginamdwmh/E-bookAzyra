@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\TransaksiPemesananOnline;
 use App\Models\MasterDataPemesananModel;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class TransaksiPemesananOnlineController extends Controller
 {
@@ -37,7 +38,7 @@ class TransaksiPemesananOnlineController extends Controller
             'komisi' => $request->komisi,
             'total' => $request->total,
         ]);
-        
+        Alert::success('Success', 'Data Berhasil Disimpan');
         return redirect()->route('tambahpemesananonline');
     }
 
@@ -45,7 +46,7 @@ class TransaksiPemesananOnlineController extends Controller
     {
         $transaksi_pemesanan_online = TransaksiPemesananOnline::where('id_online',$id_online)
                 ->delete();
-        
+        Alert::success('Success', 'Data Berhasil Dihapus');
         return redirect()->route('indexpemesananonline');
     }
 
@@ -73,7 +74,7 @@ class TransaksiPemesananOnlineController extends Controller
                  ]);
         $online = MasterDataPemesananModel::all();          
                  compact('online');
-    
+        Alert::success('Success', 'Data Berhasil Diubah');
        return redirect()->route('indexpemesananonline');
     }
 

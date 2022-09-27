@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\MasterDataMakananModel;
 use App\Models\MasterDataPemesananModel;
 use App\Models\TransaksiUmumDetail;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class TransaksiUmumController extends Controller
 {
@@ -44,14 +45,7 @@ class TransaksiUmumController extends Controller
         
 
 
-
-
-
-
-
-
-
-        // $transaksi_umum = TransaksiUmum::select('*')
+       // $transaksi_umum = TransaksiUmum::select('*')
         // ->get();
         
         // $transaksi_umum_detail = TransaksiUmumDetail::with('get_transaksiumum')
@@ -91,6 +85,7 @@ class TransaksiUmumController extends Controller
                 
 
             }
+            Alert::success('Success', 'Data Berhasil Disimpan');
             return redirect()->route('indextransaksiumum');
 
     }
@@ -104,7 +99,7 @@ class TransaksiUmumController extends Controller
         $transaksi_umum = TransaksiUmum::where('id_umum',$id_umum)
                 ->delete();
         
-        
+        Alert::success('Success', 'Data Berhasil Dihapus');        
         return redirect()->route('indextransaksiumum');
     }
 
@@ -152,6 +147,7 @@ class TransaksiUmumController extends Controller
             
         
         }
+        Alert::success('Success', 'Data Berhasil Diubah');
         return redirect()->route('indextransaksiumum');
         
 

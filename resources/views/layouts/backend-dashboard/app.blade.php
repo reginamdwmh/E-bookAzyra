@@ -6,10 +6,10 @@
   <title>@yield('title')</title>
   @include('layouts.backend-dashboard.stylesheet')
 </head>
+
+
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-
-
 
 @include('layouts.backend-dashboard.navbar')
 
@@ -53,12 +53,7 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
-@if(session('status'))
-    <script>
-        Swal.fire("{{session('status')}}");
-    </script>
-@endif
+@include('sweetalert::alert')
 
 @include('layouts.backend-dashboard.javascript')
 </body>

@@ -62,13 +62,13 @@
                               <td>{{$tu->jumlah_penjualan}}</td>
                               <td>
                                 <ul>
-                                    @foreach ( $transaksi_umum_detail as $tud)
+                                    @foreach ( $tu->get_transaksiumumdetail as $tud)
                                         <li>{{$tud->keterangan_pemesanan}} : {{$tud->jumlah_pemesanan}}</li>
                                     @endforeach
                                     
-                                    
+                            
                                 </ul>
-                              </td>
+                            </td>
                               <td>@currency($tu->total)</td>
                               <td>{{$tu->created_at}}</td>
                               
