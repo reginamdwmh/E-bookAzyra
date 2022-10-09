@@ -30,7 +30,18 @@
                   <input type="password" class="form-control" id="pass" name="password" value="{{$u->password}}" required="">
                   <input id="mybutton" onclick="change()" type="checkbox" class="form-checkbox"> Lihat Password
                 </div>
-
+                <div class="form-group">
+                  <label>Role</label>
+                  <select name="role" id="role" class="form-control">
+                    <option>- Pilih -</option>                 
+                    @if( $u->role == "admin") echo "<option value='admin' selected>admin</option>";
+                    @else echo "<option value='admin'>admin</option>";
+                    @endif
+                    @if( $u->role == "user") echo "<option value='user' selected>user</option>";
+                    @else echo "<option value='user'>user</option>";
+                    @endif
+                  </select>
+                </div>
                 <div class="form-group text-right">
                   <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update Data</button>
                 </div>
@@ -41,7 +52,6 @@
         </div>
     </div>
  </section>
-@endsection
 
 <script type="text/javascript">
 	function change() {
@@ -56,3 +66,6 @@
 		}
 	}
 </script>
+
+@endsection
+

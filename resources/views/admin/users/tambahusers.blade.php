@@ -25,7 +25,16 @@
               </div>
               <div class="form-group">
                 <label>Password</label>
-                <input type="text" name="password" class="form-control" placeholder="Password" required="">
+                <input type="password" id="pass" name="password" class="form-control" placeholder="Password" required="">
+                <input id="mybutton" onclick="change()" type="checkbox" class="form-checkbox"> Lihat Password
+              </div>
+              <div class="form-group">
+                <label>Role</label>
+                <select name="role" id="role" class="form-control">
+                  <option>- Pilih -</option>
+                  <option>admin</option>
+                  <option>user</option>
+                </select>
               </div>
               <div class="form-group text-right">
                 <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan Data</button>
@@ -36,4 +45,19 @@
   </div>
 </div>
 </section>
+
+<script type="text/javascript">
+	function change() {
+		var x = document.getElementById('pass').type;
+
+		if (x == 'password') {
+			document.getElementById('pass').type = 'text';
+			document.getElementById('mybutton').innerHTML;
+		} else {
+			document.getElementById('pass').type = 'password';
+			document.getElementById('mybutton').innerHTML;
+		}
+	}
+</script>
+
 @endsection

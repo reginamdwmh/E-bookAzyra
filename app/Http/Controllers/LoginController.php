@@ -24,12 +24,24 @@ class LoginController extends Controller
         ]);
         
 
-        if(Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
             Alert::success('Login Berhasil');
-            $request->session()->regenerate();         
-            return redirect()->intended('/dashboard');
+            if ($user->role === 'admin') {
+                return redirect()->intended('/admin');
+            } elseif ($user->role === 'user') {
+                return redirect()->intended('/dashboard');
+            }
+
             
         }
+
+        // if(Auth::attempt($credentials)) {
+        //     Alert::success('Login Berhasil');
+        //     $request->session()->regenerate();         
+        //     return redirect()->intended('/dashboard');
+            
+        // }
 
         Alert::error('Error', 'Login Gagal');
         return back();

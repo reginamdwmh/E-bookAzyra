@@ -1,5 +1,5 @@
 @extends('layouts.backend-dashboard.app')
-@section('title','Dashboard')
+@section('title','Dashboard User')
 
 @section('content')
 <section class="content">

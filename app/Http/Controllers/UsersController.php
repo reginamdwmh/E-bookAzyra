@@ -32,6 +32,7 @@ class UsersController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
+            'role' => $request->role,
         ]);
         Alert::success('Success', 'Data Berhasil Disimpan');
         return redirect()->route('index');
@@ -61,6 +62,7 @@ class UsersController extends Controller
                     'name' => $request->name,
                     'email' => $request->email,
                     'password' => bcrypt($request->password),
+                    'role' => $request->role
                  ]);
         Alert::success('Success', 'Data Berhasil Diubah');
        return redirect()->route('index');

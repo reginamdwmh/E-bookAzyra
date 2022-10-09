@@ -15,7 +15,7 @@
       </div>
    
       <div class="info" >
-        <a href="/dashboard" class="d-block">Staff</a>
+        <a href="/dashboard" class="d-block">User</a>
       </div>
   
     </div>
