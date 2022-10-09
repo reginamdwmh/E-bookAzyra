@@ -1,4 +1,4 @@
-@extends('layouts.backend-dashboard.app')
+@extends('layouts.backend-admin.app')
 @section('title')
 
 @section('content')
@@ -27,7 +27,8 @@
                 </div>
                 <div class="form-group">
                   <label>Password</label>
-                  <input type="text" name="password" value="{{$u->password}}" class="form-control" placeholder="Password" required="">
+                  <input type="password" class="form-control" id="pass" name="password" value="{{$u->password}}" required="">
+                  <input id="mybutton" onclick="change()" type="checkbox" class="form-checkbox"> Lihat Password
                 </div>
 
                 <div class="form-group text-right">
@@ -41,3 +42,17 @@
     </div>
  </section>
 @endsection
+
+<script type="text/javascript">
+	function change() {
+		var x = document.getElementById('pass').type;
+
+		if (x == 'password') {
+			document.getElementById('pass').type = 'text';
+			document.getElementById('mybutton').innerHTML;
+		} else {
+			document.getElementById('pass').type = 'password';
+			document.getElementById('mybutton').innerHTML;
+		}
+	}
+</script>

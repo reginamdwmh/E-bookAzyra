@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>@yield('title')</title>
   <link rel="icon" href="{{ asset('assets/AdminLTE/dist/img/e-booklogo.png')}}">
-  @include('layouts.backend-dashboard.stylesheet')
+  @include('layouts.backend-admin.stylesheet')
 </head>
 
 
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
-@include('layouts.backend-dashboard.navbar')
+@include('layouts.backend-admin.navbar')
 
-@include('layouts.backend-dashboard.sidebar')  
+@include('layouts.backend-admin.sidebar')  
  
 
   <!-- Content Wrapper. Contains page content -->
@@ -44,7 +44,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-@include('layouts.backend-dashboard.footer')
+@include('layouts.backend-admin.footer')
   </footer>
 
   <!-- Control Sidebar -->
@@ -56,6 +56,6 @@
 <!-- ./wrapper -->
 @include('sweetalert::alert')
 
-@include('layouts.backend-dashboard.javascript')
+@include('layouts.backend-admin.javascript')
 </body>
 </html>

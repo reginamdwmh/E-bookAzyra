@@ -11,19 +11,19 @@ class UsersController extends Controller
 {
     // public function index()
     // {
-    //     return view ('Users.index');
+    //     return view ('admin.users.index');
     // }
 
     public function index()
     {
         $users = UsersModel::select('*')
                 ->get();
-        return view('Users.index',['users' => $users]);
+        return view('admin.users.index',['users' => $users]);
     }
 
     public function tambahusers()
     {
-        return view('Users.tambahusers');
+        return view('admin.users.tambahusers');
     }
 
     public function simpanusers(Request $request)
@@ -51,7 +51,7 @@ class UsersController extends Controller
                 ->where('id',$id)
                 ->get();
 
-        return view ('Users.ubahusers', ['users' =>$users]);
+        return view ('admin.users.ubahusers', ['users' =>$users]);
     }
 
     public function updateusers(Request $request)

@@ -1,4 +1,4 @@
-@extends('layouts.backend-dashboard.app')
+@extends('layouts.backend-admin.app')
 @section('title')
 
 @section('content')
@@ -28,8 +28,8 @@
                 <td>{{$u->email}}</td>
                 <td>{{$u->password}}</td>
                 <td>
-                <a href="/users/ubah/{{$u->id}}" title="Ubah" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
-                <a href="/users/hapus/{{$u->id}}" onclick="return confirm('Apakah Anda Yakin Menghapus Data?');" title="Hapus" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                <a href="/admin/users/ubah/{{$u->id}}" title="Ubah" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+                <a href="/admin/users/hapus/{{$u->id}}" onclick="return confirm('Apakah Anda Yakin Menghapus Data?');" title="Hapus" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>
             @endforeach

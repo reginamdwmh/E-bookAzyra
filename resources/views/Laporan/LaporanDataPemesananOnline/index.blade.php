@@ -18,7 +18,7 @@
                         <label for="label">Tanggal Awal</label>
                         <input type="date" name="tglawal" id="tglawal" class="form-control"><br>
                       
-                        <a href="#" onclick="this.href='/laporan/data-penjualan-makanan/cetak/'+document.getElementById('tglawal').value +
+                        <a href="#" onclick="this.href='/laporan/data-pemesanan-online/cetak/'+document.getElementById('tglawal').value +
                         '/' + document.getElementById('tglakhir').value" target="_blank" class="btn btn-primary">
                         <i class="fa fa-print"></i>Cetak</a>
                     </div>

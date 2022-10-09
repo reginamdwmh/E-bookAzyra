@@ -13,7 +13,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <div>
-                    <a href="{{route('tambahalat')}}" class="btn-btn-primary">
+                    <a href="{{route('tambahalat')}}" class="btn-btn-secondary" >
                         <i class="fa fa-edit"></i> Tambah Data</a>
                 </div>
                 <br>
@@ -49,6 +49,6 @@
                     </tfoot>
                 </table>
             </div>
-        </div>        
-</section>
+        </div>   
+</section> 
 @endsection

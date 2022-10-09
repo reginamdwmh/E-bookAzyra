@@ -42,16 +42,18 @@ Route::get('/', function () {
 Route::get('/login',[LoginController::class,'index']);
 Route::post('/login',[LoginController::class,'authenticate']);
 
+Route::get('/admin',[DashboardController::class,'admin']);
+Route::get('/admin/contact',[ContactController::class,'admin']);
 Route::get('/dashboard',[DashboardController::class,'index']);
 Route::get('/contact',[ContactController::class,'index']);
 
 //Tabel Users
-Route::get('/users',[UsersController::class,'index'])->name('index')->middleware('auth');
-Route::get('/users/tambah',[UsersController::class,'tambahusers'])->name('tambahusers')->middleware('auth');
-Route::post('/users/simpan',[UsersController::class,'simpanusers'])->name('simpanusers')->middleware('auth');
-Route::get('/users/ubah/{id}',[UsersController::class,'ubahusers'])->name('ubahusers')->middleware('auth');
-Route::post('/users/update',[UsersController::class,'updateusers'])->name('updateusers')->middleware('auth');
-Route::get('/users/hapus/{id}',[UsersController::class,'hapususers'])->name('hapususers')->middleware('auth');
+Route::get('/admin/users',[UsersController::class,'index'])->name('index')->middleware('auth');
+Route::get('/admin/users/tambah',[UsersController::class,'tambahusers'])->name('tambahusers')->middleware('auth');
+Route::post('/admin/users/simpan',[UsersController::class,'simpanusers'])->name('simpanusers')->middleware('auth');
+Route::get('/admin/users/ubah/{id}',[UsersController::class,'ubahusers'])->name('ubahusers')->middleware('auth');
+Route::post('/admin/users/update',[UsersController::class,'updateusers'])->name('updateusers')->middleware('auth');
+Route::get('/admin/users/hapus/{id}',[UsersController::class,'hapususers'])->name('hapususers')->middleware('auth');
 
 //Tabel Kategori
 Route::get('/master-data/data-kategori',[MasterDataKategoriController::class,'indexkategori'])->name('indexkategori')->middleware('auth');

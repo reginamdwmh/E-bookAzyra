@@ -11,12 +11,12 @@
             border: 1px solid black;
         }
     </style>
-    <title>Data Transaksi Penjualan Makanan</title>
+    <title>Data Transaksi Pemesanan Online</title>
 </head>
 
 <body>
     <div class="form-group">
-        <p align="center"><b>LAPORAN DATA TRANSAKSI PENJUALAN MAKANAN</b></p>
+        <p align="center"><b>LAPORAN DATA TRANSAKSI PEMESANAN ONLINE</b></p>
         <table class="static" align="center" rules="all" border="1px" style="width: 95%;">
             <tr>
                 <th>No</th>

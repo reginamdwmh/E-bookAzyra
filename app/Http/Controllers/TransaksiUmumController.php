@@ -128,25 +128,22 @@ class TransaksiUmumController extends Controller
             'total' => 'required',
         ]);     
         
+        
+
         unset($validatedData['addMoreInputFields']);
         
         $TransaksiUmum = TransaksiUmum::where('id_umum', $transaksi_umum->id_umum)
             ->update($validatedData);
-        
-        foreach ($request->input('addMoreInputFields') as $key => $value) {
-            dd($value);
-        TransaksiUmumDetail::where('id_umum', $transaksi_umum_detail->id_umum)
-            ->update($value);
-        
-        // foreach ($request->addMoreInputFields as $key => $value) {
-        //     // $value['id_umum'] = $TransaksiUmum->id_umum; 
-        //     dd($value);
-        //     TransaksiUmumDetail::where('id_umum', $transaksi_umum_detail->id_umum)
-            
-        //     ->update($value);
-            
-        
-        }
+
+
+            foreach ($request->addMoreInputFields as $key => $value) {
+                dd($value); 
+                // $value['id_umum'] = $TransaksiUmum->id_umum; 
+            TransaksiUmumDetail::where('id_umum', $transaksi_umum_detail->id_umum)
+                ->update($value);
+            }
+       
+
         Alert::success('Success', 'Data Berhasil Diubah');
         return redirect()->route('indextransaksiumum');
         
@@ -180,5 +177,5 @@ class TransaksiUmumController extends Controller
 
     //     return view ('Transaksi.TransaksiDataUmum.lihatdata', ['transaksi_umum' => $transaksi_umum],compact('transaksi_umum_detail'));
     // }
-}
+    }
 }

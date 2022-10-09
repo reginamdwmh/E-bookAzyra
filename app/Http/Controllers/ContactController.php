@@ -10,4 +10,9 @@ class ContactController extends Controller
     {
         return view ('Contact.index');
     }
+
+    public function admin()
+    {
+        return view ('admin.contact');
+    }
 }
