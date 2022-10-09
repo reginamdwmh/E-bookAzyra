@@ -54,7 +54,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a onclick="return confirm('Apakah anda yakin akan keluar ?')"href="/login" class="nav-link">
+          <a onclick="return confirm('Apakah anda yakin akan keluar ?')" href="{{route('logout')}}" class="nav-link">
             <i class="nav-icon far fa-circle text-danger"></i>
             <p>
               Logout

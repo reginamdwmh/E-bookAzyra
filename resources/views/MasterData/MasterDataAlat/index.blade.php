@@ -13,7 +13,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <div>
-                    <a href="{{route('tambahalat')}}" class="btn-btn-secondary" >
+                    <a href="{{route('tambahalat')}}" class="btn-btn-secondary" data-toggle="modal" data-target="#myModal">
                         <i class="fa fa-edit"></i> Tambah Data</a>
                 </div>
                 <br>
@@ -49,6 +49,30 @@
                     </tfoot>
                 </table>
             </div>
-        </div>   
+        </div>  
+        
+
+
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="card-title">
+                <i class="fa fa-edit"></i>
+                Tambah Data Alat
+            </h5>
+        </div>
+            @include('MasterData.MasterDataAlat.tambahdata')
+        
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default tutup" data-dismiss="modal">Tutup</button>
+          </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
 </section> 
 @endsection

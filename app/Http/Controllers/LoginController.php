@@ -11,6 +11,14 @@ class LoginController extends Controller
 {
     public function index()
     {
+        if ($user = Auth::user()) {
+            if ($user->role === 'admin') {
+                return redirect()->intended('admin');
+            } elseif ($user->role === 'user') {
+                return redirect()->intended('user');
+            }
+        }
+
         return view ('Login.index', [
             'title' => 'Login'
         ]);
@@ -47,5 +55,12 @@ class LoginController extends Controller
         return back();
     }
 
-    
+    public function logout(Request $request)
+    {
+
+        $request->session()->flush();
+        Auth::logout();
+        Alert::success('Success','Anda Berhasil Logout');
+        return redirect('/login');
+    }
 }

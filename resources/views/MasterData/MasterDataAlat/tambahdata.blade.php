@@ -1,4 +1,4 @@
-@extends('layouts.backend-dashboard.app')
+{{-- @extends('layouts.backend-dashboard.app')
 @section('title')
 
 @section('content')
@@ -34,10 +34,30 @@
 </div>
 </section>
 
-@endsection
+@endsection --}}
 
 
+  <div class="modal-body">
+      <div class="table-responsive">
+          <table class="table table-bordered table-hover">
+            <form method="post" action="{{route('simpanalat')}}">
+              @csrf
+              <div class="form-group">
+                <label>Nama Alat</label>
+                <input type="text" id="nama_alat" name="nama_alat" class="form-control" placeholder="Nama Alat" required="">
+              </div>
+              <div class="form-group">
+                <label>Harga</label>
+                <input type="text" id="harga" name="harga" class="form-control" placeholder="Harga" required="">
+              </div>
 
+              <div class="form-group text-right">
+                <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan Data</button>
+              </div>
+            </form>
+        </table>
+      </div>
+  </div>
 
 {{-- <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">

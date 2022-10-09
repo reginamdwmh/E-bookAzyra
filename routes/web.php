@@ -41,6 +41,7 @@ Route::get('/', function () {
 
 Route::get('/login',[LoginController::class,'index']);
 Route::post('/login',[LoginController::class,'authenticate']);
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
@@ -62,7 +63,7 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::get('/dashboard',[DashboardController::class,'index']);
     Route::get('/contact',[ContactController::class,'index']);
 
-        //Tabel Kategori
+    //Tabel Kategori
     Route::get('/master-data/data-kategori',[MasterDataKategoriController::class,'indexkategori'])->name('indexkategori');
     Route::get('/master-data/data-kategori/tambah',[MasterDataKategoriController::class,'tambahkategori'])->name('tambahkategori');
     Route::post('/master-data/data-kategori/simpan',[MasterDataKategoriController::class,'simpankategori'])->name('simpankategori');
@@ -89,7 +90,6 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::get('/master-data/data-bahan/hapus/{id_bahan}',[MasterDataBahanController::class,'hapusbahan'])->name('hapusbahan');
     // Route::get('/master-data/data-bahan/lihat/{id_bahan}',[MasterDataBahanController::class,'lihatbahan'])->name('lihatbahan');
 
-
     //Tabel Alat
     Route::get('/master-data/data-alat',[MasterDataAlatController::class,'indexalat'])->name('indexalat');
     Route::get('/master-data/data-alat/tambah',[MasterDataAlatController::class,'tambahalat'])->name('tambahalat');
@@ -98,7 +98,6 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::post('/master-data/data-alat/update',[MasterDataAlatController::class,'updatealat'])->name('updatealat');
     Route::get('/master-data/data-alat/hapus/{id_alat}',[MasterDataAlatController::class,'hapusalat'])->name('hapusalat');
     // Route::get('/master-data/data-alat/lihat/{id_alat}',[MasterDataAlatController::class,'lihatalat'])->name('lihatalat');
-
 
     //Tabel Pemesanan
     Route::get('/master-data/data-pemesanan',[MasterDataPemesananController::class,'indexpemesanan'])->name('indexpemesanan');
@@ -109,9 +108,6 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::get('/master-data/data-pemesanan/hapus/{id_pemesanan}',[MasterDataPemesananController::class,'hapuspemesanan'])->name('hapuspemesanan');
     // Route::get('/master-data/data-pemesanan/lihat/{id_pemesanan}',[MasterDataPemesananController::class,'lihatpemesanan'])->name('lihatpemesanan');
 
-
-
-
     //Tabel Transaksi Alat
     Route::get('/transaksi/data-alat',[TransaksiAlatController::class,'indextransaksialat'])->name('indextransaksialat');
     Route::get('/transaksi/data-alat/tambah',[TransaksiAlatController::class,'tambahtransaksialat'])->name('tambahtransaksialat');
@@ -120,9 +116,6 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::post('/transaksi/data-alat/update',[TransaksiAlatController::class,'updatetransaksialat'])->name('updatetransaksialat');
     Route::get('/transaksi/data-alat/hapus/{id_transaksialat}',[TransaksiAlatController::class,'hapustransaksialat'])->name('hapustransaksialat');
     // Route::get('/transaksi/data-alat/lihat/{id_transaksialat}',[TransaksiAlatController::class,'lihattransaksialat'])->name('lihattransaksialat');
-
-
-
 
     //Tabel Transaksi Bahan
     Route::get('/transaksi/data-bahan',[TransaksiBahanController::class,'indextransaksibahan'])->name('indextransaksibahan');
@@ -133,7 +126,6 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::get('/transaksi/data-bahan/hapus/{id_transaksibahan}',[TransaksiBahanController::class,'hapustransaksibahan'])->name('hapustransaksibahan');
     // Route::get('/transaksi/data-bahan/lihat/{id_transaksibahan}',[TransaksiBahanController::class,'lihattransaksibahan'])->name('lihattransaksibahan');
 
-
     //Tabel Transaksi Penjualan Makanan
     Route::get('/transaksi/data-penjualan-makanan',[TransaksiPenjualanMakananController::class,'indexpenjualanmakanan'])->name('indexpenjualanmakanan');
     Route::get('/transaksi/data-penjualan-makanan/tambah',[TransaksiPenjualanMakananController::class,'tambahpenjualanmakanan'])->name('tambahpenjualanmakanan');
@@ -142,8 +134,6 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::post('/transaksi/data-penjualan-makanan/update',[TransaksiPenjualanMakananController::class,'updatepenjualanmakanan'])->name('updatepenjualanmakanan');
     Route::get('/transaksi/data-penjualan-makanan/hapus/{id_penjualan}',[TransaksiPenjualanMakananController::class,'hapuspenjualanmakanan'])->name('hapuspenjualanmakanan');
     // Route::get('/transaksi/data-penjualan-makanan/lihat/{id_penjualan}',[TransaksiPenjualanMakananController::class,'lihatpenjualanmakanan'])->name('lihatpenjualanmakanan');
-
-
 
     //Tabel Transaksi Pemesanan Online
     Route::get('/transaksi/data-pemesanan-online',[TransaksiPemesananOnlineController::class,'indexpemesananonline'])->name('indexpemesananonline');;
@@ -154,7 +144,6 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::get('/transaksi/data-pemesanan-online/hapus/{id_online}',[TransaksiPemesananOnlineController::class,'hapuspemesananonline'])->name('hapuspemesananonline');
     Route::get('/transaksi/data-pemesanan-online/lihat/{id_online}',[TransaksiPemesananOnlineController::class,'lihatpemesananonline'])->name('lihatpemesananonline');
 
-
     //Tabel Transaksi Umum
     Route::get('/transaksi/data-umum',[TransaksiUmumController::class,'indextransaksiumum'])->name('indextransaksiumum');;
     Route::get('/transaksi/data-umum/tambah',[TransaksiUmumController::class,'tambahtransaksiumum'])->name('tambahtransaksiumum');
@@ -164,13 +153,9 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::get('/transaksi/data-umum/hapus/{id_umum}',[TransaksiUmumController::class,'hapustransaksiumum'])->name('hapustransaksiumum');
     // Route::get('/transaksi/data-umum/lihat/{id_umum}',[TransaksiUmumController::class,'lihattransaksiumum'])->name('lihattransaksiumum');
 
-
     // Tabel Laporan Alat
     Route::get('/laporan/data-alat',[LaporanDataAlatController::class,'indexlaporanalat'])->name('indexlaporanalat');
     Route::get('/laporan/data-alat/cetak/{tglawal}/{tglakhir}',[LaporanDataAlatController::class,'cetaklaporantransaksialat'])->name('cetaklaporantransaksialat');
-
-
-
 
     // Tabel Laporan Bahan
     Route::get('/laporan/data-bahan',[LaporanDataBahanController::class,'indexlaporanbahan'])->name('indexlaporanbahan');
@@ -179,7 +164,6 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
     // Tabel Laporan Penjualan Makanan
     Route::get('/laporan/data-penjualan-makanan',[LaporanDataPenjualanMakananController::class,'indexlaporanpenjualanmakanan'])->name('indexlaporanpenjualanmakanan');
     Route::get('/laporan/data-penjualan-makanan/cetak/{tglawal}/{tglakhir}',[LaporanDataPenjualanMakananController::class,'cetaklaporantransaksipenjualanmakanan'])->name('cetaklaporantransaksipenjualanmakanan');
-
 
     //Tabel Laporan Pemesanan Online
     Route::get('/laporan/data-pemesanan-online',[LaporanDataPemesananOnlineController::class,'indexlaporanpemesananonline'])->name('indexlaporanpemesananonline');
