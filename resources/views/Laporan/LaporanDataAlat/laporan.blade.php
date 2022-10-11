@@ -17,6 +17,7 @@
 <body>
     <div class="form-group">
         <p align="center"><b>LAPORAN DATA TRANSAKSI ALAT</b></p>
+        
         <table class="static" align="center" rules="all" border="1px" style="width: 95%;">
             <tr>
                 <th>No</th>

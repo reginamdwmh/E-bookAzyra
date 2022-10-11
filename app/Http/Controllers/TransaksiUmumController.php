@@ -77,6 +77,8 @@ class TransaksiUmumController extends Controller
                 'addMoreInputFields.*.jumlah_pemesanan' => 'required',
                 'total' => 'required',
             ]);
+
+            
             $TransaksiUmum = TransaksiUmum::create($transaksi_umum);
 
             foreach ($request->addMoreInputFields as $key => $value) {
@@ -117,8 +119,8 @@ class TransaksiUmumController extends Controller
     public function updatetransaksiumum(Request $request, $id_umum)
     {
        
-        $transaksi_umum_detail = TransaksiUmumDetail::find($id_umum);
-        $transaksi_umum = TransaksiUmum::with('get_transaksiumumdetail')->find($id_umum);
+        // $transaksi_umum_detail = TransaksiUmumDetail::find($id_umum);
+        // $transaksi_umum = TransaksiUmum::with('get_transaksiumumdetail')->find($id_umum);
         $validatedData = $request->validate([
             'nama_makanan' => 'required',
             'harga' => 'required',
@@ -129,17 +131,18 @@ class TransaksiUmumController extends Controller
         ]);     
         
         
-
+        // dd($validatedData);
         unset($validatedData['addMoreInputFields']);
-        
-        $TransaksiUmum = TransaksiUmum::where('id_umum', $transaksi_umum->id_umum)
+       
+        $TransaksiUmum = TransaksiUmum::where('id_umum', $request->id_umum)
             ->update($validatedData);
 
 
+            
             foreach ($request->addMoreInputFields as $key => $value) {
-                dd($value); 
+                
                 // $value['id_umum'] = $TransaksiUmum->id_umum; 
-            TransaksiUmumDetail::where('id_umum', $transaksi_umum_detail->id_umum)
+            TransaksiUmumDetail::where('id_umum', $request->id_umum)
                 ->update($value);
             }
        

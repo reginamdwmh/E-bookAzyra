@@ -30,12 +30,12 @@
                     @endif
                     @endforeach
                   </select>
-                  </div>
-                  <div class="col-sm-4">
+                 </div>
+                <div class="col-sm-4">
                   <label>Harga</label>
                   <input type="number" id="harga_satuan" value="{{$tu->harga}}" onkeyup="sum();" name="harga" class="form-control" placeholder="Harga" required="">
-                  </div>
-                  <div class="col-sm-4">
+                 </div>
+                <div class="col-sm-4">
                   <label>Penjualan</label>
                   <input type="number" id="jumlah_penjualan" value="{{$tu->jumlah_penjualan}}" onkeyup="sum();" name="jumlah_penjualan" class="form-control" placeholder="Jumlah Penjualan" required="">
                   </div>
@@ -44,7 +44,7 @@
 
 <br>
 
-
+                @if(old('get_transaksiumumdetail',$tu->get_transaksiumumdetail))
                 <table class="table" id="dynamicAddRemove">
                   <thead>
                     <tr >
@@ -53,12 +53,13 @@
                       <th><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">+</button></th>
                     </tr>
                   </thead>
+
+                  
+                    
                   <tbody>
-                  @if(old('get_transaksiumumdetail',$tu->get_transaksiumumdetail))
                     @foreach(old('get_transaksiumumdetail',$tu->get_transaksiumumdetail) as $key => $gt)
                     {{-- @foreach($tu->get_transaksiumumdetail as $tud) --}}
                     <tr>
-                     
                       <td>
                         <select name="addMoreInputFields[{{ $key }}][keterangan_pemesanan]" id="keterangan_pemesanan" class="form-control">
                           <option value="">-Pilih-</option>
@@ -75,14 +76,24 @@
                         <input type="number" id="jumlah_pemesanan" value="{{$gt->jumlah_pemesanan}}" name="addMoreInputFields[{{ $key }}][jumlah_pemesanan]" class="form-control" placeholder="Jumlah Pemesanan" required="">
                       </td>
                       <td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td> 
-                    
                     </tr>
+                    </tbody>
+
                     @endforeach
                     {{-- @endforeach --}}
                     @else
-                    
-                    <tr>
+
+                    <table class="table" id="dynamicAddRemove">
+                      <thead>
+                        <tr >
+                          <th>Mitra</th>
+                          <th>Pemesanan</th>
+                          <th><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">+</button></th>
+                        </tr>
+                      </thead>
+                    <tbody>
                       @foreach ($tu->get_transaksiumumdetail as $tud)
+                    <tr>
                       <input type="hidden" name="id_transaksi_umum_detail" value="{{$tud->id_transaksi_umum_detail}}">
                       <input type="hidden" name="id_umum" value="{{$tud->id_umum}}">
                         <td>
@@ -101,10 +112,10 @@
                           <input type="number" id="jumlah_pemesanan" value="{{$tud->jumlah_pemesanan}}" name="addMoreInputFields[0][jumlah_pemesanan]" class="form-control" placeholder="Jumlah Pemesanan" required="">
                         </td>
                         <td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td> 
-                        @endforeach
                       </tr>
                       
-                    @endif
+                      @endforeach
+                      @endif
                   </tbody>
                 </table>
                 

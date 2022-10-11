@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UsersModel;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -10,12 +11,16 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('Dashboard.index');
+        $name = UsersModel::select('*')
+                 ->get();
+        return view('Dashboard.index',['name' => $name]);
     }
 
     public function admin()
     {
-        return view('admin.index');
+        $name = UsersModel::select('*')
+                 ->get();
+        return view('admin.index',['name' => $name]);
     }
     
 }

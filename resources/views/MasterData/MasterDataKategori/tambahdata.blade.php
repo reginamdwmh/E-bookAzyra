@@ -33,6 +33,7 @@
                 <input type="text" id="keterangan_kategori" name="keterangan_kategori" class="form-control" placeholder="Keterangan" required="">
               </div>
               <div class="form-group text-right">
+                <a href="/master-data/data-kategori" title="Kembali" class="btn btn-primary"><i class="fa fa-back"></i>Kembali</a>
                 <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan Data</button>
               </div>
             </form>

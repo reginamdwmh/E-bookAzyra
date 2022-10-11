@@ -13,7 +13,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <div>
-                    <a href="{{route('tambahalat')}}" class="btn-btn-secondary" data-toggle="modal" data-target="#myModal">
+                    <a href="{{route('tambahalat')}}" class="btn-btn-secondary" >  
                         <i class="fa fa-edit"></i> Tambah Data</a>
                 </div>
                 <br>
@@ -53,7 +53,8 @@
         
 
 
-<div class="modal fade" id="myModal" role="dialog">
+{{--data-toggle="modal" data-target="#myModal" 
+    <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
@@ -68,11 +69,8 @@
             <button type="button" class="btn btn-default tutup" data-dismiss="modal">Tutup</button>
           </div>
     </div>
-
-    
   </div>
-</div>
-
+</div> --}}
 
 </section> 
 @endsection
