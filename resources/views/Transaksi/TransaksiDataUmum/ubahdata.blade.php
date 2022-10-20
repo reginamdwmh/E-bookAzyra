@@ -34,12 +34,12 @@
                 <div class="col-sm-4">
                   <label>Harga</label>
                   <input type="number" id="harga_satuan" value="{{$tu->harga}}" onkeyup="sum();" name="harga" class="form-control" placeholder="Harga" required="">
-                 </div>
+                </div>
                 <div class="col-sm-4">
                   <label>Penjualan</label>
                   <input type="number" id="jumlah_penjualan" value="{{$tu->jumlah_penjualan}}" onkeyup="sum();" name="jumlah_penjualan" class="form-control" placeholder="Jumlah Penjualan" required="">
-                  </div>
                 </div>
+              </div>
                 
 
 <br>
@@ -77,9 +77,11 @@
                       </td>
                       <td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td> 
                     </tr>
-                    </tbody>
-
                     @endforeach
+                    </tbody>
+                  </table>
+
+                    
                     {{-- @endforeach --}}
                     @else
 
@@ -115,10 +117,10 @@
                       </tr>
                       
                       @endforeach
-                      @endif
+                      
                   </tbody>
                 </table>
-                
+                @endif
                 
                 <hr class="my-4">
                 <div class="col-sm-4">

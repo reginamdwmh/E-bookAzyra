@@ -62,7 +62,7 @@
                               <td>{{$tpm->jumlah}}</td>
                               <td>{{$tpm->diskon}}%</td>
                               <td>@currency($tpm->total)</td>
-                              <td>{{$tpm->created_at}}</td>
+                              <td>{{$tpm->created_at->format('d/m/Y')}}</td>
                               
                           </tr>
                           @endforeach

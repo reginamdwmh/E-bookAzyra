@@ -57,7 +57,7 @@
                             
                             
                             <td>@currency($tu->total)</td>
-                            <td>{{$tu->created_at}}</td>
+                            <td>{{$tu->created_at->format('d/m/Y')}}</td>
                             <td>
                             {{-- <a href="/transaksi/data-umum/lihat/{{$tu->id_umum}}" title="Lihat" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>         --}}
                             <a href="/transaksi/data-umum/ubah/{{$tu->id_umum}}" title="Ubah" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>

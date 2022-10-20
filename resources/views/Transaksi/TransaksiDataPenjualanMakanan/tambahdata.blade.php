@@ -135,6 +135,52 @@
         </div>
     </div>
 
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    var i = 0;
+    $("#dynamic-ar").click(function () {
+        ++i;
+        $("#dynamicAddRemove").append('<tr><td><select name="addMoreInputFields[' + i + '][nama_makanan]" data-index="'+ i +'" id="nama_makanan" class="form-control nama_makanan" ><option value="">-Pilih-</option>@foreach ($transaksi_penjualan_makanan as $tpm)<option value="{{ $tpm->nama_makanan }}" data-harga="{{$tpm->harga}}">{{$tpm->nama_makanan}}</option>@endforeach</select></td><td><input type="text" name="addMoreInputFields[' + i + '][harga]" placeholder="Enter subject" class="form-control harga_satuan" id="harga_satuan"  onkeyup="sum();"/></td><td><input type="text" name="addMoreInputFields[' + i + '][jumlah]" placeholder="Enter subject" class="form-control jumlah_harga" id="jumlah_harga"  onkeyup="sum();"/></td><td><input type="text" name="addMoreInputFields[' + i + '][diskon]" placeholder="Enter subject" class="form-control diskon_makanan" id="diskon_makanan"  onkeyup="sum();"/></td><td><input type="text" name="addMoreInputFields[' + i + '][total]" placeholder="Enter subject" class="form-control hasil" id="hasil"  onkeyup="sum();"/></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>'
+        );
+        
+    });
+
+    
+    $(document).on('click', '.remove-input-field', function () {
+        $(this).parents('tr').remove();
+    });
+
+
+    $(document).on('change', '.nama_makanan', function() {
+      const selected = $(this).find('option:selected');
+      const nb = selected.data('harga'); 
+      var i = $(this).data('index');
+      
+      $(".harga_satuan").eq(i).val(nb);
+    });   
+
+
+    function sum(){
+      var harga = document.getElementById('harga_satuan').value;
+      var jumlah = document.getElementById('jumlah_harga').value;
+      var diskon = document.getElementById('diskon_makanan').value;
+      var total = (parseInt(harga) * parseInt(jumlah)) - (((parseInt(harga) * parseInt(jumlah))*parseInt(diskon))/100);
+
+        document.getElementById('hasil').value=total;
+  };
+</script>
+</section>
+
+@endsection
+
+
+
+
+
 {{-- <script>
   $(document).ready(function () {
     let baris = 1
@@ -166,57 +212,3 @@
 </script> --}}
 
 
-
-
-<!-- JavaScript -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-    var i = 0;
-    $("#dynamic-ar").click(function () {
-        ++i;
-        $("#dynamicAddRemove").append('<tr><td><select name="addMoreInputFields[' + i + '][nama_makanan]" data-index="'+ i +'" id="nama_makanan" class="form-control nama_makanan" ><option value="">-Pilih-</option>@foreach ($transaksi_penjualan_makanan as $tpm)<option value="{{ $tpm->nama_makanan }}" data-harga="{{$tpm->harga}}">{{$tpm->nama_makanan}}</option>@endforeach</select></td><td><input type="text" name="addMoreInputFields[' + i + '][harga]" placeholder="Enter subject" class="form-control harga_satuan" id="harga_satuan"  onkeyup="sum();"/></td><td><input type="text" name="addMoreInputFields[' + i + '][jumlah]" placeholder="Enter subject" class="form-control jumlah_harga" id="jumlah_harga"  onkeyup="sum();"/></td><td><input type="text" name="addMoreInputFields[' + i + '][diskon]" placeholder="Enter subject" class="form-control diskon_makanan" id="diskon_makanan"  onkeyup="sum();"/></td><td><input type="text" name="addMoreInputFields[' + i + '][total]" placeholder="Enter subject" class="form-control hasil" id="hasil"  onkeyup="sum();"/></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>'
-        );
-        
-    // $('#nama_makanan').on('change', function() {
-    //   const selected = $(this).find('option:selected');
-    //   const nb = selected.data('harga'); 
-      
-    //   $("#harga_satuan").val(nb);
-    // });
-
-    });
-
-    
-    $(document).on('click', '.remove-input-field', function () {
-        $(this).parents('tr').remove();
-    });
-
-
-
-
-
-    $(document).on('change', '.nama_makanan', function() {
-      const selected = $(this).find('option:selected');
-      const nb = selected.data('harga'); 
-      var i = $(this).data('index');
-      
-      $(".harga_satuan").eq(i).val(nb);
-    });
-   
-
-
-
-    function sum(){
-      var harga = document.getElementById('harga_satuan').value;
-      var jumlah = document.getElementById('jumlah_harga').value;
-      var diskon = document.getElementById('diskon_makanan').value;
-      var total = (parseInt(harga) * parseInt(jumlah)) - (((parseInt(harga) * parseInt(jumlah))*parseInt(diskon))/100);
-
-        document.getElementById('hasil').value=total;
-  };
-</script>
-</section>
-
-@endsection

@@ -42,7 +42,7 @@
                             <td>@currency($a->harga)</td>
                             <td>{{$a->jumlah}}</td>
                             <td>@currency($a->total)</td>
-                            <td>{{$a->created_at}}</td>
+                            <td>{{$a->created_at->format('d/m/Y')}}</td>
                             <td>
                             {{-- <a href="/transaksi/data-alat/lihat/{{$a->id_transaksialat}}" title="Lihat" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a> --}}
                             <a href="/transaksi/data-alat/ubah/{{$a->id_transaksialat}}" title="Ubah" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>

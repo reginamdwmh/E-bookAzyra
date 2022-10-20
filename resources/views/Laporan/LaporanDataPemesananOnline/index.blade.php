@@ -60,7 +60,7 @@
                                <td>{{$tpo->keterangan_pemesanan}}</td>
                                <td>@currency($tpo->komisi)</td>
                                <td>@currency($tpo->total)</td>
-                               <td>{{$tpo->created_at}}</td>
+                               <td>{{$tpo->created_at->format('d/m/Y')}}</td>
                                
                            </tr>
                            @endforeach
