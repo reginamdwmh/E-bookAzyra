@@ -14,26 +14,25 @@
             <div class="table-responsive">
                 
                 <form action="#" method="GET" class="row">
+                <div class="card">
+                <div class="card-body">
                     <div class="col">
                         <label for="label">Tanggal Awal</label>
                         <input type="date" name="tglawal" id="tglawal" class="form-control"><br>
-                      
-                        <a href="#" onclick="this.href='/laporan/data-penjualan-makanan/cetak/'+document.getElementById('tglawal').value +
-                        '/' + document.getElementById('tglakhir').value" target="_blank" class="btn btn-primary">
-                        <i class="fa fa-print"></i>Cetak</a>
                     </div>
                     <div class="col">
                         <label for="label">Tanggal Akhir</label>
                         <input type="date" name="tglakhir" id="tglakhir" class="form-control">
                         
-                    </div>
-                    <div class="col"><br>
-                        
-                    </div>
+                    </div><br>
                     <div class="col">
-                       
+                        <a href="#" onclick="this.href='/laporan/data-penjualan-makanan/cetak/'+document.getElementById('tglawal').value +
+                        '/' + document.getElementById('tglakhir').value" target="_blank" class="btn btn-primary">
+                        <i class="fa fa-print"></i>Cetak</a>
                     </div>
-              </form>
+                </div>
+                </div>
+                </form>
 
                 <br>
                 <table id="example1" class="table table-bordered table-striped">
