@@ -6,31 +6,38 @@ use Illuminate\Http\Request;
 use App\Models\MasterDataAlatModel;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\UsersModel;
 
 class MasterDataAlatController extends Controller
 {
     public function indexalat()
     {
+        $users = UsersModel::select('*')
+                ->get();
          $alat = MasterDataAlatModel::select('*')
                  ->get();
 
-        return view ('MasterData.MasterDataAlat.index',['alat' => $alat]);
+        return view ('MasterData.MasterDataAlat.index',['alat' => $alat,'users' => $users]);
     }
 
     public function tambahalat()
     {
-        return view('MasterData.MasterDataAlat.tambahdata');
+        $users = UsersModel::select('*')
+                ->get();
+        return view('MasterData.MasterDataAlat.tambahdata',['users' => $users]);
     }
 
     public function simpanalat(Request $request)
     {
+        $users = UsersModel::select('*')
+                ->get();
         $alat = MasterDataAlatModel::create([
             'nama_alat' => $request->nama_alat,
             'harga' => $request->harga,
             
         ]);
         
-        Alert::success('Success', 'Data Berhasil Disimpan');
+        Alert::success('Success', 'Data Berhasil Disimpan',['users' => $users]);
         return redirect()->route('indexalat');
     }
 
@@ -44,21 +51,25 @@ class MasterDataAlatController extends Controller
     
     public function ubahalat($id_alat)
     {
+        $users = UsersModel::select('*')
+                ->get();
         $alat =MasterDataAlatModel::select('*')
                 ->where('id_alat',$id_alat)
                 ->get();
 
-        return view ('MasterData.MasterDataAlat.ubahdata', ['alat' =>$alat]);
+        return view ('MasterData.MasterDataAlat.ubahdata', ['alat' =>$alat,'users' => $users]);
     }
 
     public function updatealat(Request $request)
     {
+        $users = UsersModel::select('*')
+                ->get();
        $alat = MasterDataAlatModel::where('id_alat', $request->id_alat)
                  ->update([
                     'nama_alat' => $request->nama_alat,
                     'harga' => $request->harga,
                  ]);
-        Alert::success('Success', 'Data Berhasil Diubah');    
+        Alert::success('Success', 'Data Berhasil Diubah',['users' => $users]);    
        return redirect()->route('indexalat');
     }
 

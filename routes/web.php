@@ -155,7 +155,8 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
 
     // Tabel Laporan Alat
     Route::get('/laporan/data-alat',[LaporanDataAlatController::class,'indexlaporanalat'])->name('indexlaporanalat');
-    Route::get('/laporan/data-alat/cetak/{tglawal}/{tglakhir}',[LaporanDataAlatController::class,'cetaklaporantransaksialat'])->name('cetaklaporantransaksialat');
+    Route::get('/laporan/data-alat/cetak/{tglawal}/{tglakhir}',[LaporanDataAlatController::class,'cetaktgl'])->name('cetaktgl');
+    Route::get('/laporan/data-alat/cetak/{nama_alat:id}',[LaporanDataAlatController::class,'cetaknamaalat'])->name('cetaknamaalat');
 
     // Tabel Laporan Bahan
     Route::get('/laporan/data-bahan',[LaporanDataBahanController::class,'indexlaporanbahan'])->name('indexlaporanbahan');

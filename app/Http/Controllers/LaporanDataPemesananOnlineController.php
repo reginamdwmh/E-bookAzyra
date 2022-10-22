@@ -6,15 +6,18 @@ use App\Models\TransaksiPemesananOnline;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Support\Facades\DB;
+use App\Models\UsersModel;
 
 class LaporanDataPemesananOnlineController extends Controller
 {
     public function indexlaporanpemesananonline()
     {
+        $users = UsersModel::select('*')
+                 ->get();
         $transaksi_pemesanan_online = TransaksiPemesananOnline::select('*')
                         ->get();
 
-        return view('Laporan.LaporanDataPemesananOnline.index', ['transaksi_pemesanan_online' => $transaksi_pemesanan_online]);
+        return view('Laporan.LaporanDataPemesananOnline.index', ['transaksi_pemesanan_online' => $transaksi_pemesanan_online,'users' => $users]);
     }
 
 

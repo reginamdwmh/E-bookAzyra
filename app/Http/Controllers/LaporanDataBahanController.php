@@ -6,15 +6,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\TransaksiBahanModel;
 use Barryvdh\DomPDF\Facade\PDF;
+use App\Models\UsersModel;
 
 class LaporanDataBahanController extends Controller
 {
     public function indexlaporanbahan()
     {
+        $users = UsersModel::select('*')
+                 ->get();
         $transaksi_bahan = TransaksiBahanModel::select('*')
                             ->get();
 
-        return view('Laporan.LaporanDataBahan.index',['transaksi_bahan' => $transaksi_bahan]);
+        return view('Laporan.LaporanDataBahan.index',['transaksi_bahan' => $transaksi_bahan,'users' => $users]);
     }
 
     public function cetaklaporantransaksibahan($tglawal, $tglakhir){

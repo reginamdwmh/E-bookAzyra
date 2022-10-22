@@ -6,16 +6,19 @@ use App\Models\TransaksiPenjualanMakanan;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Support\Facades\DB;
+use App\Models\UsersModel;
 
 class LaporanDataPenjualanMakananController extends Controller
 {
     public function indexlaporanpenjualanmakanan()
     {
+        $users = UsersModel::select('*')
+                 ->get();
          $transaksi_penjualan_makanan = TransaksiPenjualanMakanan::select('*')
                             ->get();
 
 
-        return view('Laporan.LaporanDataPenjualanMakanan.index',['transaksi_penjualan_makanan' => $transaksi_penjualan_makanan]);
+        return view('Laporan.LaporanDataPenjualanMakanan.index',['transaksi_penjualan_makanan' => $transaksi_penjualan_makanan,'users' => $users]);
     }
 
 

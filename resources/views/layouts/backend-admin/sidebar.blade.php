@@ -15,7 +15,11 @@
       </div>
    
       <div class="info" >
-        <a href="/admin" class="d-block">Admin</a>
+        @foreach ($users as $u)
+        @if($u->id == Auth::user()->id)
+          <a href="/admin" class="d-block">{{ $u->name }}</a>
+        @endif
+      @endforeach 
       </div>
   
     </div>
