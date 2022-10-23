@@ -58,6 +58,7 @@
                   <input type="number" id="hasil" onkeyup="sum();" name="total" class="form-control" placeholder="Total" value="{{$tpo->total}}" readonly>
                 </div>   
                 <div class="form-group text-right">
+                  <a href="/transaksi/data-pemesanan-online" title="Kembali" class="btn btn-primary"><i class="fa fa-back"></i>Kembali</a>
                   <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update Data</button>
                 </div>
               </form>

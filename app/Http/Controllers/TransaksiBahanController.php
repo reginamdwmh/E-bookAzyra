@@ -8,6 +8,7 @@ use App\Models\TransaksiBahanModel;
 use App\Models\MasterDataBahanModel;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\UsersModel;
 
 class TransaksiBahanController extends Controller
 {
@@ -18,22 +19,26 @@ class TransaksiBahanController extends Controller
         // }
 
         // return view ('Transaksi.TransaksiDataBahan.index');
-
+        $users = UsersModel::select('*')
+                ->get();
         $transaksi_bahan = TransaksiBahanModel::select('*')
                             ->get();
 
-        return view ('Transaksi.TransaksiDataBahan.index',['transaksi_bahan' => $transaksi_bahan]);
+        return view ('Transaksi.TransaksiDataBahan.index',['transaksi_bahan' => $transaksi_bahan,'users' => $users]);
     }
 
     public function tambahtransaksibahan()
     {
+        $users = UsersModel::select('*')
+                ->get();
         $bahan = MasterDataBahanModel::all();
-        return view('Transaksi.TransaksiDataBahan.tambahdata', compact('bahan'));
+        return view('Transaksi.TransaksiDataBahan.tambahdata', compact('bahan'),['users' => $users]);
     }
 
     public function simpantransaksibahan(Request $request)
     {
-        
+        $users = UsersModel::select('*')
+                ->get();   
         $transaksi_bahan = TransaksiBahanModel::create([
             'nama_bahan' => $request->nama_bahan,
             'harga' => $request->harga,
@@ -41,7 +46,7 @@ class TransaksiBahanController extends Controller
             'total' => $request->total,
         ]);
         Alert::success('Success', 'Data Berhasil Disimpan');
-        return redirect()->route('tambahtransaksibahan');
+        return redirect()->route('indextransaksibahan',['users' => $users]);
     }
 
     public function hapustransaksibahan($id_transaksibahan)
@@ -54,16 +59,20 @@ class TransaksiBahanController extends Controller
 
     public function ubahtransaksibahan($id_transaksibahan)
     {
+        $users = UsersModel::select('*')
+                ->get();
         $transaksi_bahan = TransaksiBahanModel::select('*')
                 ->where('id_transaksibahan',$id_transaksibahan)
                 ->get();
         $bahan = MasterDataBahanModel::all();
 
-        return view ('Transaksi.TransaksiDataBahan.ubahdata', ['transaksi_bahan' => $transaksi_bahan],compact('bahan'));
+        return view ('Transaksi.TransaksiDataBahan.ubahdata', ['transaksi_bahan' => $transaksi_bahan,'users' => $users],compact('bahan'));
     }
 
     public function updatetransaksibahan(Request $request)
     {
+        $users = UsersModel::select('*')
+                ->get();
        $transaksi_bahan = TransaksiBahanModel::where('id_transaksibahan', $request->id_transaksibahan)
                  ->update([
                     'nama_bahan' => $request->nama_bahan,
@@ -74,7 +83,7 @@ class TransaksiBahanController extends Controller
         $bahan = MasterDataBahanModel::all();          
                  compact('bahan');
         Alert::success('Success', 'Data Berhasil Diupdate');
-       return redirect()->route('indextransaksibahan');
+       return redirect()->route('indextransaksibahan',['users' => $users]);
     }
 
     // public function lihattransaksibahan($id_transaksibahan)

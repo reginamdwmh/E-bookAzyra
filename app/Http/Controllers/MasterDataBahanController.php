@@ -36,8 +36,8 @@ class MasterDataBahanController extends Controller
             'harga' => $request->harga,
             
         ]);
-        Alert::success('Success', 'Data Berhasil Disimpan',['users' => $users]);
-        return redirect()->route('indexbahan');
+        Alert::success('Success', 'Data Berhasil Disimpan');
+        return redirect()->route('indexbahan',['users' => $users]);
     }
 
     public function hapusbahan($id_bahan)
@@ -68,8 +68,8 @@ class MasterDataBahanController extends Controller
                     'nama_bahan' => $request->nama_bahan,
                     'harga' => $request->harga,
                  ]);
-        Alert::success('Success', 'Data Berhasil Diubah',['users' => $users]);    
-       return redirect()->route('indexbahan');
+        Alert::success('Success', 'Data Berhasil Diubah');    
+       return redirect()->route('indexbahan',['users' => $users]);
     }
 
     // public function lihatbahan($id_bahan)

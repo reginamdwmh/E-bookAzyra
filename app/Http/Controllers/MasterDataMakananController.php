@@ -9,26 +9,32 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\UsersModel;
 
 class MasterDataMakananController extends Controller
 {
     public function indexmakanan()
     {   
-
+        $users = UsersModel::select('*')
+                ->get();
         $makanan = MasterDataMakananModel::select('*')
                  ->get();
         
-        return view('MasterData.MasterDataMakanan.index',['makanan' => $makanan]);
+        return view('MasterData.MasterDataMakanan.index',['makanan' => $makanan,'users' => $users]);
     }
 
     public function tambahmakanan()
     {   
+        $users = UsersModel::select('*')
+                ->get();
         $kategori = MasterDataKategoriModel::all();
-        return view('MasterData.MasterDataMakanan.tambahdata', compact('kategori'));
+        return view('MasterData.MasterDataMakanan.tambahdata', compact('kategori'),['users' => $users]);
     }
 
     public function simpanmakanan(Request $request)
     {   
+        $users = UsersModel::select('*')
+                ->get();
         $makanan=MasterDataMakananModel::create([
             'nama_kategori' => $request->nama_kategori,
             'nama_makanan' => $request->nama_makanan,
@@ -36,7 +42,7 @@ class MasterDataMakananController extends Controller
             'image' => $request->image->store('makanan-foto'),
         ]);
         Alert::success('Success', 'Data Berhasil Disimpan');
-        return redirect()->route('indexmakanan');
+        return redirect()->route('indexmakanan',['users' => $users]);
     }
 
     public function hapusmakanan($id_makanan)
@@ -49,17 +55,20 @@ class MasterDataMakananController extends Controller
 
     public function ubahmakanan($id_makanan)
     {
-
+        $users = UsersModel::select('*')
+                ->get();
         $makanan = MasterDataMakananModel::select('*')
                 ->where('id_makanan',$id_makanan)
                 ->get();
         $kategori = MasterDataKategoriModel::all();
 
-        return view ('MasterData.MasterDataMakanan.ubahdata', ['makanan' =>$makanan],compact('kategori'));
+        return view ('MasterData.MasterDataMakanan.ubahdata', ['makanan' =>$makanan,'users' => $users],compact('kategori'));
     }
 
     public function updatemakanan(Request $request)
     {
+        $users = UsersModel::select('*')
+                ->get();
        $makanan = MasterDataMakananModel::where('id_makanan', $request->id_makanan)
                  ->update([
                     'nama_kategori' => $request->nama_kategori,
@@ -77,7 +86,7 @@ class MasterDataMakananController extends Controller
         //     $makanan['image'] = $request->file('image')->store('makanan-foto');
         // }
         Alert::success('Success', 'Data Berhasil Diubah');
-       return redirect()->route('indexmakanan');
+       return redirect()->route('indexmakanan',['users' => $users]);
     }
 
     // public function lihatmakanan($id_makanan)

@@ -7,28 +7,34 @@ use Illuminate\Support\Facades\DB;
 use App\Models\TransaksiPemesananOnline;
 use App\Models\MasterDataPemesananModel;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\UsersModel;
 
 class TransaksiPemesananOnlineController extends Controller
 {
     public function indexpemesananonline()
     {
+        $users = UsersModel::select('*')
+                ->get();
         $transaksi_pemesanan_online = TransaksiPemesananOnline::select('*')
                             ->get();
 
-        return view ('Transaksi.TransaksiDataPemesananOnline.index', ['transaksi_pemesanan_online' => $transaksi_pemesanan_online]);
+        return view ('Transaksi.TransaksiDataPemesananOnline.index', ['transaksi_pemesanan_online' => $transaksi_pemesanan_online,'users' => $users]);
     }
 
     public function tambahpemesananonline()
     {
+        $users = UsersModel::select('*')
+                ->get();
         $transaksi_pemesanan_online = MasterDataPemesananModel::all();
 
-        return view('Transaksi.TransaksiDataPemesananOnline.tambahdata', compact('transaksi_pemesanan_online'));
+        return view('Transaksi.TransaksiDataPemesananOnline.tambahdata', compact('transaksi_pemesanan_online'),['users' => $users]);
     }
 
 
     public function simpanpemesananonline(Request $request)
     {
-        
+        $users = UsersModel::select('*')
+                ->get();
         $transaksi_pemesanan_online = TransaksiPemesananOnline::create([
             'kode_pemesanan' => $request->kode_pemesanan,
             'keterangan_pemesanan' => $request->keterangan_pemesanan,
@@ -39,7 +45,7 @@ class TransaksiPemesananOnlineController extends Controller
             'total' => $request->total,
         ]);
         Alert::success('Success', 'Data Berhasil Disimpan');
-        return redirect()->route('tambahpemesananonline');
+        return redirect()->route('indexpemesananonline',['users' => $users]);
     }
 
     public function hapuspemesananonline($id_online)
@@ -52,16 +58,20 @@ class TransaksiPemesananOnlineController extends Controller
 
     public function ubahpemesananonline($id_online)
     {
+        $users = UsersModel::select('*')
+                ->get();
         $transaksi_pemesanan_online = TransaksiPemesananOnline::select('*')
                 ->where('id_online',$id_online)
                 ->get();
         $online = MasterDataPemesananModel::all();
 
-        return view ('Transaksi.TransaksiDataPemesananOnline.ubahdata', ['transaksi_pemesanan_online' => $transaksi_pemesanan_online],compact('online'));
+        return view ('Transaksi.TransaksiDataPemesananOnline.ubahdata', ['transaksi_pemesanan_online' => $transaksi_pemesanan_online,'users' => $users],compact('online'));
     }
 
     public function updatepemesananonline(Request $request)
     {
+        $users = UsersModel::select('*')
+                ->get();
        $transaksi_pemesanan_online = TransaksiPemesananOnline::where('id_online', $request->id_online)
                  ->update([
                     'kode_pemesanan' => $request->kode_pemesanan,
@@ -75,7 +85,7 @@ class TransaksiPemesananOnlineController extends Controller
         $online = MasterDataPemesananModel::all();          
                  compact('online');
         Alert::success('Success', 'Data Berhasil Diubah');
-       return redirect()->route('indexpemesananonline');
+       return redirect()->route('indexpemesananonline',['users' => $users]);
     }
 
 
@@ -92,11 +102,13 @@ class TransaksiPemesananOnlineController extends Controller
 
     public function lihatpemesananonline($id_online)
     {
+        $users = UsersModel::select('*')
+                ->get();
         $transaksi_pemesanan_online = TransaksiPemesananOnline::select('*')
                                  ->where('id_online',$id_online)
                                  ->get();
         $online = MasterDataPemesananModel::all();
 
-        return view ('Transaksi.TransaksiDataPemesananOnline.lihatdata', ['transaksi_pemesanan_online' => $transaksi_pemesanan_online],compact('online'));
+        return view ('Transaksi.TransaksiDataPemesananOnline.lihatdata', ['transaksi_pemesanan_online' => $transaksi_pemesanan_online,'users' => $users],compact('online'));
     }
 }

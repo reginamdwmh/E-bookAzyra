@@ -37,8 +37,8 @@ class MasterDataAlatController extends Controller
             
         ]);
         
-        Alert::success('Success', 'Data Berhasil Disimpan',['users' => $users]);
-        return redirect()->route('indexalat');
+        Alert::success('Success', 'Data Berhasil Disimpan');
+        return redirect()->route('indexalat',['users' => $users]);
     }
 
     public function hapusalat($id_alat)
@@ -69,8 +69,8 @@ class MasterDataAlatController extends Controller
                     'nama_alat' => $request->nama_alat,
                     'harga' => $request->harga,
                  ]);
-        Alert::success('Success', 'Data Berhasil Diubah',['users' => $users]);    
-       return redirect()->route('indexalat');
+        Alert::success('Success', 'Data Berhasil Diubah');    
+       return redirect()->route('indexalat',['users' => $users]);
     }
 
     // public function lihatalat($id_alat)

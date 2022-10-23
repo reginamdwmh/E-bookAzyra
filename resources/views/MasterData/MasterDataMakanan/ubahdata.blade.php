@@ -54,6 +54,7 @@
                   @enderror 
               </div>
                 <div class="form-group text-right">
+                  <a href="/master-data/data-makanan" title="Kembali" class="btn btn-primary"><i class="fa fa-back"></i>Kembali</a>
                   <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update Data</button>
                 </div>
               </form>

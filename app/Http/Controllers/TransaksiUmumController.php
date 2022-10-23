@@ -10,6 +10,7 @@ use App\Models\MasterDataMakananModel;
 use App\Models\MasterDataPemesananModel;
 use App\Models\TransaksiUmumDetail;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\UsersModel;
 
 class TransaksiUmumController extends Controller
 {
@@ -38,10 +39,11 @@ class TransaksiUmumController extends Controller
         // return view ('Transaksi.TransaksiDataUmum.index',['transaksi_umum' => $transaksi_umum]);
 
 
-
+        $users = UsersModel::select('*')
+                ->get();
         $transaksi_umum = TransaksiUmum::with('get_transaksiumumdetail')->get();
         
-        return view('Transaksi.TransaksiDataUmum.index', compact('transaksi_umum'));
+        return view('Transaksi.TransaksiDataUmum.index', compact('transaksi_umum'),['users' => $users]);
         
 
 
@@ -58,15 +60,19 @@ class TransaksiUmumController extends Controller
     
     public function tambahtransaksiumum()
     {
+        $users = UsersModel::select('*')
+                ->get();
         $makanan = MasterDataMakananModel::all();
         $pemesanan = MasterDataPemesananModel::all();
 
-        return view('Transaksi.TransaksiDataUmum.tambahdata', compact('makanan','pemesanan'));
+        return view('Transaksi.TransaksiDataUmum.tambahdata', compact('makanan','pemesanan'),['users' => $users]);
     }
 
 
     public function simpantransaksiumum(Request $request)
     {
+        $users = UsersModel::select('*')
+                ->get();
        
         // validasi
             $transaksi_umum = $request->validate([
@@ -88,7 +94,7 @@ class TransaksiUmumController extends Controller
 
             }
             Alert::success('Success', 'Data Berhasil Disimpan');
-            return redirect()->route('indextransaksiumum');
+            return redirect()->route('indextransaksiumum',['users' => $users]);
 
     }
 
@@ -107,18 +113,21 @@ class TransaksiUmumController extends Controller
 
     public function ubahtransaksiumum($id_umum)
     {
+        $users = UsersModel::select('*')
+                ->get();
         $transaksi_umum = TransaksiUmum::with('get_transaksiumumdetail')
                 ->where('id_umum',$id_umum)
                 ->get();
         $makanan = MasterDataMakananModel::all();
         $pemesanan = MasterDataPemesananModel::all();
 
-        return view ('Transaksi.TransaksiDataUmum.ubahdata', ['transaksi_umum' => $transaksi_umum],compact('makanan','pemesanan'));
+        return view ('Transaksi.TransaksiDataUmum.ubahdata', ['transaksi_umum' => $transaksi_umum,'users' => $users],compact('makanan','pemesanan'));
     }
 
     public function updatetransaksiumum(Request $request, $id_umum)
     {
-       
+        $users = UsersModel::select('*')
+                ->get();
         // $transaksi_umum_detail = TransaksiUmumDetail::find($id_umum);
         // $transaksi_umum = TransaksiUmum::with('get_transaksiumumdetail')->find($id_umum);
         $validatedData = $request->validate([
@@ -148,7 +157,7 @@ class TransaksiUmumController extends Controller
        
 
         Alert::success('Success', 'Data Berhasil Diubah');
-        return redirect()->route('indextransaksiumum');
+        return redirect()->route('indextransaksiumum',['users' => $users]);
         
 
 

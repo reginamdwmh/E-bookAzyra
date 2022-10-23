@@ -6,25 +6,32 @@ use App\Models\MasterDataKategoriModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\UsersModel;
 
 class MasterDataKategoriController extends Controller
 {
     
     public function indexkategori()
     {
+        $users = UsersModel::select('*')
+                ->get();
          $kategori = MasterDataKategoriModel::select('*')
                  ->get();
 
-        return view('MasterData.MasterDataKategori.index',['kategori' => $kategori]);
+        return view('MasterData.MasterDataKategori.index',['kategori' => $kategori,'users' => $users]);
     }
 
     public function tambahkategori()
     {
-        return view('MasterData.MasterDataKategori.tambahdata');
+        $users = UsersModel::select('*')
+                ->get();
+        return view('MasterData.MasterDataKategori.tambahdata',['users' => $users]);
     }
 
     public function simpankategori(Request $request)
     {
+        $users = UsersModel::select('*')
+                ->get();
         $kategori = MasterDataKategoriModel::create([
             'kode_kategori' => $request->kode_kategori, 
             'nama_kategori' => $request->nama_kategori,
@@ -32,7 +39,7 @@ class MasterDataKategoriController extends Controller
         ]);
 
         Alert::success('Success', 'Data Berhasil Disimpan');
-        return redirect()->route('indexkategori');
+        return redirect()->route('indexkategori',['users' => $users]);
     }
 
     public function hapuskategori($id_kategori)
@@ -46,15 +53,19 @@ class MasterDataKategoriController extends Controller
 
     public function ubahkategori($id_kategori)
     {
+        $users = UsersModel::select('*')
+                ->get();
         $kategori = MasterDataKategoriModel::select('*')
                 ->where('id_kategori',$id_kategori)
                 ->get();
 
-        return view ('MasterData.MasterDataKategori.ubahdata', ['kategori' =>$kategori]);
+        return view ('MasterData.MasterDataKategori.ubahdata', ['kategori' =>$kategori,'users' => $users]);
     }
 
     public function updatekategori(Request $request)
     {
+        $users = UsersModel::select('*')
+                ->get();
        $kategori = MasterDataKategoriModel::where('id_kategori', $request->id_kategori)
                  ->update([
                     'kode_kategori' => $request->kode_kategori,
@@ -63,7 +74,7 @@ class MasterDataKategoriController extends Controller
                  ]);
     
         Alert::success('Success', 'Data Berhasil Diubah');
-       return redirect()->route('indexkategori');
+       return redirect()->route('indexkategori',['users' => $users]);
     }
 
     // public function lihatkategori($id_kategori)

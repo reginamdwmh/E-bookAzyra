@@ -7,27 +7,33 @@ use App\Models\MasterDataAlatModel;
 use Illuminate\Support\Facades\DB;
 use App\Models\TransaksiAlatModel;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\UsersModel;
 
 class TransaksiAlatController extends Controller
 {
     public function indextransaksialat()
     {
+        $users = UsersModel::select('*')
+                ->get();
         $transaksi_alat = TransaksiAlatModel::select('*')
                         ->get();
         
-        return view('Transaksi.TransaksiDataAlat.index',['transaksi_alat' => $transaksi_alat]);
+        return view('Transaksi.TransaksiDataAlat.index',['transaksi_alat' => $transaksi_alat,'users' => $users]);
     }
 
 
     public function tambahtransaksialat()
     {
+        $users = UsersModel::select('*')
+                ->get();
         $alat = MasterDataAlatModel::all();
-        return view('Transaksi.TransaksiDataAlat.tambahdata', compact('alat'));
+        return view('Transaksi.TransaksiDataAlat.tambahdata', compact('alat'),['users' => $users]);
     }
 
     public function simpantransaksialat(Request $request)
     {
-        
+        $users = UsersModel::select('*')
+                ->get();    
         $transaksi_alat = TransaksiAlatModel::create([
             'nama_alat' => $request->nama_alat,
             'harga' => $request->harga,
@@ -35,7 +41,7 @@ class TransaksiAlatController extends Controller
             'total' => $request->total,
         ]);
         Alert::success('Success', 'Data Berhasil Disimpan');
-        return redirect()->route('tambahtransaksialat');
+        return redirect()->route('indextransaksialat',['users' => $users]);
     }
 
     public function hapustransaksialat($id_transaksialat)
@@ -48,16 +54,20 @@ class TransaksiAlatController extends Controller
 
     public function ubahtransaksialat($id_transaksialat)
     {
+        $users = UsersModel::select('*')
+                ->get();
         $transaksi_alat = TransaksiAlatModel::select('*')
                 ->where('id_transaksialat',$id_transaksialat)
                 ->get();
         $alat = MasterDataAlatModel::all();
 
-        return view ('Transaksi.TransaksiDataAlat.ubahdata', ['transaksi_alat' => $transaksi_alat],compact('alat'));
+        return view ('Transaksi.TransaksiDataAlat.ubahdata', ['transaksi_alat' => $transaksi_alat,'users' => $users],compact('alat'));
     }
 
     public function updatetransaksialat(Request $request)
     {
+        $users = UsersModel::select('*')
+                ->get();
        $transaksi_alat = TransaksiAlatModel::where('id_transaksialat', $request->id_transaksialat)
                  ->update([
                     'nama_alat' => $request->nama_alat,
@@ -68,7 +78,7 @@ class TransaksiAlatController extends Controller
         $alat = MasterDataAlatModel::all();          
                  compact('alat');
         Alert::success('Success', 'Data Berhasil Diubah');
-       return redirect()->route('indextransaksialat');
+       return redirect()->route('indextransaksialat',['users' => $users]);
     }
 
     // public function lihattransaksialat($id_transaksialat)

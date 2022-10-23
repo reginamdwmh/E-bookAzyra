@@ -7,23 +7,28 @@ use Illuminate\Support\Facades\DB;
 use App\Models\TransaksiPenjualanMakanan;
 use App\Models\MasterDataMakananModel;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\UsersModel;
 
 class TransaksiPenjualanMakananController extends Controller
 {
     public function indexpenjualanmakanan()
     {
+        $users = UsersModel::select('*')
+        ->get();
         $transaksi_penjualan_makanan = TransaksiPenjualanMakanan::select('*')
                                     ->get();
 
 
-        return view ('Transaksi.TransaksiDataPenjualanMakanan.index',['transaksi_penjualan_makanan' => $transaksi_penjualan_makanan]);
+        return view ('Transaksi.TransaksiDataPenjualanMakanan.index',['transaksi_penjualan_makanan' => $transaksi_penjualan_makanan,'users' => $users]);
     }
 
     public function tambahpenjualanmakanan()
     {
+        $users = UsersModel::select('*')
+        ->get();
         $transaksi_penjualan_makanan = MasterDataMakananModel::all();
 
-        return view('Transaksi.TransaksiDataPenjualanMakanan.tambahdata', compact('transaksi_penjualan_makanan'));
+        return view('Transaksi.TransaksiDataPenjualanMakanan.tambahdata', compact('transaksi_penjualan_makanan'),['users' => $users]);
     }
 
 
@@ -52,7 +57,8 @@ class TransaksiPenjualanMakananController extends Controller
         //  return redirect()->route('tambahpenjualanmakanan');
 
 
-
+        $users = UsersModel::select('*')
+                ->get();
 
         $request->validate([
             'addMoreInputFields.*.nama_makanan' => 'required',
@@ -66,7 +72,7 @@ class TransaksiPenjualanMakananController extends Controller
             TransaksiPenjualanMakanan::create($value);
         }
         Alert::success('Success', 'Data Berhasil Disimpan');
-        return redirect()->route('indexpenjualanmakanan');
+        return redirect()->route('indexpenjualanmakanan',['users' => $users]);
 
 
 
@@ -92,16 +98,20 @@ class TransaksiPenjualanMakananController extends Controller
 
     public function ubahpenjualanmakanan($id_penjualan)
     {
+        $users = UsersModel::select('*')
+                ->get();
         $transaksi_penjualan_makanan = TransaksiPenjualanMakanan::select('*')
                 ->where('id_penjualan',$id_penjualan)
                 ->get();
         $makanan = MasterDataMakananModel::all();
 
-        return view ('Transaksi.TransaksiDataPenjualanMakanan.ubahdata', ['transaksi_penjualan_makanan' => $transaksi_penjualan_makanan],compact('makanan'));
+        return view ('Transaksi.TransaksiDataPenjualanMakanan.ubahdata', ['transaksi_penjualan_makanan' => $transaksi_penjualan_makanan,'users' => $users],compact('makanan'));
     }
 
     public function updatepenjualanmakanan(Request $request)
     {
+        $users = UsersModel::select('*')
+                ->get();
        $transaksi_penjualan_makanan = TransaksiPenjualanMakanan::where('id_penjualan', $request->id_penjualan)
                  ->update([
                     'nama_makanan' => $request->nama_makanan,
@@ -113,7 +123,7 @@ class TransaksiPenjualanMakananController extends Controller
         $makanan = MasterDataMakananModel::all();          
                  compact('makanan');
         Alert::success('Success', 'Data Berhasil Diubah'); 
-       return redirect()->route('indexpenjualanmakanan');
+       return redirect()->route('indexpenjualanmakanan',['users' => $users]);
     }
 
     // public function lihatpenjualanmakanan($id_penjualan)
