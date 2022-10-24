@@ -6,6 +6,7 @@ use App\Models\TransaksiUmum;
 use App\Models\TransaksiUmumDetail;
 use Barryvdh\DomPDF\Facade\PDF;
 use App\Models\UsersModel;
+use Illuminate\Support\Facades\Auth;
 
 class LaporanDataUmumController extends Controller
 {
@@ -15,7 +16,13 @@ class LaporanDataUmumController extends Controller
                  ->get();
         $transaksi_umum = TransaksiUmum::with('get_transaksiumumdetail')->get();
 
-        return view('Laporan.LaporanDataUmum.index',['transaksi_umum' => $transaksi_umum,'users' => $users]);
+        $user = Auth::user();
+        if($user->role == 'admin'){
+            return view('admin.Laporan.LaporanDataUmum.index',['transaksi_umum' => $transaksi_umum,'users' => $users]);
+        } else if($user->role == 'user'){
+            return view('Laporan.LaporanDataUmum.index',['transaksi_umum' => $transaksi_umum,'users' => $users]);
+        }  
+        
     }
 
     public function cetaklaporantransaksiumum($tglawal, $tglakhir){

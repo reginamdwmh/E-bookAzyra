@@ -1,4 +1,4 @@
-@extends('layouts.backend-dashboard.app')
+@extends('layouts.backend-admin.app')
 @section('title')
 
 @section('content')
@@ -26,7 +26,7 @@
                     </div>
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
-                        <a href="#" onclick="this.href='/laporan/data-pemesanan-online/cetak/'+document.getElementById('tglawal').value +
+                        <a href="#" onclick="this.href='/admin/laporan/data-pemesanan-online/cetak/'+document.getElementById('tglawal').value +
                         '/' + document.getElementById('tglakhir').value" target="_blank" class="btn btn-primary">
                         <i class="fa fa-print"></i>Cetak</a>
                     </div>

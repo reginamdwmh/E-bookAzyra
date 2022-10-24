@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Support\Facades\DB;
 use App\Models\UsersModel;
+use Illuminate\Support\Facades\Auth;
 
 class LaporanDataPemesananOnlineController extends Controller
 {
@@ -17,7 +18,13 @@ class LaporanDataPemesananOnlineController extends Controller
         $transaksi_pemesanan_online = TransaksiPemesananOnline::select('*')
                         ->get();
 
-        return view('Laporan.LaporanDataPemesananOnline.index', ['transaksi_pemesanan_online' => $transaksi_pemesanan_online,'users' => $users]);
+        $user = Auth::user();
+        if($user->role == 'admin'){
+            return view('admin.Laporan.LaporanDataPemesananOnline.index', ['transaksi_pemesanan_online' => $transaksi_pemesanan_online,'users' => $users]);
+        } else if($user->role == 'user'){
+            return view('Laporan.LaporanDataPemesananOnline.index', ['transaksi_pemesanan_online' => $transaksi_pemesanan_online,'users' => $users]);
+        }
+
     }
 
 

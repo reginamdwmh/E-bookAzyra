@@ -49,47 +49,7 @@
             </p>
           </a>
         </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-copy"></i>
-            <p>
-              Master Data
-              <i class="fas fa-angle-right right"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="/master-data/data-alat" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Data Alat</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/master-data/data-bahan" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Data Bahan</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/master-data/data-kategori" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Data Kategori</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/master-data/data-makanan" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Data Makanan</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/master-data/data-pemesanan" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Data Pemesanan</p>
-              </a>
-            </li>
-          </ul>
-        </li>
+        
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-edit"></i>

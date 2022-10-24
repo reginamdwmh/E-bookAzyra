@@ -39,6 +39,7 @@ Route::get('/', function () {
 
 //Route aplikasi
 
+// Route::get('transaksi_alat',['transaksi_alat'=>'LaporanDataAlatController@search','as'=>'Laporan.LaporanDataAlat.index']);
 Route::get('/login',[LoginController::class,'index']);
 Route::post('/login',[LoginController::class,'authenticate']);
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -55,6 +56,74 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/admin/users/ubah/{id}',[UsersController::class,'ubahusers'])->name('ubahusers');
     Route::post('/admin/users/update',[UsersController::class,'updateusers'])->name('updateusers');
     Route::get('/admin/users/hapus/{id}',[UsersController::class,'hapususers'])->name('hapususers');
+
+     //Tabel Kategori
+     Route::get('/master-data/data-kategori',[MasterDataKategoriController::class,'indexkategori'])->name('indexkategori');
+     Route::get('/master-data/data-kategori/tambah',[MasterDataKategoriController::class,'tambahkategori'])->name('tambahkategori');
+     Route::post('/master-data/data-kategori/simpan',[MasterDataKategoriController::class,'simpankategori'])->name('simpankategori');
+     Route::get('/master-data/data-kategori/ubah/{id_kategori}',[MasterDataKategoriController::class,'ubahkategori'])->name('ubahkategori');
+     Route::post('/master-data/data-kategori/update',[MasterDataKategoriController::class,'updatekategori'])->name('updatekategori');
+     Route::get('/master-data/data-kategori/hapus/{id_kategori}',[MasterDataKategoriController::class,'hapuskategori'])->name('hapuskategori');
+     // Route::get('/master-data/data-kategori/lihat/{id_kategori}',[MasterDataKategoriController::class,'lihatkategori'])->name('lihatkategori');
+ 
+     //Tabel Makanan
+     Route::get('/master-data/data-makanan',[MasterDataMakananController::class,'indexmakanan'])->name('indexmakanan');
+     Route::get('/master-data/data-makanan/tambah',[MasterDataMakananController::class,'tambahmakanan'])->name('tambahmakanan');
+     Route::post('/master-data/data-makanan/simpan',[MasterDataMakananController::class,'simpanmakanan'])->name('simpanmakanan');
+     Route::get('/master-data/data-makanan/ubah/{id_makanan}',[MasterDataMakananController::class,'ubahmakanan'])->name('ubahmakanan');
+     Route::post('/master-data/data-makanan/update',[MasterDataMakananController::class,'updatemakanan'])->name('updatemakanan');
+     Route::get('/master-data/data-makanan/hapus/{id_makanan}',[MasterDataMakananController::class,'hapusmakanan'])->name('hapusmakanan');
+     // Route::get('/master-data/data-makanan/lihat/{id_makanan}',[MasterDataMakananController::class,'lihatmakanan'])->name('lihatmakanan');
+ 
+     //Tabel Bahan
+     Route::get('/master-data/data-bahan',[MasterDataBahanController::class,'indexbahan'])->name('indexbahan');
+     Route::get('/master-data/data-bahan/tambah',[MasterDataBahanController::class,'tambahbahan'])->name('tambahbahan');
+     Route::post('/master-data/data-bahan/simpan',[MasterDataBahanController::class,'simpanbahan'])->name('simpanbahan');
+     Route::get('/master-data/data-bahan/ubah/{id_bahan}',[MasterDataBahanController::class,'ubahbahan'])->name('ubahbahan');
+     Route::post('/master-data/data-bahan/update',[MasterDataBahanController::class,'updatebahan'])->name('updatebahan');
+     Route::get('/master-data/data-bahan/hapus/{id_bahan}',[MasterDataBahanController::class,'hapusbahan'])->name('hapusbahan');
+     // Route::get('/master-data/data-bahan/lihat/{id_bahan}',[MasterDataBahanController::class,'lihatbahan'])->name('lihatbahan');
+ 
+     //Tabel Alat
+     Route::get('/master-data/data-alat',[MasterDataAlatController::class,'indexalat'])->name('indexalat');
+     Route::get('/master-data/data-alat/tambah',[MasterDataAlatController::class,'tambahalat'])->name('tambahalat');
+     Route::post('/master-data/data-alat/simpan',[MasterDataAlatController::class,'simpanalat'])->name('simpanalat');
+     Route::get('/master-data/data-alat/ubah/{id_alat}',[MasterDataAlatController::class,'ubahalat'])->name('ubahalat');
+     Route::post('/master-data/data-alat/update',[MasterDataAlatController::class,'updatealat'])->name('updatealat');
+     Route::get('/master-data/data-alat/hapus/{id_alat}',[MasterDataAlatController::class,'hapusalat'])->name('hapusalat');
+     // Route::get('/master-data/data-alat/lihat/{id_alat}',[MasterDataAlatController::class,'lihatalat'])->name('lihatalat');
+ 
+     //Tabel Pemesanan
+     Route::get('/master-data/data-pemesanan',[MasterDataPemesananController::class,'indexpemesanan'])->name('indexpemesanan');
+     Route::get('/master-data/data-pemesanan/tambah',[MasterDataPemesananController::class,'tambahpemesanan'])->name('tambahpemesanan');
+     Route::post('/master-data/data-pemesanan/simpan',[MasterDataPemesananController::class,'simpanpemesanan'])->name('simpanpemesanan');
+     Route::get('/master-data/data-pemesanan/ubah/{id_pemesanan}',[MasterDataPemesananController::class,'ubahpemesanan'])->name('ubahpemesanan');
+     Route::post('/master-data/data-pemesanan/update',[MasterDataPemesananController::class,'updatepemesanan'])->name('updatepemesanan');
+     Route::get('/master-data/data-pemesanan/hapus/{id_pemesanan}',[MasterDataPemesananController::class,'hapuspemesanan'])->name('hapuspemesanan');
+     // Route::get('/master-data/data-pemesanan/lihat/{id_pemesanan}',[MasterDataPemesananController::class,'lihatpemesanan'])->name('lihatpemesanan');
+
+
+     // Tabel Laporan Alat
+    Route::get('/admin/laporan/data-alat',[LaporanDataAlatController::class,'indexlaporanalat'])->name('indexlaporanalat');
+    Route::get('/admin/laporan/data-alat/cetak/{tglawal}/{tglakhir}',[LaporanDataAlatController::class,'cetaktgl'])->name('cetaktgl');
+    Route::get('/admin/laporan/data-alat/cetak/{nama_alat:id}',[LaporanDataAlatController::class,'cetaknamaalat'])->name('cetaknamaalat');
+
+    // Tabel Laporan Bahan
+    Route::get('/admin/laporan/data-bahan',[LaporanDataBahanController::class,'indexlaporanbahan'])->name('indexlaporanbahan');
+    Route::get('/admin/laporan/data-bahan/cetak/{tglawal}/{tglakhir}',[LaporanDataBahanController::class,'cetaklaporantransaksibahan'])->name('cetaklaporantransaksibahan');
+
+    // Tabel Laporan Penjualan Makanan
+    Route::get('/admin/laporan/data-penjualan-makanan',[LaporanDataPenjualanMakananController::class,'indexlaporanpenjualanmakanan'])->name('indexlaporanpenjualanmakanan');
+    Route::get('/admin/laporan/data-penjualan-makanan/cetak/{tglawal}/{tglakhir}',[LaporanDataPenjualanMakananController::class,'cetaklaporantransaksipenjualanmakanan'])->name('cetaklaporantransaksipenjualanmakanan');
+
+    //Tabel Laporan Pemesanan Online
+    Route::get('/admin/laporan/data-pemesanan-online',[LaporanDataPemesananOnlineController::class,'indexlaporanpemesananonline'])->name('indexlaporanpemesananonline');
+    Route::get('/admin/laporan/data-pemesanan-online/cetak/{tglawal}/{tglakhir}',[LaporanDataPemesananOnlineController::class,'cetaklaporantransaksipemesananonline'])->name('cetaklaporantransaksipemesananonline');
+
+    //Tabel Laporan Umum
+    Route::get('/admin/laporan/data-umum',[LaporanDataUmumController::class,'indexlaporanumum'])->name('indexlaporanumum');
+    Route::get('/admin/laporan/data-umum/cetak/{tglawal}/{tglakhir}',[LaporanDataUmumController::class,'cetaklaporantransaksiumum'])->name('cetaklaporantransaksiumum');
+
 });
 
 
@@ -62,51 +131,6 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::get('/dashboard',[DashboardController::class,'index']);
     Route::get('/contact',[ContactController::class,'index']);
-
-    //Tabel Kategori
-    Route::get('/master-data/data-kategori',[MasterDataKategoriController::class,'indexkategori'])->name('indexkategori');
-    Route::get('/master-data/data-kategori/tambah',[MasterDataKategoriController::class,'tambahkategori'])->name('tambahkategori');
-    Route::post('/master-data/data-kategori/simpan',[MasterDataKategoriController::class,'simpankategori'])->name('simpankategori');
-    Route::get('/master-data/data-kategori/ubah/{id_kategori}',[MasterDataKategoriController::class,'ubahkategori'])->name('ubahkategori');
-    Route::post('/master-data/data-kategori/update',[MasterDataKategoriController::class,'updatekategori'])->name('updatekategori');
-    Route::get('/master-data/data-kategori/hapus/{id_kategori}',[MasterDataKategoriController::class,'hapuskategori'])->name('hapuskategori');
-    // Route::get('/master-data/data-kategori/lihat/{id_kategori}',[MasterDataKategoriController::class,'lihatkategori'])->name('lihatkategori');
-
-    //Tabel Makanan
-    Route::get('/master-data/data-makanan',[MasterDataMakananController::class,'indexmakanan'])->name('indexmakanan');
-    Route::get('/master-data/data-makanan/tambah',[MasterDataMakananController::class,'tambahmakanan'])->name('tambahmakanan');
-    Route::post('/master-data/data-makanan/simpan',[MasterDataMakananController::class,'simpanmakanan'])->name('simpanmakanan');
-    Route::get('/master-data/data-makanan/ubah/{id_makanan}',[MasterDataMakananController::class,'ubahmakanan'])->name('ubahmakanan');
-    Route::post('/master-data/data-makanan/update',[MasterDataMakananController::class,'updatemakanan'])->name('updatemakanan');
-    Route::get('/master-data/data-makanan/hapus/{id_makanan}',[MasterDataMakananController::class,'hapusmakanan'])->name('hapusmakanan');
-    // Route::get('/master-data/data-makanan/lihat/{id_makanan}',[MasterDataMakananController::class,'lihatmakanan'])->name('lihatmakanan');
-
-    //Tabel Bahan
-    Route::get('/master-data/data-bahan',[MasterDataBahanController::class,'indexbahan'])->name('indexbahan');
-    Route::get('/master-data/data-bahan/tambah',[MasterDataBahanController::class,'tambahbahan'])->name('tambahbahan');
-    Route::post('/master-data/data-bahan/simpan',[MasterDataBahanController::class,'simpanbahan'])->name('simpanbahan');
-    Route::get('/master-data/data-bahan/ubah/{id_bahan}',[MasterDataBahanController::class,'ubahbahan'])->name('ubahbahan');
-    Route::post('/master-data/data-bahan/update',[MasterDataBahanController::class,'updatebahan'])->name('updatebahan');
-    Route::get('/master-data/data-bahan/hapus/{id_bahan}',[MasterDataBahanController::class,'hapusbahan'])->name('hapusbahan');
-    // Route::get('/master-data/data-bahan/lihat/{id_bahan}',[MasterDataBahanController::class,'lihatbahan'])->name('lihatbahan');
-
-    //Tabel Alat
-    Route::get('/master-data/data-alat',[MasterDataAlatController::class,'indexalat'])->name('indexalat');
-    Route::get('/master-data/data-alat/tambah',[MasterDataAlatController::class,'tambahalat'])->name('tambahalat');
-    Route::post('/master-data/data-alat/simpan',[MasterDataAlatController::class,'simpanalat'])->name('simpanalat');
-    Route::get('/master-data/data-alat/ubah/{id_alat}',[MasterDataAlatController::class,'ubahalat'])->name('ubahalat');
-    Route::post('/master-data/data-alat/update',[MasterDataAlatController::class,'updatealat'])->name('updatealat');
-    Route::get('/master-data/data-alat/hapus/{id_alat}',[MasterDataAlatController::class,'hapusalat'])->name('hapusalat');
-    // Route::get('/master-data/data-alat/lihat/{id_alat}',[MasterDataAlatController::class,'lihatalat'])->name('lihatalat');
-
-    //Tabel Pemesanan
-    Route::get('/master-data/data-pemesanan',[MasterDataPemesananController::class,'indexpemesanan'])->name('indexpemesanan');
-    Route::get('/master-data/data-pemesanan/tambah',[MasterDataPemesananController::class,'tambahpemesanan'])->name('tambahpemesanan');
-    Route::post('/master-data/data-pemesanan/simpan',[MasterDataPemesananController::class,'simpanpemesanan'])->name('simpanpemesanan');
-    Route::get('/master-data/data-pemesanan/ubah/{id_pemesanan}',[MasterDataPemesananController::class,'ubahpemesanan'])->name('ubahpemesanan');
-    Route::post('/master-data/data-pemesanan/update',[MasterDataPemesananController::class,'updatepemesanan'])->name('updatepemesanan');
-    Route::get('/master-data/data-pemesanan/hapus/{id_pemesanan}',[MasterDataPemesananController::class,'hapuspemesanan'])->name('hapuspemesanan');
-    // Route::get('/master-data/data-pemesanan/lihat/{id_pemesanan}',[MasterDataPemesananController::class,'lihatpemesanan'])->name('lihatpemesanan');
 
     //Tabel Transaksi Alat
     Route::get('/transaksi/data-alat',[TransaksiAlatController::class,'indextransaksialat'])->name('indextransaksialat');

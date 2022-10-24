@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\TransaksiBahanModel;
 use Barryvdh\DomPDF\Facade\PDF;
 use App\Models\UsersModel;
+use Illuminate\Support\Facades\Auth;
 
 class LaporanDataBahanController extends Controller
 {
@@ -17,7 +18,13 @@ class LaporanDataBahanController extends Controller
         $transaksi_bahan = TransaksiBahanModel::select('*')
                             ->get();
 
-        return view('Laporan.LaporanDataBahan.index',['transaksi_bahan' => $transaksi_bahan,'users' => $users]);
+        $user = Auth::user();
+        if($user->role == 'admin'){
+            return view('admin.Laporan.LaporanDataBahan.index',['transaksi_bahan' => $transaksi_bahan,'users' => $users]);
+        } else if($user->role == 'user'){
+            return view('Laporan.LaporanDataBahan.index',['transaksi_bahan' => $transaksi_bahan,'users' => $users]);
+        }
+        
     }
 
     public function cetaklaporantransaksibahan($tglawal, $tglakhir){

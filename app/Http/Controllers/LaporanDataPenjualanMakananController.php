@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Support\Facades\DB;
 use App\Models\UsersModel;
+use Illuminate\Support\Facades\Auth;
 
 class LaporanDataPenjualanMakananController extends Controller
 {
@@ -17,8 +18,13 @@ class LaporanDataPenjualanMakananController extends Controller
          $transaksi_penjualan_makanan = TransaksiPenjualanMakanan::select('*')
                             ->get();
 
-
-        return view('Laporan.LaporanDataPenjualanMakanan.index',['transaksi_penjualan_makanan' => $transaksi_penjualan_makanan,'users' => $users]);
+        $user = Auth::user();
+        if($user->role == 'admin'){
+            return view('admin.Laporan.LaporanDataPenjualanMakanan.index',['transaksi_penjualan_makanan' => $transaksi_penjualan_makanan,'users' => $users]);
+        } else if($user->role == 'user'){
+            return view('Laporan.LaporanDataPenjualanMakanan.index',['transaksi_penjualan_makanan' => $transaksi_penjualan_makanan,'users' => $users]);
+        }                    
+       
     }
 
 

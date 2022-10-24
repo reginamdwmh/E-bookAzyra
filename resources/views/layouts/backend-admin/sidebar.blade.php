@@ -50,6 +50,88 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>
+              Master Data
+              <i class="fas fa-angle-right right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/master-data/data-alat" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Data Alat</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/master-data/data-bahan" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Data Bahan</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/master-data/data-kategori" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Data Kategori</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/master-data/data-makanan" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Data Makanan</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/master-data/data-pemesanan" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Data Pemesanan</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-table"></i>
+            <p>
+              Laporan
+              <i class="fas fa-angle-right right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/admin/laporan/data-alat" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Laporan Alat</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/admin/laporan/data-bahan" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Laporan Bahan</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/admin/laporan/data-penjualan-makanan" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Laporan Penjualan Makanan</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/admin/laporan/data-pemesanan-online" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Laporan Pemesanan Online</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/admin/laporan/data-umum" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Laporan Umum</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
           <a href="/admin/users" class="nav-link">
             <i class="nav-icon far fa-user"></i>
             <p>

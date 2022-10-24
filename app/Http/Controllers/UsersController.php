@@ -23,7 +23,9 @@ class UsersController extends Controller
 
     public function tambahusers()
     {
-        return view('admin.users.tambahusers');
+        $users = UsersModel::select('*')
+                ->get();
+        return view('admin.users.tambahusers',['users' => $users]);
     }
 
     public function simpanusers(Request $request)
@@ -35,13 +37,11 @@ class UsersController extends Controller
             'role' => $request->role,
         ]);
         Alert::success('Success', 'Data Berhasil Disimpan');
-        return redirect()->route('index');
+        return redirect()->route('index',['users' => $users]);
     }
 
     public function hapususers($id)
     {
-        $users = UsersModel::where('id',$id)
-                ->delete();
         Alert::success('Success', 'Data Berhasil Dihapus');        
         return redirect()->route('index');
     }
@@ -65,6 +65,6 @@ class UsersController extends Controller
                     'role' => $request->role
                  ]);
         Alert::success('Success', 'Data Berhasil Diubah');
-       return redirect()->route('index');
+       return redirect()->route('index',['users' => $users]);
     }
 }

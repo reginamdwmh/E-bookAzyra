@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\TransaksiAlatModel;
 use Barryvdh\DomPDF\Facade\PDF;
 use App\Models\UsersModel;
+use Illuminate\Support\Facades\Auth;
 
 
 class LaporanDataAlatController extends Controller
@@ -18,7 +19,12 @@ class LaporanDataAlatController extends Controller
          $transaksi_alat = TransaksiAlatModel::select('*')
                             ->get();
 
+        $user = Auth::user();
+        if($user->role == 'admin'){
+            return view('admin.Laporan.LaporanDataAlat.index',['transaksi_alat' => $transaksi_alat,'users' => $users]);
+        } else if($user->role == 'user'){
         return view('Laporan.LaporanDataAlat.index',['transaksi_alat' => $transaksi_alat,'users' => $users]);
+        }
     }
 
     public function cetaktgl($tglawal, $tglakhir){
