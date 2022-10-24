@@ -36,4 +36,14 @@ class LaporanDataAlatController extends Controller
         $pdf = PDF::loadView('Laporan.LaporanDataAlat.laporanalat',['alat' => $alat]);
         return $pdf->stream('Laporan-Data-Nama-Alat-Transaksi-Alat.pdf');
     }
+
+    // public function data(Request $request, $nama_alat){
+    //     $data = TransaksiAlatModel::select([
+    //         'transaksi_alat.*',
+    //     ]);
+        
+    //     if($request->input('nama_alat')!=null){
+    //         $data = $data->where('nama_alat',$request->nama_alat);
+    //     }
+    // }
 }
