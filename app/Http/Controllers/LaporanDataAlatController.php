@@ -37,11 +37,11 @@ class LaporanDataAlatController extends Controller
         return $pdf->stream('Laporan-Data-Transaksi-Alat.pdf');    
     }
 
-    public function cetaknamaalat($id){
-        $alat= TransaksiAlatModel::where('id_transaksialat', Request::input('id_transasialat'))->get();
-        $pdf = PDF::loadView('Laporan.LaporanDataAlat.laporanalat',['alat' => $alat]);
-        return $pdf->stream('Laporan-Data-Nama-Alat-Transaksi-Alat.pdf');
-    }
+    // public function cetaknamaalat($id_transaksialat){
+    //     $alat= TransaksiAlatModel::where('id_transaksialat', Request::input('id_transasialat'))->get();
+    //     $pdf = PDF::loadView('Laporan.LaporanDataAlat.laporan-namaalat',['alat' => $alat]);
+    //     return $pdf->stream('Laporan-Data-Nama-Alat-Transaksi-Alat.pdf');
+    // }
 
     // public function data(Request $request, $nama_alat){
     //     $data = TransaksiAlatModel::select([

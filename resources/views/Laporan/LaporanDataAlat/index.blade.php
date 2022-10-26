@@ -26,18 +26,9 @@
                         <input type="date" name="tglakhir" id="tglakhir" class="form-control">
                         
                     </div>
-                    {{-- <div class="col-md-4">
-                        <label for="label">Nama Alat</label>
-                        <select id="filter-nama-alat" class="form-control filter">
-                            <option value="">-Pilih Nama Alat-</option>
-                            @foreach ($transaksi_alat as $ta)
-                                <option value="{{ $ta->nama_alat }}">{{ $ta->nama_alat }}</option>
-                            @endforeach
-                        </select>
-                    </div> --}}
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
-                        <a href="#" onclick="this.href='/laporan/data-penjualan-makanan/cetak/'+document.getElementById('tglawal').value +
+                        <a href="#" onclick="this.href='/laporan/data-alat/cetak/'+document.getElementById('tglawal').value +
                         '/' + document.getElementById('tglakhir').value" target="_blank" class="btn btn-primary">
                         <i class="fa fa-print"></i>Cetak</a>
                     </div>

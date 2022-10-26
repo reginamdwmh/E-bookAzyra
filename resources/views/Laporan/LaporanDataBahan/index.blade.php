@@ -28,7 +28,7 @@
                     </div>
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
-                        <a href="#" onclick="this.href='/laporan/data-penjualan-makanan/cetak/'+document.getElementById('tglawal').value +
+                        <a href="#" onclick="this.href='/laporan/data-bahan/cetak/'+document.getElementById('tglawal').value +
                         '/' + document.getElementById('tglakhir').value" target="_blank" class="btn btn-primary">
                         <i class="fa fa-print"></i>Cetak</a>    
                 </div>

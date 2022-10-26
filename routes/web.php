@@ -130,7 +130,11 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 
 Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::get('/dashboard',[DashboardController::class,'index']);
+    // Route::get('/user/profile/{id}',[DashboardController::class,'profile']);
+    // Route::get('/user/profile/ubah/{id}',[DashboardController::class,'ubahprofile']);
+    // Route::get('/user/profile/update',[DashboardController::class,'updateprofile']);
     Route::get('/contact',[ContactController::class,'index']);
+    
 
     //Tabel Transaksi Alat
     Route::get('/transaksi/data-alat',[TransaksiAlatController::class,'indextransaksialat'])->name('indextransaksialat');
@@ -180,7 +184,7 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
     // Tabel Laporan Alat
     Route::get('/laporan/data-alat',[LaporanDataAlatController::class,'indexlaporanalat'])->name('indexlaporanalat');
     Route::get('/laporan/data-alat/cetak/{tglawal}/{tglakhir}',[LaporanDataAlatController::class,'cetaktgl'])->name('cetaktgl');
-    Route::get('/laporan/data-alat/cetak/{nama_alat:id}',[LaporanDataAlatController::class,'cetaknamaalat'])->name('cetaknamaalat');
+    // Route::get('/laporan/data-alat/cetak/{nama_alat:id_transaksialat}',[LaporanDataAlatController::class,'cetaknamaalat'])->name('cetaknamaalat');
 
     // Tabel Laporan Bahan
     Route::get('/laporan/data-bahan',[LaporanDataBahanController::class,'indexlaporanbahan'])->name('indexlaporanbahan');
