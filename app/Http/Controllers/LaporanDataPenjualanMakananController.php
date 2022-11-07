@@ -29,11 +29,13 @@ class LaporanDataPenjualanMakananController extends Controller
 
 
     public function cetaklaporantransaksipenjualanmakanan($tglawal, $tglakhir){
+        $users = UsersModel::select('*')
+                 ->get();
         // dd(["Tanggal Awal : ".$tglawal, "Tanggal Akhir : ".$tglakhir]);
         // $transaksi_bahan = TransaksiBahanModel::whereBetween('created_at',[$tglawal, $tglakhir]);
         // return view('Laporan.LaporanDataBahan.index', compact('transaksi_bahan'));
         $tanggal = TransaksiPenjualanMakanan::wherebetween('created_at', [$tglawal, $tglakhir])->get();
-        $pdf = PDF::loadView('Laporan.LaporanDataPenjualanMakanan.laporan', ['tanggal' => $tanggal]);
+        $pdf = PDF::loadView('Laporan.LaporanDataPenjualanMakanan.laporan', ['tanggal' => $tanggal,'users' => $users]);
         return $pdf->stream('Laporan-Data-Transaksi-Penjualan-Makanan.pdf');    
     }
 }

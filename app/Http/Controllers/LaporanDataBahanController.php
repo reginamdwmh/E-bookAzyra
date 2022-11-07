@@ -28,11 +28,13 @@ class LaporanDataBahanController extends Controller
     }
 
     public function cetaklaporantransaksibahan($tglawal, $tglakhir){
+        $users = UsersModel::select('*')
+                 ->get();
         // dd(["Tanggal Awal : ".$tglawal, "Tanggal Akhir : ".$tglakhir]);
         // $transaksi_bahan = TransaksiBahanModel::whereBetween('created_at',[$tglawal, $tglakhir]);
         // return view('Laporan.LaporanDataBahan.index', compact('transaksi_bahan'));
         $tanggal = TransaksiBahanModel::wherebetween('created_at', [$tglawal, $tglakhir])->get();
-        $pdf = PDF::loadView('Laporan.LaporanDataBahan.laporan', ['tanggal' => $tanggal]);
+        $pdf = PDF::loadView('Laporan.LaporanDataBahan.laporan', ['tanggal' => $tanggal,'users' => $users]);
         return $pdf->stream('Laporan-Data-Transaksi-Bahan.pdf');    
     }
 

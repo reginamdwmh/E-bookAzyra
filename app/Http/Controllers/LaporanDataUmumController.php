@@ -26,12 +26,14 @@ class LaporanDataUmumController extends Controller
     }
 
     public function cetaklaporantransaksiumum($tglawal, $tglakhir){
+        $users = UsersModel::select('*')
+                 ->get();
         // dd(["Tanggal Awal : ".$tglawal, "Tanggal Akhir : ".$tglakhir]);
         // $transaksi_bahan = TransaksiBahanModel::whereBetween('created_at',[$tglawal, $tglakhir]);
         // return view('Laporan.LaporanDataBahan.index', compact('transaksi_bahan'));
         
         $tanggal = TransaksiUmum::with('get_transaksiumumdetail')->wherebetween('created_at', [$tglawal, $tglakhir])->get();
-        $pdf = PDF::loadView('Laporan.LaporanDataUmum.laporan', ['tanggal' => $tanggal]);
+        $pdf = PDF::loadView('Laporan.LaporanDataUmum.laporan', ['tanggal' => $tanggal,'users' => $users]);
         return $pdf->stream('Laporan-Data-Transaksi-Umum.pdf');    
     }
 }
