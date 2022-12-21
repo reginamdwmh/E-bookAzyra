@@ -61,7 +61,7 @@
                               <td>@currency($tb->harga)</td>
                               <td>{{$tb->jumlah}}</td>
                               <td>@currency($tb->total)</td>
-                              <td>{{$tb->created_at->format('d/m/Y')}}</td>
+                              <td>{{$tb->created_at->format('d F Y')}}</td>
                               
                           </tr>
                           @endforeach

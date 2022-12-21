@@ -119,17 +119,17 @@
                 $no = 1;
             @endphp
             </tr>
-            @foreach($tanggal as $tb) 
+            @foreach($tanggal as $t) 
             <tr>
                 <td><center>{{$no++}}</center></td>
-                <td><center>{{$tb->created_at->format('d/m/Y')}}</center></td>    
-                <td>{{$tb->nama_bahan}}</td>
-                <td><center>@currency($tb->harga)</center></td>
-                <td><center>{{$tb->jumlah}}</center></td>
+                <td><center>{{$t->created_at->format('d F Y')}}</center></td>    
+                <td>{{$t->nama_bahan}}</td>
+                <td><center>@currency($t->harga)</center></td>
+                <td><center>{{$t->jumlah}}</center></td>
                 @php
-                    $total_akhir += $tb->total;
+                    $total_akhir += $t->total;
                 @endphp
-                <td><center>@currency($tb->total)</center></td>
+                <td><center>@currency($t->total)</center></td>
             </tr>
             @endforeach
             <tr>

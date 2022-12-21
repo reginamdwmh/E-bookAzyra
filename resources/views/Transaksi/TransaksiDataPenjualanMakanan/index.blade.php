@@ -44,7 +44,7 @@
                             <td>{{$tpm->jumlah}}</td>
                             <td>{{$tpm->diskon}}%</td>
                             <td>@currency($tpm->total)</td>
-                            <td>{{$tpm->created_at->format('d/m/Y')}}</td>
+                            <td>{{$tpm->created_at->format('d F Y')}}</td>
                             <td>
                             {{-- <a href="/transaksi/data-penjualan-makanan/lihat/{{$tpm->id_penjualan}}" title="Lihat" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a> --}}
                             <a href="/transaksi/data-penjualan-makanan/ubah/{{$tpm->id_penjualan}}" title="Ubah" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>

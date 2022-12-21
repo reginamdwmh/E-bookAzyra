@@ -42,7 +42,7 @@
                             <td>{{$tpo->keterangan_pemesanan}}</td>
                             <td>@currency($tpo->komisi)</td>
                             <td>@currency($tpo->total)</td>
-                            <td>{{$tpo->created_at->format('d/m/Y')}}</td>
+                            <td>{{$tpo->created_at->format('d F Y')}}</td>
                             <td>
                             <a href="/transaksi/data-pemesanan-online/lihat/{{$tpo->id_online}}" title="Lihat" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
                             <a href="/transaksi/data-pemesanan-online/ubah/{{$tpo->id_online}}" title="Ubah" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>

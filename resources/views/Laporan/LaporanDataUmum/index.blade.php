@@ -70,7 +70,7 @@
                                 </ul>
                             </td>
                               <td>@currency($tu->total)</td>
-                              <td>{{$tu->created_at->format('d/m/Y')}}</td>
+                              <td>{{$tu->created_at->format('d F Y')}}</td>
                               
                           </tr>
                           @endforeach

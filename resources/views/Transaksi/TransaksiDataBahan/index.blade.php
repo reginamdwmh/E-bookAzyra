@@ -125,7 +125,7 @@
                             <td>@currency($tb->harga)</td>
                             <td>{{$tb->jumlah}}</td>
                             <td>@currency($tb->total)</td>
-                            <td>{{$tb->created_at->format('d/m/Y')}}</td>
+                            <td>{{$tb->created_at->format('d F Y')}}</td>
                             <td>
                             {{-- <a href="/transaksi/data-bahan/lihat/{{$tb->id_transaksibahan}}" title="Lihat" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a> --}}
                             <a href="/transaksi/data-bahan/ubah/{{$tb->id_transaksibahan}}" title="Ubah" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
