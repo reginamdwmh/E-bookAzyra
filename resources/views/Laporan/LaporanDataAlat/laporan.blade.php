@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{csrf_token()}}">
-    <style type="text/css">
+    <title>Data Transaksi Alat</title>
+</head>
+    {{-- <style type="text/css">
     body{
         font-family: 'Roboto Condensed', sans-serif;
     }
@@ -85,28 +87,43 @@
     .total-right p{
         padding-right:20px;
     }
-</style>
-    <title>Data Transaksi Alat</title>
-</head>
+</style> --}}
+
  
 <body>
-    <div class="form-group">
-        <p align="center"><b>LAPORAN DATA TRANSAKSI ALAT</b></p>
- 
-        <div class="w-50 float-left mt-10">
-            @foreach ($users as $u)
-                @if($u->id == Auth::user()->id)
-                <p class="m-0 pt-5 w-100">Staff / user : <span class="gray-color">{{ $u->name }}</span></p>
-                @endif
-            @endforeach
-            <p class="m-0 pt-5 w-100">Tanggal Awal : <span class="gray-color"></span></p>
-            <p class="m-0 pt-5 w-100">Tanggal Akhir : <span class="gray-color"></span></p> 
-        </div>
-        <div style="clear: both;"></div>
-                  
-        <div class="table-section bill-tbl w-100 mt-10">
-        <table class="table w-100 mt-10">
-            <tr>
+    <table border="0" align="center" width="100%">
+        <tr align="center">
+            <td>
+        <img src="{{asset ('assets/AdminLTE/dist/img/azyra.png')}}" width="120px">
+            </td>
+            <td>
+                <font style="font-size: 28px; margin-right: 120px;">AZYRA SNACK N FOOD</font> <br>
+                <font style="margin-right: 120px;" size="2">Jl. Menatos Timur No.8 Banjarbaru Utara, Kalimantan Selatan 707114</font> <br>
+            </td>
+        </tr>
+    </table>
+    <hr class="my-4">
+    <br>
+
+    <div style="text-align: center;">
+        <font size="5"><b>LAPORAN DATA TRANSAKSI ALAT</b></font><br>
+    </div>
+       
+    <br>
+    <div class="w-50 float-left mt-10">
+        @foreach ($users as $u)
+            @if($u->id == Auth::user()->id)
+            <font style="margin-right: 120px;" size="3">Staff / user : <span class="gray-color">{{ $u->name }}</span></font><br>
+            @endif
+        @endforeach
+        <font style="margin-right: 120px;" size="3">Tanggal Awal : <span class="gray-color"></span></font><br>
+        <font style="margin-right: 120px;" size="3">Tanggal Akhir : <span class="gray-color"></span></font><br>
+    </div>
+    <div style="clear: both;"></div>
+    <br>    
+    <table border="1" cellspacing="0" width="100%">
+        <thead style="background-color: #f5b2bb; text-align: center;">
+        <tr>
                 <th>No</th>
                 <th>Tanggal</th>
                 <th>Nama Alat</th>
@@ -119,6 +136,8 @@
                 $no = 1;
             @endphp
             </tr>
+        </thead>
+        <tbody>
             @foreach($tanggal as $t) 
             <tr>
                 <td><center>{{$no++}}</center></td>
@@ -134,14 +153,30 @@
             @endforeach
             <tr>
                 
-                <td colspan="5"><center>Total</center></td>
+                <td colspan="5"><center>Total Keseluruhan</center></td>
                 <td><center>Rp.{{ number_format($total_akhir) }}</center></td>
             
             </tr>
-
+        </tbody>    
         </table>
+        <br><br>
+
+        <div style="text-align: left; display: inline-block; float: right; margin-right: 50px;">
+            <label>
+                <br>
+                <p style="text-align: left;">
+                    
+                    <center>PEMILIK</center>
+                    
+                </p>
+                <br><br><br>
+                <p style="text-align: center;">
+                    <b></b><br>
+                    Siti Maisyarah, S.E<br>
+                 
+                </p>
+            </label>
         </div>
-    </div>
 </body>
 
 </html>
