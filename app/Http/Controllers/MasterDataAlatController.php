@@ -31,14 +31,19 @@ class MasterDataAlatController extends Controller
     {
         $users = UsersModel::select('*')
                 ->get();
-        $alat = MasterDataAlatModel::create([
-            'nama_alat' => $request->nama_alat,
-            'harga' => $request->harga,
-            
+
+        $request->validate([
+            'addMoreInputFields.*.nama_alat' => 'required',
+            'addMoreInputFields.*.harga' => 'required',
         ]);
         
+        foreach ($request->addMoreInputFields as $key => $value) {
+            MasterDataAlatModel::create($value);
+        }
         Alert::success('Success', 'Data Berhasil Disimpan');
         return redirect()->route('indexalat',['users' => $users]);
+
+
     }
 
     public function hapusalat($id_alat)

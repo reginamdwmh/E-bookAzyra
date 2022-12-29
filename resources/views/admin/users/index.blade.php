@@ -72,7 +72,6 @@
                             <th>ID</th>
                             <th>Nama</th>
                             <th>Email</th>
-                            <th>Password</th>
                             <th>Role</th>
                             <th>Aksi</th>
                         </tr>
@@ -85,7 +84,6 @@
                             <td>{{$u->id}}</td>
                             <td>{{$u->name}}</td>
                             <td>{{$u->email}}</td>
-                            <td>{{$u->password}}</td>
                             <td>{{$u->role}}</td>
                             <td>
                             <a href="/admin/users/ubah/{{$u->id}}" title="Ubah" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
