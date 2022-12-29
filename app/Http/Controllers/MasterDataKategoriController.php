@@ -32,12 +32,18 @@ class MasterDataKategoriController extends Controller
     {
         $users = UsersModel::select('*')
                 ->get();
-        $kategori = MasterDataKategoriModel::create([
-            'kode_kategori' => $request->kode_kategori, 
-            'nama_kategori' => $request->nama_kategori,
-            'keterangan_kategori' => $request->keterangan_kategori,
-        ]);
 
+        $request->validate([
+                'addMoreInputFields.*.kode_kategori' => 'required',
+                'addMoreInputFields.*.nama_kategori' => 'required',
+                'addMoreInputFields.*.keterangan_kategori' => 'required',
+        ]);
+        foreach ($request->addMoreInputFields as $key => $value) {
+            MasterDataKategoriModel::create($value);
+
+        }
+        dd($request);
+        
         Alert::success('Success', 'Data Berhasil Disimpan');
         return redirect()->route('indexkategori',['users' => $users]);
     }

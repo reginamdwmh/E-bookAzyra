@@ -31,13 +31,26 @@ class MasterDataPemesananController extends Controller
     {
         $users = UsersModel::select('*')
                 ->get();
-        $pemesanan = MasterDataPemesananModel::create([
-            'keterangan_pemesanan' => $request->keterangan_pemesanan,
-            'biaya_admin' => $request->biaya_admin,
-            'ongkir' => $request->ongkir,
+
+        $request->validate([
+            'addMoreInputFields.*.keterangan_pemesanan' => 'required',
+            'addMoreInputFields.*.biaya_admin' => 'required',
+            'addMoreInputFields.*.ongkir' => 'required',
         ]);
+
+        foreach ($request->addMoreInputFields as $key => $value) {
+            MasterDataPemesananModel::create($value);
+        }
+                
+        dd($request);
         Alert::success('Success', 'Data Berhasil Disimpan');
         return redirect()->route('indexpemesanan',['users' => $users]);
+    
+        $users = UsersModel::select('*')
+        ->get();
+
+
+
     }
 
     public function hapuspemesanan($id_pemesanan)

@@ -31,13 +31,21 @@ class MasterDataBahanController extends Controller
     {
         $users = UsersModel::select('*')
                 ->get();
-        $bahan = MasterDataBahanModel::create([
-            'nama_bahan' => $request->nama_bahan,
-            'harga' => $request->harga,
-            
+
+        $request->validate([
+            'addMoreInputFields.*.nama_bahan' => 'required',
+            'addMoreInputFields.*.harga' => 'required',
         ]);
+        foreach ($request->addMoreInputFields as $key => $value) {
+            MasterDataBahanModel::create($value);
+        }
+        dd($request);    
+        
         Alert::success('Success', 'Data Berhasil Disimpan');
         return redirect()->route('indexbahan',['users' => $users]);
+
+        
+        
     }
 
     public function hapusbahan($id_bahan)

@@ -41,6 +41,7 @@ class MasterDataMakananController extends Controller
             'harga' => $request->harga,
             'image' => $request->image->store('makanan-foto'),
         ]);
+
         Alert::success('Success', 'Data Berhasil Disimpan');
         return redirect()->route('indexmakanan',['users' => $users]);
     }

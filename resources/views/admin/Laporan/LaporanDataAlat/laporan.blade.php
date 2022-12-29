@@ -113,11 +113,13 @@
     <div class="w-50 float-left mt-10">
         @foreach ($users as $u)
             @if($u->id == Auth::user()->id)
-            <font style="margin-right: 120px;" size="3">Staff / user : <span class="gray-color">{{ $u->name }}</span></font><br>
+            <font style="margin-right: 120px;" size="3">Staff / user : {{ $u->name }}</font><br>
             @endif
         @endforeach
-        <font style="margin-right: 120px;" size="3">Tanggal Awal : <span class="gray-color"></span></font><br>
-        <font style="margin-right: 120px;" size="3">Tanggal Akhir : <span class="gray-color"></span></font><br>
+        @foreach ($tanggal as $t)        
+        <font style="margin-right: 120px;" size="3">Tanggal Awal : {{ $t->tglawal }}</font><br>
+        <font style="margin-right: 120px;" size="3">Tanggal Akhir : {{ $t->tglakhir }}</font><br>
+        @endforeach
     </div>
     <div style="clear: both;"></div>
     <br>    

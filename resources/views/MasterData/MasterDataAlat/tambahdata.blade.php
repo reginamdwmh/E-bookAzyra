@@ -22,18 +22,18 @@
                     <th></th>
                 </tr>
                 <tr>
-                  <td>
-                    <input type="text" name="addMoreInputFields[0][nama_alat]" placeholder="Nama Alat" class="form-control nama_alat" id="nama_alat" required="" />
-                  </td>
                     <td>
-                      <input type="text" name="addMoreInputFields[0][harga]" placeholder="harga" class="form-control harga" id="harga" required="" />
+                      <input type="text" name="addMoreInputFields[0][nama_alat]" placeholder="Nama Alat" class="form-control nama_alat" id="nama_alat" required="" />
+                    </td>
+                    <td>
+                      <input type="number" name="addMoreInputFields[0][harga]" placeholder="harga" class="form-control harga" id="harga" required="" />
                     </td>
                     <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">+</button>
                     </td>
                 </tr>
             </table>
             <div class="form-group text-right">
-              <a href="master-data/data-alat" title="Kembali" class="btn btn-primary"><i class="fa fa-back"></i>Kembali</a>
+              <a href="/master-data/data-alat" title="Kembali" class="btn btn-primary"><i class="fa fa-back"></i>Kembali</a>
               <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan Data</button>
             </div>
             </form>
@@ -49,7 +49,7 @@
     var i = 0;
     $("#dynamic-ar").click(function () {
         ++i;
-        $("#dynamicAddRemove").append('<tr> <td><input type="text" name="addMoreInputFields[' + i + '][nama_alat]" placeholder="Nama Alat" class="form-control nama_alat" id="nama_alat" required="" /></td><td><input type="text" name="addMoreInputFields[' + i + '][harga]" placeholder="harga" class="form-control harga" id="harga" required="" /></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>');
+        $("#dynamicAddRemove").append('<tr><td><input type="text" name="addMoreInputFields[' + i + '][nama_alat]" placeholder="Nama Alat" class="form-control nama_alat" id="nama_alat" required="" /></td><td><input type="text" name="addMoreInputFields[' + i + '][harga]" placeholder="harga" class="form-control harga" id="harga" required="" /></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>');
         
     });
 

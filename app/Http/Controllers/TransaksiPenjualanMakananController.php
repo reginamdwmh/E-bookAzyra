@@ -71,7 +71,7 @@ class TransaksiPenjualanMakananController extends Controller
         foreach ($request->addMoreInputFields as $key => $value) {
             TransaksiPenjualanMakanan::create($value);
         }
-        dd($request);
+        
         Alert::success('Success', 'Data Berhasil Disimpan');
         return redirect()->route('indexpenjualanmakanan',['users' => $users]);
 
