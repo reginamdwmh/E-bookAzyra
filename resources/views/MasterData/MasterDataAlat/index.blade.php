@@ -52,8 +52,8 @@
         </div>  
         
 
-
-{{--data-toggle="modal" data-target="#myModal" 
+{{-- 
+        data-toggle="modal" data-target="#myModal"
     <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">

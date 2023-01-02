@@ -31,7 +31,7 @@
               </div>
               <div class="form-group">
                 <label>Jumlah</label>
-                <input type="number" id="jumlah_harga" onkeyup="sum();" name="jumlah" class="form-control" placeholder="Jumlah" required="">
+                <input type="number" id="jumlah_item" onkeyup="sum();" name="jumlah" class="form-control" placeholder="Jumlah" required="">
               </div>
               <div class="form-group">
                 <label>Diskon</label><span style="color: red">*tulis angka tanpa persen</span>
@@ -53,7 +53,7 @@
 <script>
   function sum(){
     var harga = document.getElementById('harga_satuan').value;
-    var jumlah = document.getElementById('jumlah_harga').value;
+    var jumlah = document.getElementById('jumlah_item').value;
     var diskon = document.getElementById('diskon_makanan').value;
     var total = (parseInt(harga) * parseInt(jumlah)) - (((parseInt(harga) * parseInt(jumlah))*parseInt(diskon))/100);
 
@@ -95,6 +95,7 @@
             <form action="{{ route('simpanpenjualanmakanan') }}" method="POST">
               @csrf
               <table class="table table-bordered" id="dynamicAddRemove">
+                <thead>
                 <tr>
                     <th>Nama Makanan</th>
                     <th>Harga</th>
@@ -102,6 +103,8 @@
                     <th>Diskon<span style="color: red">*tanpa %</span></th> 
                     <th>Total</th>
                 </tr>
+              </thead>
+              <tbody>
                 <tr>
                     <td>
                       <select name="addMoreInputFields[0][nama_makanan]" data-index="0" id="nama_makanan" class="form-control nama_makanan" >
@@ -115,7 +118,7 @@
                       <input type="text" name="addMoreInputFields[0][harga]" placeholder="Enter harga" class="form-control harga_satuan" id="harga_satuan" onkeyup="sum();" />
                     </td>
                     <td>
-                      <input type="text" name="addMoreInputFields[0][jumlah]" placeholder="Enter jumlah" class="form-control jumlah_harga" id="jumlah_harga" onkeyup="sum();" />
+                      <input type="text" name="addMoreInputFields[0][jumlah]" placeholder="Enter jumlah" class="form-control jumlah_item" id="jumlah_item" onkeyup="sum();" />
                     </td>
                     <td>
                       <input type="text" name="addMoreInputFields[0][diskon]" placeholder="Enter diskon" class="form-control diskon_makanan" id="diskon_makanan" onkeyup="sum();" />
@@ -125,6 +128,7 @@
                     </td>
                     <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">+</button></td>
                 </tr>
+              </tbody>
             </table>
             <div class="form-group text-right">
               <a href="/transaksi/data-penjualan-makanan" title="Kembali" class="btn btn-primary"><i class="fa fa-back"></i>Kembali</a>
@@ -144,7 +148,7 @@
     var i = 0;
     $("#dynamic-ar").click(function () {
         ++i;
-        $("#dynamicAddRemove").append('<tr><td><select name="addMoreInputFields[' + i + '][nama_makanan]" data-index="'+ i +'" id="nama_makanan" class="form-control nama_makanan" ><option value="">-Pilih-</option>@foreach ($transaksi_penjualan_makanan as $tpm)<option value="{{ $tpm->nama_makanan }}" data-harga="{{$tpm->harga}}">{{$tpm->nama_makanan}}</option>@endforeach</select></td><td><input type="text" name="addMoreInputFields[' + i + '][harga]" placeholder="Enter subject" class="form-control harga_satuan" id="harga_satuan"  onkeyup="sum();"/></td><td><input type="text" name="addMoreInputFields[' + i + '][jumlah]" placeholder="Enter subject" class="form-control jumlah_harga" id="jumlah_harga"  onkeyup="sum();"/></td><td><input type="text" name="addMoreInputFields[' + i + '][diskon]" placeholder="Enter subject" class="form-control diskon_makanan" id="diskon_makanan"  onkeyup="sum();"/></td><td><input type="text" name="addMoreInputFields[' + i + '][total]" placeholder="Enter subject" class="form-control hasil" id="hasil"  onkeyup="sum();"/></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>'
+        $("#dynamicAddRemove").append('<tr><td><select name="addMoreInputFields[' + i + '][nama_makanan]" data-index="'+ i +'" id="nama_makanan" class="form-control nama_makanan" ><option value="">-Pilih-</option>@foreach ($transaksi_penjualan_makanan as $tpm)<option value="{{ $tpm->nama_makanan }}" data-harga="{{$tpm->harga}}">{{$tpm->nama_makanan}}</option>@endforeach</select></td><td><input type="text" name="addMoreInputFields[' + i + '][harga]" placeholder="Enter subject" class="form-control harga_satuan" id="harga_satuan"  onkeyup="sum();"/></td><td><input type="text" name="addMoreInputFields[' + i + '][jumlah]" placeholder="Enter subject" class="form-control jumlah_item" id="jumlah_item"  onkeyup="sum();"/></td><td><input type="text" name="addMoreInputFields[' + i + '][diskon]" placeholder="Enter subject" class="form-control diskon_makanan" id="diskon_makanan"  onkeyup="sum();"/></td><td><input type="text" name="addMoreInputFields[' + i + '][total]" placeholder="Enter subject" class="form-control hasil" id="hasil"  onkeyup="sum();"/></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>'
         );
         
     });
@@ -163,15 +167,25 @@
       $(".harga_satuan").eq(i).val(nb);
     });   
 
+    $('tbody').delegate('.harga_satuan,.jumlah_item,.diskon_makanan','keyup',function(){
+    var tr = $(this).parent().parent();
+    var harga = tr.find('.harga_satuan').val();
+    var jumlah = tr.find('.jumlah_item').val();
+    var diskon = tr.find('.diskon_makanan').val();
+    var total = (harga * jumlah) - (((harga * jumlah) * diskon)/100);
+    tr.find(".hasil").val(total);
+  });
 
-    function sum(){
-      var harga = document.getElementById('harga_satuan').value;
-      var jumlah = document.getElementById('jumlah_harga').value;
-      var diskon = document.getElementById('diskon_makanan').value;
-      var total = (parseInt(harga) * parseInt(jumlah)) - (((parseInt(harga) * parseInt(jumlah))*parseInt(diskon))/100);
 
-        document.getElementById('hasil').value=total;
-  };
+  //   function sum(){
+  //     var harga = document.getElementById('harga_satuan').value;
+  //     var jumlah = document.getElementById('jumlah_item').value;
+  //     var diskon = document.getElementById('diskon_makanan').value;
+  //     var total = (parseInt(harga) * parseInt(jumlah)) - (((parseInt(harga) * parseInt(jumlah))*parseInt(diskon))/100);
+
+  //       document.getElementById('hasil').value=total;
+  // };
+  
 </script>
 </section>
 
@@ -190,7 +204,7 @@
           html += "<td><select name='nama_makanan' data-makanan='baris'" + baris +" id='nama_makanan' class='form-control'><option value=''>-Pilih-</option> @foreach ($transaksi_penjualan_makanan as $tpm) <option value='{{ $tpm->nama_makanan }}' data-harga='{{$tpm->harga}}'>{{$tpm->nama_makanan}}</option> @endforeach </select>"
                     "</td>"
           html += "<td><input type='number' id='harga_satuan' data-satuan='baris'" + baris +" onkeyup='sum();' name='harga' class='form-control' placeholder='Harga' required=''></td>"
-          html += "<td><input type='number' id='jumlah_harga' onkeyup='sum();' name='jumlah' class='form-control' placeholder='Jumlah' required=''></td>"
+          html += "<td><input type='number' id='jumlah_item' onkeyup='sum();' name='jumlah' class='form-control' placeholder='Jumlah' required=''></td>"
           html += "<td><input type='number' id='diskon_makanan' onkeyup='sum();' name='diskon' class='form-control' value='0'></td>"
           html += "<td><input type='number' id='hasil' onkeyup='sum();' name='total' class='form-control' placeholder='Total' readonly></td>"
           html += "<td><button class='btn-sm btn-danger' data-row='baris'" + baris +" id='hapus'>-</button></td>"

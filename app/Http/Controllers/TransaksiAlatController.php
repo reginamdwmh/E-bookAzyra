@@ -32,16 +32,36 @@ class TransaksiAlatController extends Controller
 
     public function simpantransaksialat(Request $request)
     {
+        // $users = UsersModel::select('*')
+        //         ->get();    
+        // $transaksi_alat = TransaksiAlatModel::create([
+        //     'nama_alat' => $request->nama_alat,
+        //     'harga' => $request->harga,
+        //     'jumlah' => $request->jumlah,
+        //     'total' => $request->total,
+        // ]);
+        // Alert::success('Success', 'Data Berhasil Disimpan');
+        // return redirect()->route('indextransaksialat',['users' => $users]);
+
+
         $users = UsersModel::select('*')
-                ->get();    
-        $transaksi_alat = TransaksiAlatModel::create([
-            'nama_alat' => $request->nama_alat,
-            'harga' => $request->harga,
-            'jumlah' => $request->jumlah,
-            'total' => $request->total,
+        ->get();
+
+        $request->validate([
+            'addMoreInputFields.*.nama_alat' => 'required',
+            'addMoreInputFields.*.harga' => 'required',
+            'addMoreInputFields.*.jumlah' => 'required',
+            'addMoreInputFields.*.total' => 'required',
         ]);
+
+        foreach ($request->addMoreInputFields as $key => $value) {
+            TransaksiAlatModel::create($value);
+        }
+    
         Alert::success('Success', 'Data Berhasil Disimpan');
         return redirect()->route('indextransaksialat',['users' => $users]);
+
+
     }
 
     public function hapustransaksialat($id_transaksialat)

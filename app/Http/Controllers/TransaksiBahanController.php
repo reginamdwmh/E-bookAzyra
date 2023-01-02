@@ -37,14 +37,31 @@ class TransaksiBahanController extends Controller
 
     public function simpantransaksibahan(Request $request)
     {
+        // $users = UsersModel::select('*')
+        //         ->get();   
+        // $transaksi_bahan = TransaksiBahanModel::create([
+        //     'nama_bahan' => $request->nama_bahan,
+        //     'harga' => $request->harga,
+        //     'jumlah' => $request->jumlah,
+        //     'total' => $request->total,
+        // ]);
+        // Alert::success('Success', 'Data Berhasil Disimpan');
+        // return redirect()->route('indextransaksibahan',['users' => $users]);
+
         $users = UsersModel::select('*')
-                ->get();   
-        $transaksi_bahan = TransaksiBahanModel::create([
-            'nama_bahan' => $request->nama_bahan,
-            'harga' => $request->harga,
-            'jumlah' => $request->jumlah,
-            'total' => $request->total,
+        ->get();
+
+        $request->validate([
+            'addMoreInputFields.*.nama_bahan' => 'required',
+            'addMoreInputFields.*.harga' => 'required',
+            'addMoreInputFields.*.jumlah' => 'required',
+            'addMoreInputFields.*.total' => 'required',
         ]);
+
+        foreach ($request->addMoreInputFields as $key => $value) {
+            TransaksiBahanModel::create($value);
+        }
+        
         Alert::success('Success', 'Data Berhasil Disimpan');
         return redirect()->route('indextransaksibahan',['users' => $users]);
     }

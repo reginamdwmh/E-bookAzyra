@@ -71,50 +71,6 @@
                 </table>
             </div>
         </div> 
-
-
-
-        {{-- <script src="{{ asset ('assets/AdminLTE/plugins/jQuery-datatable/extensions/export/dataTables.buttons.min.js')}}"></script>
-        <script src="{{ asset ('assets/AdminLTE/plugins/jquery-datatable/extensions/export/buttons.flash.min.js')}}"></script>
-        <script src="{{ asset ('assets/AdminLTE/plugins/jquery-datatable/extensions/export/jszip.min.js')}}"></script>
-        <script src="{{ asset ('assets/AdminLTE/plugins/jquery-datatable/extensions/export/pdfmake.min.js')}}"></script>
-        <script src="{{ asset ('assets/AdminLTE/plugins/jquery-datatable/extensions/export/vfs_fonts.js')}}"></script>
-        <script src="{{ asset ('assets/AdminLTE/plugins/jquery-datatable/extensions/export/buttons.html5.min.js')}}"></script>
-        <script src="{{ asset ('assets/AdminLTE/plugins/jquery-datatable/extensions/export/buttons.print.min.js')}}"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
-        
-        <script type="text/javascript">
-        let nama_alat = $("#filter-nama-alat").val()
-        $(function() {
-            $("#example1").DataTable();
-            $('#example2').DataTable({
-              "paging": true,
-              "lengthChange": false,
-              "searching": false,
-              "ordering": true,
-              "info": true,
-              "autoWidth": false,
-              ajax:{
-                url:"{{ route('index') }}",
-                type: "POST",
-                data: function (d) {
-                    d.nama_alat = nama_alat;
-                    return d
-                }
-              }
-            });
-          });
-
-
-
-        $(".filter").on('change', function(){
-                nama_alat = $("#filter-nama-alat").val()
-                table.ajax.reload(null,false)
-            })
-        </script> --}}
-
-        
                   
 </section>
 @endsection
