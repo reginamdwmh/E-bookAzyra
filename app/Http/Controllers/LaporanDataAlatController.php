@@ -27,15 +27,17 @@ class LaporanDataAlatController extends Controller
         }
     }
 
-    public function cetaktgl($tglawal, $tglakhir){
+    public function cetaktgl($tglawal, $tglakhir,Request $request){
 
         $users = UsersModel::select('*')
         ->get();
         // dd(["Tanggal Awal : ".$tglawal, "Tanggal Akhir : ".$tglakhir]);
         // $transaksi_bahan = TransaksiBahanModel::whereBetween('created_at',[$tglawal, $tglakhir]);
         // return view('Laporan.LaporanDataBahan.index', compact('transaksi_bahan'));
+        $tglawal = $request->tglawal;
+        $tglakhir = $request->tglakhir;
         $tanggal = TransaksiAlatModel::wherebetween('created_at', [$tglawal, $tglakhir])->get();
-        $pdf = PDF::loadView('Laporan.LaporanDataAlat.laporan', ['tanggal' => $tanggal,'users' => $users]);
+        $pdf = PDF::loadView('Laporan.LaporanDataAlat.laporan', ['tanggal' => $tanggal,'users' => $users],compact('tglawal','tglakhir'));
         return $pdf->stream('Laporan-Data-Transaksi-Alat.pdf');    
     }
 

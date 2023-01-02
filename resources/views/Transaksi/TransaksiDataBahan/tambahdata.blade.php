@@ -104,7 +104,7 @@
               <tbody>
                 <tr>
                     <td>
-                      <select name="addMoreInputFields[0][nama_bahan]" data-index="0" id="nama_bahan" class="form-control nama_bahan" >
+                      <select name="addMoreInputFields[0][nama_bahan]" id="nama_bahan" class="form-control nama_bahan" >
                         <option value="">-Pilih-</option>
                         @foreach ($bahan as $b)
                         <option value="{{ $b->nama_bahan }}" data-harga="{{$b->harga}}">{{$b->nama_bahan}}</option>
@@ -143,7 +143,7 @@
 var i = 0;
 $("#dynamic-ar").click(function () {
     ++i;
-    $("#dynamicAddRemove").append('<tr><td><select name="addMoreInputFields[' + i + '][nama_bahan]" data-index="' + i + '" id="nama_bahan" class="form-control nama_bahan" >  <option value="">-Pilih-</option>@foreach ($bahan as $b)<option value="{{ $b->nama_bahan }}" data-harga="{{$b->harga}}">{{$b->nama_bahan}}</option>@endforeach</select></td><td><input type="number" id="harga_satuan" onkeyup="sum();" name="addMoreInputFields[' + i + '][harga]" class="form-control harga_satuan" placeholder="Harga" required=""></td><td><input type="number" id="jumlah_item" onkeyup="sum();" name="addMoreInputFields[' + i + '][jumlah]" class="form-control jumlah_item" placeholder="Jumlah" required=""></td><td><input type="number" id="hasil" onkeyup="sum();" name="addMoreInputFields[' + i + '][total]" class="form-control hasil" placeholder="Total" readonly></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>'
+    $("#dynamicAddRemove").append('<tr><td><select name="addMoreInputFields[' + i + '][nama_bahan]"  id="nama_bahan" class="form-control nama_bahan" >  <option value="">-Pilih-</option>@foreach ($bahan as $b)<option value="{{ $b->nama_bahan }}" data-harga="{{$b->harga}}">{{$b->nama_bahan}}</option>@endforeach</select></td><td><input type="number" id="harga_satuan" onkeyup="sum();" name="addMoreInputFields[' + i + '][harga]" class="form-control harga_satuan" placeholder="Harga" required=""></td><td><input type="number" id="jumlah_item" onkeyup="sum();" name="addMoreInputFields[' + i + '][jumlah]" class="form-control jumlah_item" placeholder="Jumlah" required=""></td><td><input type="number" id="hasil" onkeyup="sum();" name="addMoreInputFields[' + i + '][total]" class="form-control hasil" placeholder="Total" readonly></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>'
     );
     
 });
@@ -153,11 +153,13 @@ $(document).on('click', '.remove-input-field', function () {
 });
 
 $(document).on('change', '.nama_bahan', function() {
+  var tr = $(this).parent().parent();
   const selected = $(this).find('option:selected');
   const nb = selected.data('harga'); 
-  var i = $(this).data('index');
+  // var i = $(this).data('index');
   
-  $(".harga_satuan").eq(i).val(nb);
+  tr.find(".harga_satuan").val(nb);
+  // $(".harga_satuan").eq(i).val(nb);
 });   
 
 

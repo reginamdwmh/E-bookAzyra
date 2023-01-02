@@ -28,14 +28,17 @@ class LaporanDataPenjualanMakananController extends Controller
     }
 
 
-    public function cetaklaporantransaksipenjualanmakanan($tglawal, $tglakhir){
+    public function cetaklaporantransaksipenjualanmakanan($tglawal, $tglakhir,Request $request){
+        
         $users = UsersModel::select('*')
                  ->get();
         // dd(["Tanggal Awal : ".$tglawal, "Tanggal Akhir : ".$tglakhir]);
         // $transaksi_bahan = TransaksiBahanModel::whereBetween('created_at',[$tglawal, $tglakhir]);
         // return view('Laporan.LaporanDataBahan.index', compact('transaksi_bahan'));
+        $tglawal = $request->tglawal;
+        $tglakhir = $request->tglakhir;
         $tanggal = TransaksiPenjualanMakanan::wherebetween('created_at', [$tglawal, $tglakhir])->get();
-        $pdf = PDF::loadView('Laporan.LaporanDataPenjualanMakanan.laporan', ['tanggal' => $tanggal,'users' => $users]);
+        $pdf = PDF::loadView('Laporan.LaporanDataPenjualanMakanan.laporan', ['tanggal' => $tanggal,'users' => $users],compact('tglawal','tglakhir'));
         return $pdf->stream('Laporan-Data-Transaksi-Penjualan-Makanan.pdf');    
     }
 }

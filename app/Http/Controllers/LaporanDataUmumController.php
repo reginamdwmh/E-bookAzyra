@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\TransaksiUmum;
 use App\Models\TransaksiUmumDetail;
 use Barryvdh\DomPDF\Facade\PDF;
@@ -25,15 +26,17 @@ class LaporanDataUmumController extends Controller
         
     }
 
-    public function cetaklaporantransaksiumum($tglawal, $tglakhir){
+    public function cetaklaporantransaksiumum($tglawal, $tglakhir, Request $request){
+        
         $users = UsersModel::select('*')
                  ->get();
         // dd(["Tanggal Awal : ".$tglawal, "Tanggal Akhir : ".$tglakhir]);
         // $transaksi_bahan = TransaksiBahanModel::whereBetween('created_at',[$tglawal, $tglakhir]);
         // return view('Laporan.LaporanDataBahan.index', compact('transaksi_bahan'));
-        
+        $tglawal = $request->tglawal;
+        $tglakhir = $request->tglakhir;
         $tanggal = TransaksiUmum::with('get_transaksiumumdetail')->wherebetween('created_at', [$tglawal, $tglakhir])->get();
-        $pdf = PDF::loadView('Laporan.LaporanDataUmum.laporan', ['tanggal' => $tanggal,'users' => $users]);
+        $pdf = PDF::loadView('Laporan.LaporanDataUmum.laporan', ['tanggal' => $tanggal,'users' => $users],compact('tglawal','tglakhir'));
         return $pdf->stream('Laporan-Data-Transaksi-Umum.pdf');    
     }
 }

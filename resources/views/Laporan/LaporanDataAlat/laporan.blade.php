@@ -116,8 +116,10 @@
             <font style="margin-right: 120px;" size="3">Staff / user : <span class="gray-color">{{ $u->name }}</span></font><br>
             @endif
         @endforeach
-        <font style="margin-right: 120px;" size="3">Tanggal Awal : <span class="gray-color"></span></font><br>
-        <font style="margin-right: 120px;" size="3">Tanggal Akhir : <span class="gray-color"></span></font><br>
+            
+        <font style="margin-right: 120px;" size="3">Tanggal Awal : {{ date('d F Y', strtotime($tglawal)) }}  <span class="gray-color"></span></font><br>
+        <font style="margin-right: 120px;" size="3">Tanggal Akhir : {{ date('d F Y', strtotime($tglakhir)) }} <span class="gray-color"></span></font><br>
+        
     </div>
     <div style="clear: both;"></div>
     <br>    
@@ -165,7 +167,7 @@
             <label>
                 <br>
                 <p style="text-align: left;">
-                    
+
                     <center>PEMILIK</center>
                     
                 </p>
