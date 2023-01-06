@@ -18,7 +18,7 @@
               <table class="table table-bordered" id="dynamicAddRemove">
                 <tr>
                     <th>Keterangan Pemesanan</th>
-                    <th>Biaya Admin<span style="color: red">*tulis angka tanpa persen</span></th>
+                    <th>Biaya Admin<span style="color: red">*tulis angka tanpa %</span></th>
                     <th>Ongkir</th>
                     <th></th>
                 </tr>

@@ -117,8 +117,7 @@
             @endif
         @endforeach
             
-        <font style="margin-right: 120px;" size="3">Tanggal Awal : {{ date('d F Y', strtotime($tglawal)) }}  <span class="gray-color"></span></font><br>
-        <font style="margin-right: 120px;" size="3">Tanggal Akhir : {{ date('d F Y', strtotime($tglakhir)) }} <span class="gray-color"></span></font><br>
+        <font style="margin-right: 120px;" size="3">Tanggal Cut Off : {{ date('d F Y', strtotime($tglawal)) }} s/d {{ date('d F Y', strtotime($tglakhir)) }} <span class="gray-color"></span></font><br>
         
     </div>
     <div style="clear: both;"></div>

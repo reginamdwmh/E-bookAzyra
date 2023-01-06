@@ -177,7 +177,7 @@ $(document).ready(function(){
                 <tr>
                   <th>Mitra</th>
                   <th>Pemesanan</th>
-                  <th><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">+</button></th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -193,6 +193,7 @@ $(document).ready(function(){
                   <td>
                     <input type="number" id="jumlah_pemesanan" name="addMoreInputFields[0][jumlah_pemesanan]" class="form-control" placeholder="Jumlah Pemesanan" required="">
                   </td>
+                  <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">+</button></td>
                 </tr>
               </tbody>
           </table>

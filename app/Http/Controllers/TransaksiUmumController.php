@@ -44,16 +44,6 @@ class TransaksiUmumController extends Controller
         $transaksi_umum = TransaksiUmum::with('get_transaksiumumdetail')->get();
         
         return view('Transaksi.TransaksiDataUmum.index', compact('transaksi_umum'),['users' => $users]);
-        
-
-
-       // $transaksi_umum = TransaksiUmum::select('*')
-        // ->get();
-        
-        // $transaksi_umum_detail = TransaksiUmumDetail::with('get_transaksiumum')
-        // ->get();
-        
-        // return view ('Transaksi.TransaksiDataUmum.index',['transaksi_umum' => $transaksi_umum,  'transaksi_umum_detail' => $transaksi_umum_detail]);
 
         
     }
