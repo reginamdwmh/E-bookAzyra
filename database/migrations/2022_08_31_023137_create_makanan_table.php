@@ -18,7 +18,7 @@ class CreateMakananTable extends Migration
             $table->string('nama_kategori');
             $table->string('nama_makanan');
             $table->integer('harga');
-            $table->string('foto');
+            $table->string('image');
             $table->timestamps();
         });
     }

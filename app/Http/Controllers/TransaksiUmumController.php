@@ -80,12 +80,9 @@ class TransaksiUmumController extends Controller
             foreach ($request->addMoreInputFields as $key => $value) {
                 $value['id_umum'] = $TransaksiUmum->id_umum; 
                 TransaksiUmumDetail::create($value);
-                
-
             }
             Alert::success('Success', 'Data Berhasil Disimpan');
             return redirect()->route('indextransaksiumum',['users' => $users]);
-
     }
 
 
@@ -118,56 +115,33 @@ class TransaksiUmumController extends Controller
     {
         $users = UsersModel::select('*')
                 ->get();
-        // $transaksi_umum_detail = TransaksiUmumDetail::find($id_umum);
-        // $transaksi_umum = TransaksiUmum::with('get_transaksiumumdetail')->find($id_umum);
-        $validatedData = $request->validate([
+
+        $transaksi_umum_detail = TransaksiUmumDetail::where('id_umum', $id_umum)
+                            ->delete();
+        $transaksi_umum = TransaksiUmum::where('id_umum',$id_umum)
+                            ->delete();
+        
+        // validasi
+        $transaksi_umum = $request->validate([
             'nama_makanan' => 'required',
             'harga' => 'required',
             'jumlah_penjualan' => 'required',
             'addMoreInputFields.*.keterangan_pemesanan' => 'required',
             'addMoreInputFields.*.jumlah_pemesanan' => 'required',
             'total' => 'required',
-        ]);     
-        
-        
-        // dd($validatedData);
-        unset($validatedData['addMoreInputFields']);
-       
-        $TransaksiUmum = TransaksiUmum::where('id_umum', $request->id_umum)
-            ->update($validatedData);
+        ]);
 
+        $TransaksiUmum = TransaksiUmum::create($transaksi_umum);
 
-            
-            foreach ($request->addMoreInputFields as $key => $value) {
-                
-                // $value['id_umum'] = $TransaksiUmum->id_umum; 
-            TransaksiUmumDetail::where('id_umum', $request->id_umum)
-                ->update($value);
-            }
-       
+        foreach ($request->addMoreInputFields as $key => $value) {
+            $value['id_umum'] = $TransaksiUmum->id_umum; 
+            TransaksiUmumDetail::create($value);
+        }
 
         Alert::success('Success', 'Data Berhasil Diubah');
         return redirect()->route('indextransaksiumum',['users' => $users]);
         
-
-
-
-
-    //    $transaksi_umum = TransaksiUmum::where('id_umum', $request->id_umum)
-    //              ->update([
-    //                 'nama_makanan' => $request->nama_makanan,
-    //                 'harga' => $request->harga,
-    //                 'jumlah_penjualan' => $request->jumlah_penjualan,
-    //                 'keterangan_pemesanan' => $request->keterangan_pemesanan,
-    //                 'jumlah_pemesanan' => $request->jumlah_pemesanan,
-    //                 'total' => $request->total,
-    //              ]);
-    //     $makanan = MasterDataMakananModel::all(); 
-    //     $pemesanan = MasterDataPemesananModel::all();         
-    //              compact('makanan','pemesanan');
-    
-    //    return redirect()->route('indextransaksiumum');
-
+    }
 
 
     // public function lihattransaksiumum($id_umum)
@@ -179,5 +153,5 @@ class TransaksiUmumController extends Controller
 
     //     return view ('Transaksi.TransaksiDataUmum.lihatdata', ['transaksi_umum' => $transaksi_umum],compact('transaksi_umum_detail'));
     // }
-    }
+    
 }

@@ -56,7 +56,7 @@
     $(document).on('click', '.remove-input-field', function () {
         $(this).parents('tr').remove();
     });
-zz
+
     // var rupiah = document.getElementById('rupiah');
 		// rupiah.addEventListener('keyup', function(e){
 		// 	// tambahkan 'Rp.' pada saat form di ketik

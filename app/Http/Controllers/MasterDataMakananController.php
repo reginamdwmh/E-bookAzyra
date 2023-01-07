@@ -51,7 +51,7 @@ class MasterDataMakananController extends Controller
             $item['image'] = $item['image']->store('makanan-foto');
         }
 
-        foreach ($request->addMoreInputFields as $key => $value) {
+        foreach ($validatedData['addMoreInputFields'] as $key => $value) {
             MasterDataMakananModel::create($value);
         }
 
