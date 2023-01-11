@@ -39,7 +39,7 @@
              <hr class="my-4">
               <div class="row g-3">
               <div class="col-sm-4">
-                <label>Biaya Admin</label><span style="color: red">*tulis angka tanpa persen</span>
+                <label>Biaya Admin</label><span style="color: red">*tanpa %</span>
                 <input type="number" id="admin" onkeyup="sum();" name="biaya_admin" class="form-control" value="0">
               </div>
               <div class="col-sm-4">
