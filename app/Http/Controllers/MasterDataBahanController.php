@@ -39,7 +39,7 @@ class MasterDataBahanController extends Controller
         foreach ($request->addMoreInputFields as $key => $value) {
             MasterDataBahanModel::create($value);
         }
-        dd($request);    
+       
         
         Alert::success('Success', 'Data Berhasil Disimpan');
         return redirect()->route('indexbahan',['users' => $users]);

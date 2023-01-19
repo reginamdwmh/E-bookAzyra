@@ -17,7 +17,8 @@
               <form method="post" action="{{route('updatepemesananonline')}}">
                 @csrf
                 <input type="hidden" name="id_online" value="{{$tpo->id_online}}">
-                <div class="form-group">
+                <div class="row g-3">
+                  <div class="col-sm-4">
                   <label>Keterangan_Pemesanan</label>
                   <select name="keterangan_pemesanan" id="keterangan_pemesanan" class="form-control">
                     <option value="">-Pilih-</option>
@@ -30,33 +31,42 @@
                     @endforeach
                   </select>
                 </div>
-                <div class="form-group">
+                <div class="col-sm-4">
                   <label>Kode Pemesanan</label>
                   <input type="text" id="kode_pemesanan" name="kode_pemesanan" class="form-control" placeholder="Kode Pemesanan" value="{{$tpo->kode_pemesanan}}">
                 </div>
-                <div class="form-group">
+                <div class="col-sm-4">
                   <label>Jumlah</label>
                   <input type="number" id="jumlah_harga" onkeyup="sum();" name="jumlah" class="form-control" placeholder="Jumlah" required="" value="{{$tpo->jumlah}}">
                 </div>
-                <div class="form-group">
-                  <label>---Komisi Pemesanan Melalui Aplikasi---</label>
                 </div>
-                <div class="form-group">
+
+
+
+              <hr class="my-4">
+                <div class="row g-3">
+                <div class="col-sm-4">
                   <label>Biaya Admin</label><span style="color: red">*tulis angka tanpa persen</span>
                   <input type="number" id="admin" onkeyup="sum();" name="biaya_admin" class="form-control" value="{{$tpo->biaya_admin}}">
                 </div>
-                <div class="form-group">
+                <div class="col-sm-4">
                   <label>Ongkir</label>
                   <input type="number" id="biaya_ongkir" onkeyup="sum();" name="ongkir" class="form-control" value="{{$tpo->ongkir}}">
                 </div>
-                <div class="form-group">
+                <div class="col-sm-4">
                   <label>Komisi</label>
                   <input type="number" id="komisi" onkeyup="sum();" name="komisi" class="form-control" placeholder="Komisi" value="{{$tpo->komisi}}" readonly>
                 </div>
-                <div class="form-group">
+                </div>
+
+                <hr class="my-4">
+                <div class="row g-3">
+                  <div class="col-sm-4">
                   <label>Pendapatan</label>
                   <input type="number" id="hasil" onkeyup="sum();" name="total" class="form-control" placeholder="Total" value="{{$tpo->total}}" readonly>
                 </div>   
+                </div>
+                   
                 <div class="form-group text-right">
                   <a href="/transaksi/data-pemesanan-online" title="Kembali" class="btn btn-primary"><i class="fa fa-back"></i>Kembali</a>
                   <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update Data</button>

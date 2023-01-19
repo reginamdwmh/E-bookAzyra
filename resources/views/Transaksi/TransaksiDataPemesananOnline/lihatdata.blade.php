@@ -21,24 +21,16 @@
               <input type="hidden" name="id_online" value="{{$tpo->id_online}}">
               <div class="form-group">
                 <label>Keterangan Pemesanan</label>
-                <select name="keterangan_pemesanan" id="keterangan_pemesanan" class="form-control">
-                  <option value="">-Pilih-</option>
-                  @foreach($online as $o)
-                  @if(old('keterangan_pemesanan', $tpo->keterangan_pemesanan == $o->keterangan_pemesanan))
-                  <option value="{{ $o->keterangan_pemesanan }}" selected>{{$o->keterangan_pemesanan}}</option>
-                  @else
-                   <option value="{{ $o->keterangan_pemesanan }}" >{{$o->keterangan_pemesanan}}</option>
-                  @endif
-                  @endforeach
-                </select>
+                <label>Kode Pemesanan</label>
+                <input type="text" id="keterangan_pemesanan" name="keterangan_pemesanan" class="form-control"  value="{{$tpo->keterangan_pemesanan}}" readonly>
               </div>
               <div class="form-group">
                 <label>Kode Pemesanan</label>
-                <input type="text" id="kode_pemesanan" name="kode_pemesanan" class="form-control" placeholder="Kode Pemesanan" value="{{$tpo->kode_pemesanan}}" readonly>
+                <input type="text" id="kode_pemesanan" name="kode_pemesanan" class="form-control"  value="{{$tpo->kode_pemesanan}}" readonly>
               </div>
               <div class="form-group">
                 <label>Jumlah</label>
-                <input type="number" id="jumlah_harga" name="jumlah" class="form-control" placeholder="Jumlah" value="{{$tpo->jumlah}}"  readonly>
+                <input type="number" id="jumlah_harga" name="jumlah" class="form-control"  value="{{$tpo->jumlah}}"  readonly>
               </div>
  
               <div class="form-group text-right">
@@ -87,6 +79,5 @@
 </div>
 
 </section>
-
 
 @endsection

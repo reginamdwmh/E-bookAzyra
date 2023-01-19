@@ -42,7 +42,7 @@ class MasterDataKategoriController extends Controller
             MasterDataKategoriModel::create($value);
 
         }
-        dd($request);
+        
         
         Alert::success('Success', 'Data Berhasil Disimpan');
         return redirect()->route('indexkategori',['users' => $users]);

@@ -42,7 +42,7 @@ class MasterDataPemesananController extends Controller
             MasterDataPemesananModel::create($value);
         }
                 
-        dd($request);
+        
         Alert::success('Success', 'Data Berhasil Disimpan');
         return redirect()->route('indexpemesanan',['users' => $users]);
     
