@@ -26,7 +26,7 @@
                     @if(old('keterangan_pemesanan', $tpo->keterangan_pemesanan == $o->keterangan_pemesanan))
                     <option value="{{ $o->keterangan_pemesanan }}" selected>{{$o->keterangan_pemesanan}}</option>
                     @else
-                     <option value="{{ $o->keterangan_pemesanan }}" data-biaya_admin="{{$tpo->biaya_admin}}" data-ongkir="{{$tpo->ongkir}}">{{$o->keterangan_pemesanan}}</option>
+                     <option value="{{ $o->keterangan_pemesanan }}" data-biaya_admin="{{$o->biaya_admin}}" data-ongkir="{{$o->ongkir}}">{{$o->keterangan_pemesanan}}</option>
                     @endif
                     @endforeach
                   </select>
@@ -66,7 +66,7 @@
                   <input type="number" id="hasil" onkeyup="sum();" name="total" class="form-control" placeholder="Total" value="{{$tpo->total}}" readonly>
                 </div>   
                 </div>
-                   
+
                 <div class="form-group text-right">
                   <a href="/transaksi/data-pemesanan-online" title="Kembali" class="btn btn-primary"><i class="fa fa-back"></i>Kembali</a>
                   <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update Data</button>
