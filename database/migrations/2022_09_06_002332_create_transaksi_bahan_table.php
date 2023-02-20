@@ -15,7 +15,6 @@ class CreateTransaksiBahanTable extends Migration
     {
         Schema::create('transaksi_bahan', function (Blueprint $table) {
             $table->increments('id_transaksibahan');
-            $table->integer('id_bahan');
             $table->string('nama_bahan');
             $table->integer('harga');
             $table->integer('jumlah');

@@ -18,7 +18,7 @@ class CreateTransaksiPenjualanMakananTable extends Migration
             $table->string('nama_makanan');
             $table->string('harga');
             $table->string('jumlah');
-            $table->string('diskon')->nullable;
+            $table->string('diskon');
             $table->string('total');
             $table->timestamps();
         });

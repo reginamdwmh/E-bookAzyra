@@ -18,9 +18,9 @@ class CreateTransaksiPemesananOnline extends Migration
             $table->string('kode_pemesanan');
             $table->string('keterangan_pemesanan');
             $table->integer('jumlah');
-            $table->integer('biaya_admin')->nullable;
-            $table->integer('ongkir')->nullable;
-            $table->integer('komisi')->nullable;
+            $table->integer('biaya_admin');
+            $table->integer('ongkir');
+            $table->integer('komisi');
             $table->integer('total');
             $table->timestamps();
         });
