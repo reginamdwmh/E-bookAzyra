@@ -69,7 +69,7 @@
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>No</th>
                             <th>Nama</th>
                             <th>Email</th>
                             <th>Role</th>
@@ -78,10 +78,12 @@
                     
                     </thead>
                     <tbody>
-                        
+                        @php
+                        $no = 1;
+                        @endphp
                         @foreach($users as $u) 
                         <tr>
-                            <td>{{$u->id}}</td>
+                            <td>{{$no++}}</td>
                             <td>{{$u->name}}</td>
                             <td>{{$u->email}}</td>
                             <td>{{$u->role}}</td>
