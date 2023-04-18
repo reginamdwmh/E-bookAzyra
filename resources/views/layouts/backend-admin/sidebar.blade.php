@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <a href="/dashboard" class="brand-link">
       <img src="{{ asset('assets/AdminLTE/dist/img/azyra.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-dark">E-Book</span>
+      <span class="brand-text font-weight-dark">LogBook</span>
     </a>
 
 <!-- Sidebar -->

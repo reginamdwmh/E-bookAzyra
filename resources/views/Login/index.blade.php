@@ -28,7 +28,7 @@
 				<div class="login-logo">
 					<a href="#">
 						<font color="black">
-							<b>E-Book Azyra</b>
+							<b>LogBook Azyra</b>
 						</font>
 					</a>
 				</div>

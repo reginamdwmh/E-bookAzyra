@@ -78,6 +78,16 @@ class MasterDataAlatController extends Controller
        return redirect()->route('indexalat',['users' => $users]);
     }
 
+    public function indexstokalat()
+    {
+        $users = UsersModel::select('*')
+                ->get();
+                $stok = MasterDataAlatModel::join('stok_alat','alat.id_alat','=','stok_alat.id_alat')
+                ->get(['alat.nama_alat','stok_alat.stok_masuk','stok_alat.stok_keluar']);
+
+        return view('Stok.StokAlat.index',['stok' => $stok,'users' => $users]);
+    }
+
     // public function lihatalat($id_alat)
     // {
     //     $alat = MasterDataAlatModel::select('*')

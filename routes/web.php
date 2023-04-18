@@ -181,6 +181,9 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::get('/transaksi/data-umum/hapus/{id_umum}',[TransaksiUmumController::class,'hapustransaksiumum'])->name('hapustransaksiumum');
     // Route::get('/transaksi/data-umum/lihat/{id_umum}',[TransaksiUmumController::class,'lihattransaksiumum'])->name('lihattransaksiumum');
 
+    // Menu Stok
+    Route::get('/stok/stok-alat',[MasterDataAlatController::class,'indexstokalat'])->name('indexstokalat');
+
     // Tabel Laporan Alat
     Route::get('/laporan/data-alat',[LaporanDataAlatController::class,'indexlaporanalat'])->name('indexlaporanalat');
     Route::get('/laporan/data-alat/cetak/{tglawal}/{tglakhir}',[LaporanDataAlatController::class,'cetaktgl'])->name('cetaktgl');

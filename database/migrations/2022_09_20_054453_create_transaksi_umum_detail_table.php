@@ -14,13 +14,16 @@ class CreateTransaksiUmumDetailTable extends Migration
     public function up()
     {
         Schema::create('transaksi_umum_detail', function (Blueprint $table) {
-            // $table->bigIncrements('id_transaksi_umum_detail');
-            // // $table->integer('id_umum');
-            // $table->foreign('id_umum')->references('id_umum')->on('transaksi_umum');
-            // $table->string('keterangan_pemesanan');
-            // $table->integer('jumlah_pemesanan');
-            // $table->timestamps();
+            $table->bigIncrements('id_transaksi_umum_detail');
+            $table->integer('id_umum');
+            $table->string('keterangan_pemesanan');
+            $table->integer('jumlah_pemesanan');
+            $table->timestamps();
         });
+        Schema::create('transaksi_umum_detail', function (Blueprint $table) {
+            $table->foreign('id_umum')->references('id_umum')->on('transaksi_umum');
+        });
+
 
     }
 

@@ -101,6 +101,10 @@ class TransaksiAlatController extends Controller
        return redirect()->route('indextransaksialat',['users' => $users]);
     }
 
+    
+
+
+
     // public function lihattransaksialat($id_transaksialat)
     // {
     //     $transaksi_alat = TransaksiAlatModel::select('*')
