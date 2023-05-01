@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\MasterDataMakananModel;
 use App\Models\MasterDataKategoriModel;
+use App\Models\MasterDataAlatModel;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -28,7 +29,8 @@ class MasterDataMakananController extends Controller
         $users = UsersModel::select('*')
                 ->get();
         $kategori = MasterDataKategoriModel::all();
-        return view('MasterData.MasterDataMakanan.tambahdata', compact('kategori'),['users' => $users]);
+        $alat = MasterDataAlatModel::all();
+        return view('MasterData.MasterDataMakanan.tambahdata', compact('kategori','alat'),['users' => $users]);
     }
 
     public function simpanmakanan(Request $request)
@@ -38,6 +40,7 @@ class MasterDataMakananController extends Controller
 
         $validatedData = $request->validate([
             'addMoreInputFields.*.nama_kategori' => 'required',
+            'addMoreInputFields.*.id_alat' => 'required',
             'addMoreInputFields.*.nama_makanan' => 'required',
             'addMoreInputFields.*.harga' => 'required',
             'addMoreInputFields.*.image' => 'image|file',

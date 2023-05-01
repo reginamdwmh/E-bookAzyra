@@ -46,15 +46,29 @@ class TransaksiAlatController extends Controller
 
         $users = UsersModel::select('*')
         ->get();
-
+        
         $request->validate([
             'addMoreInputFields.*.nama_alat' => 'required',
             'addMoreInputFields.*.harga' => 'required',
             'addMoreInputFields.*.jumlah' => 'required',
             'addMoreInputFields.*.total' => 'required',
         ]);
-
+        
         foreach ($request->addMoreInputFields as $key => $value) {
+            $stok = DB::table('stok_alat')->selectRaw('*')->where([['id_alat', $value['id_alat']]])->get();
+            if(count($stok) == 0){
+                DB::table('stok_alat')->insert([
+                    [
+                        'id_alat' => $value['id_alat'],
+                        'stok_masuk' => $value['jumlah'],
+                        'stok_keluar' => 0,
+                        'created_at' => date('Y-m-d H:i:s'),
+                        'updated_at' => date('Y-m-d H:i:s')
+                    ]
+                ]);
+            }else{
+                DB::table('stok_alat')->where([['id_alat', $value['id_alat']]])->update(['stok_masuk' => $stok[0]->stok_masuk + intval(str_replace(",", "", $value['jumlah']))]);
+            }
             TransaksiAlatModel::create($value);
         }
     

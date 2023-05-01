@@ -10,6 +10,6 @@ class MasterDataMakananModel extends Model
     use HasFactory;
     protected $table ='makanan';
     protected $primaryKey = 'id_makanan';
-    protected $fillable = ['nama_kategori','nama_makanan','harga','image'];
+    protected $fillable = ['nama_kategori','id_alat','nama_makanan','harga','image'];
 
 }

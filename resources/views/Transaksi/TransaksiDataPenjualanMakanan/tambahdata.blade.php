@@ -98,6 +98,7 @@
                 <thead>
                 <tr>
                     <th>Nama Makanan</th>
+                    <th style="display:none">ID Alat</th>
                     <th>Harga</th>
                     <th>Jumlah</th>
                     <th>Diskon<span style="color: red">*tanpa %</span></th> 
@@ -110,9 +111,12 @@
                       <select name="addMoreInputFields[0][nama_makanan]" id="nama_makanan" class="form-control nama_makanan" >
                         <option value="">-Pilih-</option>
                         @foreach ($transaksi_penjualan_makanan as $tpm)
-                        <option value="{{ $tpm->nama_makanan }}" data-harga="{{$tpm->harga}}">{{$tpm->nama_makanan}}</option>
+                        <option value="{{ $tpm->nama_makanan }}" data-harga="{{$tpm->harga}}" data-alat="{{ $tpm->id_alat }}">{{$tpm->nama_makanan}}</option>
                         @endforeach
                       </select>
+                    </td>
+                    <td style="display:none">
+                      <input type="text" name="addMoreInputFields[0][id_alat]" placeholder="ID ALAT" class="form-control id_alat" id="id_alat" />
                     </td>
                     <td>
                       <input type="text" name="addMoreInputFields[0][harga]" placeholder="Enter harga" class="form-control harga_satuan" id="harga_satuan" onkeyup="sum();" />
@@ -148,7 +152,7 @@
     var i = 0;
     $("#dynamic-ar").click(function () {
         ++i;
-        $("#dynamicAddRemove").append('<tr><td><select name="addMoreInputFields[' + i + '][nama_makanan]" id="nama_makanan" class="form-control nama_makanan" ><option value="">-Pilih-</option>@foreach ($transaksi_penjualan_makanan as $tpm)<option value="{{ $tpm->nama_makanan }}" data-harga="{{$tpm->harga}}">{{$tpm->nama_makanan}}</option>@endforeach</select></td><td><input type="text" name="addMoreInputFields[' + i + '][harga]" placeholder="Enter subject" class="form-control harga_satuan" id="harga_satuan"  onkeyup="sum();"/></td><td><input type="text" name="addMoreInputFields[' + i + '][jumlah]" placeholder="Enter subject" class="form-control jumlah_item" id="jumlah_item"  onkeyup="sum();"/></td><td><input type="text" name="addMoreInputFields[' + i + '][diskon]" placeholder="Enter subject" class="form-control diskon_makanan" id="diskon_makanan"  onkeyup="sum();"/></td><td><input type="text" name="addMoreInputFields[' + i + '][total]" placeholder="Enter subject" class="form-control hasil" id="hasil"  onkeyup="sum();" readonly/></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>'
+        $("#dynamicAddRemove").append('<tr><td><select name="addMoreInputFields[' + i + '][nama_makanan]" id="nama_makanan" class="form-control nama_makanan" ><option value="">-Pilih-</option>@foreach ($transaksi_penjualan_makanan as $tpm)<option value="{{ $tpm->nama_makanan }}" data-harga="{{$tpm->harga}}" data-alat="{{ $tpm->id_alat }}">{{$tpm->nama_makanan}}</option>@endforeach</select></td><td style="display:none"><input type="text" name="addMoreInputFields[' + i + '][id_alat]" placeholder="ID ALAT" class="form-control id_alat" id="id_alat" /></td><td><input type="text" name="addMoreInputFields[' + i + '][harga]" placeholder="Enter subject" class="form-control harga_satuan" id="harga_satuan"  onkeyup="sum();"/></td><td><input type="text" name="addMoreInputFields[' + i + '][jumlah]" placeholder="Enter subject" class="form-control jumlah_item" id="jumlah_item"  onkeyup="sum();"/></td><td><input type="text" name="addMoreInputFields[' + i + '][diskon]" placeholder="Enter subject" class="form-control diskon_makanan" id="diskon_makanan"  onkeyup="sum();"/></td><td><input type="text" name="addMoreInputFields[' + i + '][total]" placeholder="Enter subject" class="form-control hasil" id="hasil"  onkeyup="sum();" readonly/></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>'
         );
         
     });
@@ -163,9 +167,11 @@
       var tr = $(this).parent().parent();
       const selected = $(this).find('option:selected');
       const nb = selected.data('harga'); 
+      const alat = selected.data('alat'); 
       // var i = $(this).data('index');
       
       tr.find(".harga_satuan").val(nb);
+      tr.find(".id_alat").val(alat);
       // $(".harga_satuan").eq(i).val(nb);
     });   
 

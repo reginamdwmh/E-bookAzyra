@@ -18,6 +18,7 @@
               <table class="table table-bordered" id="dynamicAddRemove">
                 <tr>
                     <th>Kategori Makanan</th>
+                    <th>Alat</th>
                     <th>Nama Makanan</th>
                     <th>Harga</th>
                     <th>Foto</th>
@@ -29,6 +30,14 @@
                         <option value="">-Pilih-</option>
                         @foreach ($kategori as $k)
                         <option value="{{ $k->nama_kategori }}">{{$k->nama_kategori}}</option>
+                        @endforeach
+                      </select>
+                    </td>
+                    <td>
+                      <select name="addMoreInputFields[0][id_alat]" class="form-control" >
+                        <option value="">-Pilih-</option>
+                        @foreach ($alat as $a)
+                        <option value="{{ $a->id_alat }}">{{$a->nama_alat}}</option>
                         @endforeach
                       </select>
                     </td>
