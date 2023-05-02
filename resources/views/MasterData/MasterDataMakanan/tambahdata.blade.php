@@ -107,10 +107,10 @@
     var i = 0;
     $("#dynamic-ar").click(function () {
         ++i;
-        $("#dynamicAddRemove").append('<tr><td><select name="addMoreInputFields[' + i + '][nama_kategori]" class="form-control" ><option value="">-Pilih-</option>@foreach ($kategori as $k)<option value="{{ $k->nama_kategori }}">{{$k->nama_kategori}}</option>@endforeach</select></td><td><input type="text" id="nama_makanan" name="addMoreInputFields[' + i + '][nama_makanan]" class="form-control" placeholder="Makanan" required=""></td><td><input type="number" id="harga" name="addMoreInputFields[' + i + '][harga]" class="form-control" placeholder="Harga" required=""></td><td><input type="file" name="addMoreInputFields[' + i + '][image]" required=""><p class="help-block"><font color="red">"Format file Jpg/Png"</font></p></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>');
+        $("#dynamicAddRemove").append('<tr><td><select name="addMoreInputFields[' + i + '][nama_kategori]" class="form-control" >  <option value="">-Pilih-</option>  @foreach ($kategori as $k)  <option value="{{ $k->nama_kategori }}">{{$k->nama_kategori}}</option>  @endforeach</select></td><td><select name="addMoreInputFields[' + i + '][id_alat]" class="form-control" >  <option value="">-Pilih-</option>  @foreach ($alat as $a)  <option value="{{ $a->id_alat }}">{{$a->nama_alat}}</option>  @endforeach</select></td><td><input type="text" id="nama_makanan" name="addMoreInputFields[' + i + '][nama_makanan]" class="form-control" placeholder="Makanan" required=""></td><td><input type="number" id="harga" name="addMoreInputFields[' + i + '][harga]" class="form-control" placeholder="Harga" required=""></td><td><input type="file" name="addMoreInputFields[' + i + '][image]" required=""><p class="help-block">  <font color="red">"Format file Jpg/Png"</font></p></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>');
         
     });
-
+    
     $(document).on('click', '.remove-input-field', function () {
         $(this).parents('tr').remove();
     });
