@@ -8,6 +8,7 @@ use App\Models\TransaksiUmumDetail;
 use Barryvdh\DomPDF\Facade\PDF;
 use App\Models\UsersModel;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class LaporanDataUmumController extends Controller
 {
@@ -26,16 +27,16 @@ class LaporanDataUmumController extends Controller
         
     }
 
-    public function cetaklaporantransaksiumum($tglawal, $tglakhir, Request $request){
+    public function cetaklaporantransaksiumum($tglawal, $tglakhir){
         
         $users = UsersModel::select('*')
                  ->get();
         // dd(["Tanggal Awal : ".$tglawal, "Tanggal Akhir : ".$tglakhir]);
         // $transaksi_bahan = TransaksiBahanModel::whereBetween('created_at',[$tglawal, $tglakhir]);
         // return view('Laporan.LaporanDataBahan.index', compact('transaksi_bahan'));
-        $tglawal = $request->tglawal;
-        $tglakhir = $request->tglakhir;
-        $tanggal = TransaksiUmum::with('get_transaksiumumdetail')->wherebetween('created_at', [$tglawal, $tglakhir])->get();
+        $tglawal = date('Y-m-d', strtotime($tglawal));
+        $tglakhir = date('Y-m-d', strtotime($tglakhir));
+        $tanggal = TransaksiUmum::with('get_transaksiumumdetail')->wherebetween(DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d')"), [$tglawal, $tglakhir])->get();
         $pdf = PDF::loadView('Laporan.LaporanDataUmum.laporan', ['tanggal' => $tanggal,'users' => $users],compact('tglawal','tglakhir'));
         return $pdf->stream('Laporan-Data-Transaksi-Umum.pdf');    
     }

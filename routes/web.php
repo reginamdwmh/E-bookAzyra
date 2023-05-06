@@ -6,21 +6,24 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LaporanStokController;
+use App\Http\Controllers\TransaksiAlatController;
+use App\Http\Controllers\TransaksiUmumController;
 use App\Http\Controllers\MasterDataAlatController;
+use App\Http\Controllers\TransaksiBahanController;
 use App\Http\Controllers\LaporanDataAlatController;
 use App\Http\Controllers\LaporanDataUmumController;
 use App\Http\Controllers\MasterDataBahanController;
 use App\Http\Controllers\LaporanDataBahanController;
 use App\Http\Controllers\MasterDataMakananController;
-use App\Http\Controllers\TransaksiAlatController;
-use App\Http\Controllers\TransaksiUmumController;
 use App\Http\Controllers\MasterDataKategoriController;
-use App\Http\Controllers\TransaksiBahanController;
 use App\Http\Controllers\MasterDataPemesananController;
-use App\Http\Controllers\LaporanDataPemesananOnlineController;
-use App\Http\Controllers\LaporanDataPenjualanMakananController;
+use App\Http\Controllers\LaporanOmzetPertahunController;
+use App\Http\Controllers\LaporanMakananTerlarisController;
 use App\Http\Controllers\TransaksiPemesananOnlineController;
 use App\Http\Controllers\TransaksiPenjualanMakananController;
+use App\Http\Controllers\LaporanDataPemesananOnlineController;
+use App\Http\Controllers\LaporanDataPenjualanMakananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -182,7 +185,16 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
     // Route::get('/transaksi/data-umum/lihat/{id_umum}',[TransaksiUmumController::class,'lihattransaksiumum'])->name('lihattransaksiumum');
 
     // Menu Stok
-    Route::get('/stok/stok-alat',[MasterDataAlatController::class,'indexstokalat'])->name('indexstokalat');
+    Route::get('/stok/stok-alat',[LaporanStokController::class,'indexstokalat'])->name('indexstokalat');
+    Route::get('/stok/stok-alat/cetak',[LaporanStokController::class,'cetaklaporanstok'])->name('cetaklaporanstok');
+
+    // Makanan Terlaris
+    Route::get('/laporan/makanan-terlaris',[LaporanMakananTerlarisController::class,'indexmakananterlaris'])->name('indexmakananterlaris');
+    Route::get('/laporan/makanan-terlaris/cetak/{tglawal}/{tglakhir}',[LaporanMakananTerlarisController::class,'cetakmakananterlaris'])->name('cetakmakananterlaris');
+
+    // Omzet Pertahun
+    Route::get('/laporan/omzet-pertahun',[LaporanOmzetPertahunController::class,'indexomzetpertahun'])->name('indexomzetpertahun');
+    Route::get('/laporan/omzet-pertahun/cetak/{tahun}',[LaporanOmzetPertahunController::class,'cetakomzerpertahun'])->name('cetakomzerpertahun');
 
     // Tabel Laporan Alat
     Route::get('/laporan/data-alat',[LaporanDataAlatController::class,'indexlaporanalat'])->name('indexlaporanalat');

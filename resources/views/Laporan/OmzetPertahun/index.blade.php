@@ -6,48 +6,47 @@
     <div class="card card-danger">
         <div class="card-header">
             <h3 class="card-title">
-                <i class="fa fa-table"></i> Stok Alat
+                <i class="fa fa-table"></i> Omzet Pertahun
             </h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-            <a href="/stok/stok-alat/cetak" class="btn btn-primary" target="_blank">
-                <i class="fa fa-print"></i>Cetak</a>
-            
             <div class="table-responsive">
+                
+                <form action="#" method="GET" class="card">
+                
+                <div class="card-body">
+                    <div class="row">
+                    <div class="col-md-4">
+                        <label for="label">Tahun</label>
+                        {{-- <input type="date" name="tglawal" id="tglawal" class="form-control"><br> --}}
+                        <select name="tahun" id="tahun" class="form-control"></select>
+
+                    </div>
+                </div>
                 <br>
-                <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama Alat</th>
-                            <th>Stok Masuk</th>
-                            <th>Stok Keluar</th>
-                            <th>Sisa</th>
-                        </tr>
-                    
-                    </thead>
-                    <tbody>
-                        
-                        @php
-                        $no = 1;
-                        @endphp
-                        @foreach($stok as $index => $s) 
-                        @php
-                         $sisa = $s->stok_masuk - $s->stok_keluar;  
-                        @endphp
-                        <tr>
-                            <td>{{$no++}}</td>
-                            <td>{{ $s->nama_alat }}</td>
-                            <td>{{ $s->stok_masuk }}</td>
-                            <td>{{ $s->stok_keluar }}</td>
-                            <td>{{ $sisa }}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <a href="#" onclick="this.href='/laporan/omzet-pertahun/cetak/'+document.getElementById('tahun').value" target="_blank" class="btn btn-primary">
+                <i class="fa fa-print"></i>Cetak</a>
+                
+                </form>
+
             </div>
-        </div>        
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>        
+<script type="text/javascript">
+$(document).ready(function(){
+    let startYear = 2020;
+    let endYear = new Date().getFullYear();
+    for (i = endYear; i > startYear; i--)
+    {
+        $('#tahun').append($('<option />').val(i).html(i));
+        // document.getElementById('tahun').value = i;
+    }
+
+})
+    </script>
 </section>
 
 @endsection
