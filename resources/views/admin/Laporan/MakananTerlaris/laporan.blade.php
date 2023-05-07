@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{csrf_token()}}">
-    <title>Data Stok Alat</title>
+    <title>Data Makanan Terlaris</title>
 </head>
     {{-- <style type="text/css">
         body{
@@ -108,7 +108,7 @@
             <br>
 
             <div style="text-align: center;">
-                <font size="5"><b>LAPORAN DATA STOK ALAT</b></font><br>
+                <font size="5"><b>LAPORAN DATA MAKANAN TERLARIS</b></font><br>
             </div>
             
             <br>
@@ -118,6 +118,7 @@
                     <font style="margin-right: 120px;" size="3">Staff / user : <span class="gray-color">{{ $u->name }}</span></font><br>
                     @endif
                 @endforeach
+                <font style="margin-right: 120px;" size="3">Tanggal Cut Off : {{ date('d F Y', strtotime($tglawal)) }} s/d {{ date('d F Y', strtotime($tglakhir)) }} <span class="gray-color"></span></font><br>
             </div>
             <div style="clear: both;"></div>
             <br> 
@@ -125,35 +126,28 @@
             <thead style="background-color: #f5b2bb; text-align: center;">
             <tr>
                 <th>No</th>
-                <th>Nama Alat</th>
-                <th>Stok Masuk</th>
-                <th>Stok Keluar</th>
-                <th>Sisa</th>
+                <th>Nama Makanan</th>
+                <th>Harga</th>
+                <th>Total Makanan Terjual</th>
+                <th>Total Penjualan</th>
                 
             @php
-                $total_akhir = 0;
+                // $total_akhir = 0;
                 $no = 1 ;
             @endphp
             </tr>
             </thead>
             <tbody>
-                        
-                @php
-                $no = 1;
-                @endphp
-                @foreach($stok as $index => $s) 
-                @php
-                 $sisa = $s->stok_masuk - $s->stok_keluar;  
-                @endphp
-                <tr>
-                    <td><center>{{$no++}}</center></td>
-                    <td>{{ $s->nama_alat }}</td>
-                    <td><center>{{ $s->stok_masuk }}</center></td>
-                    <td><center>{{ $s->stok_keluar }}</center></td>
-                    <td><center>{{ $sisa }}</center></td>
-                </tr>
-                @endforeach
-            </tbody>          
+            @foreach($makanan_terlaris as $t) 
+            <tr>
+                <td><center>{{$no++}}</center></td>  
+                <td>{{$t->nama_makanan}}</td>
+                <td><center>@currency($t->harga)</center></td>
+                <td><center>{{$t->total_barang_terlaris}}<center></td>
+                    <td><center>@currency($t->total_penjualan)</center></td>
+            </tr>
+            @endforeach
+        </tbody>          
         </table>
         <br><br>
 

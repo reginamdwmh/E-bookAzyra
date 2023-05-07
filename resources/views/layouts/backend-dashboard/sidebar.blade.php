@@ -150,13 +150,13 @@
             <li class="nav-item">
               <a href="/laporan/makanan-terlaris" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Makanan Terlaris</p>
+                <p>Laporan Makanan Terlaris</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="/laporan/omzet-pertahun" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Omzet Pertahun</p>
+                <p>Laporan Omzet Pertahun</p>
               </a>
             </li>
           </ul>

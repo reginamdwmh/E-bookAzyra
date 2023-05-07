@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\UsersModel;
 use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class LaporanOmzetPertahunController extends Controller
 {
@@ -14,7 +15,12 @@ class LaporanOmzetPertahunController extends Controller
         $users = UsersModel::select('*')
             ->get();
 
-        return view('Laporan.OmzetPertahun.index', ['users' => $users]);
+        $user = Auth::user();
+        if($user->role == 'admin'){
+            return view('admin.Laporan.OmzetPertahun.index',['users' => $users]);
+        } else if($user->role == 'user'){
+        return view('Laporan.OmzetPertahun.index',['users' => $users]);
+        }
     }
 
     public function cetakomzerpertahun($tahun)

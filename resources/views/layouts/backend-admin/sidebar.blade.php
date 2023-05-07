@@ -92,6 +92,23 @@
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-chart-pie"></i>
+            <p>
+              Stok
+              <i class="fas fa-angle-right right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/admin/stok/stok-alat" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Stok Alat</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
             <i class="nav-icon fas fa-table"></i>
             <p>
               Laporan
@@ -129,8 +146,20 @@
                 <p>Laporan Umum</p>
               </a>
             </li>
-          </ul>
+        <li class="nav-item">
+          <a href="/admin/laporan/makanan-terlaris" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+            <p>Laporan Makanan Terlaris</p>
+          </a>
         </li>
+        <li class="nav-item">
+          <a href="/admin/laporan/omzet-pertahun" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+            <p>Laporan Omzet Pertahun</p>
+          </a>
+        </li>
+      </ul>
+    </li>
         <li class="nav-item">
           <a href="/admin/users" class="nav-link">
             <i class="nav-icon far fa-user"></i>

@@ -127,6 +127,17 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/admin/laporan/data-umum',[LaporanDataUmumController::class,'indexlaporanumum'])->name('indexlaporanumum');
     Route::get('/admin/laporan/data-umum/cetak/{tglawal}/{tglakhir}',[LaporanDataUmumController::class,'cetaklaporantransaksiumum'])->name('cetaklaporantransaksiumum');
 
+    // Menu Stok
+    Route::get('/admin/stok/stok-alat',[LaporanStokController::class,'indexstokalat'])->name('indexstokalat');
+    Route::get('/admin/stok/stok-alat/cetak',[LaporanStokController::class,'cetaklaporanstok'])->name('cetaklaporanstok');
+
+    // Makanan Terlaris
+    Route::get('/admin/laporan/makanan-terlaris',[LaporanMakananTerlarisController::class,'indexmakananterlaris'])->name('indexmakananterlaris');
+    Route::get('/admin/laporan/makanan-terlaris/cetak/{tglawal}/{tglakhir}',[LaporanMakananTerlarisController::class,'cetakmakananterlaris'])->name('cetakmakananterlaris');
+
+    // Omzet Pertahun
+    Route::get('/admin/laporan/omzet-pertahun',[LaporanOmzetPertahunController::class,'indexomzetpertahun'])->name('indexomzetpertahun');
+    Route::get('/admin/laporan/omzet-pertahun/cetak/{tahun}',[LaporanOmzetPertahunController::class,'cetakomzerpertahun'])->name('cetakomzerpertahun');
 });
 
 
@@ -184,18 +195,6 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::get('/transaksi/data-umum/hapus/{id_umum}',[TransaksiUmumController::class,'hapustransaksiumum'])->name('hapustransaksiumum');
     // Route::get('/transaksi/data-umum/lihat/{id_umum}',[TransaksiUmumController::class,'lihattransaksiumum'])->name('lihattransaksiumum');
 
-    // Menu Stok
-    Route::get('/stok/stok-alat',[LaporanStokController::class,'indexstokalat'])->name('indexstokalat');
-    Route::get('/stok/stok-alat/cetak',[LaporanStokController::class,'cetaklaporanstok'])->name('cetaklaporanstok');
-
-    // Makanan Terlaris
-    Route::get('/laporan/makanan-terlaris',[LaporanMakananTerlarisController::class,'indexmakananterlaris'])->name('indexmakananterlaris');
-    Route::get('/laporan/makanan-terlaris/cetak/{tglawal}/{tglakhir}',[LaporanMakananTerlarisController::class,'cetakmakananterlaris'])->name('cetakmakananterlaris');
-
-    // Omzet Pertahun
-    Route::get('/laporan/omzet-pertahun',[LaporanOmzetPertahunController::class,'indexomzetpertahun'])->name('indexomzetpertahun');
-    Route::get('/laporan/omzet-pertahun/cetak/{tahun}',[LaporanOmzetPertahunController::class,'cetakomzerpertahun'])->name('cetakomzerpertahun');
-
     // Tabel Laporan Alat
     Route::get('/laporan/data-alat',[LaporanDataAlatController::class,'indexlaporanalat'])->name('indexlaporanalat');
     Route::get('/laporan/data-alat/cetak/{tglawal}/{tglakhir}',[LaporanDataAlatController::class,'cetaktgl'])->name('cetaktgl');
@@ -217,6 +216,18 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::get('/laporan/data-umum',[LaporanDataUmumController::class,'indexlaporanumum'])->name('indexlaporanumum');
     Route::get('/laporan/data-umum/cetak/{tglawal}/{tglakhir}',[LaporanDataUmumController::class,'cetaklaporantransaksiumum'])->name('cetaklaporantransaksiumum');
 
+    // Menu Stok
+    Route::get('/stok/stok-alat',[LaporanStokController::class,'indexstokalat'])->name('indexstokalat');
+    Route::get('/stok/stok-alat/cetak',[LaporanStokController::class,'cetaklaporanstok'])->name('cetaklaporanstok');
+
+    // Makanan Terlaris
+    Route::get('/laporan/makanan-terlaris',[LaporanMakananTerlarisController::class,'indexmakananterlaris'])->name('indexmakananterlaris');
+    Route::get('/laporan/makanan-terlaris/cetak/{tglawal}/{tglakhir}',[LaporanMakananTerlarisController::class,'cetakmakananterlaris'])->name('cetakmakananterlaris');
+
+    // Omzet Pertahun
+    Route::get('/laporan/omzet-pertahun',[LaporanOmzetPertahunController::class,'indexomzetpertahun'])->name('indexomzetpertahun');
+    Route::get('/laporan/omzet-pertahun/cetak/{tahun}',[LaporanOmzetPertahunController::class,'cetakomzerpertahun'])->name('cetakomzerpertahun');
+    
 });
 
 
