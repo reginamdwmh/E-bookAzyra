@@ -24,13 +24,13 @@
                 </tr>
                 <tr>
                     <td>
-                      <input type="text" name="addMoreInputFields[0][kode_kategori]" placeholder="Kode Kategori" class="form-control kode_kategori" id="kode_kategori" required="" />
+                      <input type="text" name="addMoreInputFields[0][kode_kategori]" placeholder="Kode Kategori" class="form-control kode_kategori" id="kode_kategori" required />
                     </td>
                     <td>
-                      <input type="text" name="addMoreInputFields[0][nama_kategori]" placeholder="Nama Kategori" class="form-control nama_kategori" id="nama_kategori" required="" />
+                      <input type="text" name="addMoreInputFields[0][nama_kategori]" placeholder="Nama Kategori" class="form-control nama_kategori" id="nama_kategori" required />
                     </td>
                     <td>
-                      <input type="text" name="addMoreInputFields[0][keterangan_kategori]" placeholder="Keterangan  Kategori" class="form-control keterangan_kategori" id="keterangan_kategori" required="" />
+                      <input type="text" name="addMoreInputFields[0][keterangan_kategori]" placeholder="Keterangan  Kategori" class="form-control keterangan_kategori" id="keterangan_kategori" required />
                     </td>
                     <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">+</button>
                     </td>
@@ -54,7 +54,7 @@
     var i = 0;
     $("#dynamic-ar").click(function () {
         ++i;
-        $("#dynamicAddRemove").append('<tr><td><input type="text" name="addMoreInputFields[' + i + '][kode_kategori]" placeholder="Kode Kategori" class="form-control kode_kategori" id="kode_kategori" required="" /></td><td><input type="text" name="addMoreInputFields[' + i + '][nama_kategori]" placeholder="Nama Kategori" class="form-control nama_kategori" id="nama_kategori" required="" /></td><td><input type="text" name="addMoreInputFields[' + i + '][keterangan_kategori]" placeholder="Keterangan  Kategori" class="form-control keterangan_kategori" id="keterangan_kategori" required="" /></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>');
+        $("#dynamicAddRemove").append('<tr><td><input type="text" name="addMoreInputFields[' + i + '][kode_kategori]" placeholder="Kode Kategori" class="form-control kode_kategori" id="kode_kategori" required /></td><td><input type="text" name="addMoreInputFields[' + i + '][nama_kategori]" placeholder="Nama Kategori" class="form-control nama_kategori" id="nama_kategori" required /></td><td><input type="text" name="addMoreInputFields[' + i + '][keterangan_kategori]" placeholder="Keterangan  Kategori" class="form-control keterangan_kategori" id="keterangan_kategori" required /></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>');
         
     });
 

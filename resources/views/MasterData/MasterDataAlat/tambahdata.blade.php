@@ -23,10 +23,10 @@
                 </tr>
                 <tr>
                     <td>
-                      <input type="text" name="addMoreInputFields[0][nama_alat]" placeholder="Nama Alat" class="form-control nama_alat" id="nama_alat" required="" />
+                      <input type="text" name="addMoreInputFields[0][nama_alat]" placeholder="Nama Alat" class="form-control nama_alat" id="nama_alat" required />
                     </td>
                     <td>
-                      <input type="text" name="addMoreInputFields[0][harga]" placeholder="harga" class="form-control harga" id="harga" required="" />
+                      <input type="text" name="addMoreInputFields[0][harga]" placeholder="harga" class="form-control harga" id="harga" required />
                     </td>
                     <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">+</button>
                     </td>
@@ -49,7 +49,7 @@
     var i = 0;
     $("#dynamic-ar").click(function () {
         ++i;
-        $("#dynamicAddRemove").append('<tr><td><input type="text" name="addMoreInputFields[' + i + '][nama_alat]" placeholder="Nama Alat" class="form-control nama_alat" id="nama_alat" required="" /></td><td><input type="text" name="addMoreInputFields[' + i + '][harga]" placeholder="harga" class="form-control harga" id="harga" required="" /></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>');
+        $("#dynamicAddRemove").append('<tr><td><input type="text" name="addMoreInputFields[' + i + '][nama_alat]" placeholder="Nama Alat" class="form-control nama_alat" id="nama_alat" required /></td><td><input type="text" name="addMoreInputFields[' + i + '][harga]" placeholder="harga" class="form-control harga" id="harga" required /></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>');
         
     });
 
@@ -57,6 +57,7 @@
         $(this).parents('tr').remove();
     });
 
+    
     // var rupiah = document.getElementById('harga');
 		// rupiah.addEventListener('keyup', function(e){
 		// 	// tambahkan 'Rp.' pada saat form di ketik

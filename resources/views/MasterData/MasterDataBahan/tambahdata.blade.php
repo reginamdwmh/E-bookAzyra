@@ -23,10 +23,10 @@
                 </tr>
                 <tr>
                     <td>
-                      <input type="text" name="addMoreInputFields[0][nama_bahan]" placeholder="Nama Bahan" class="form-control nama_bahan" id="nama_bahan" required="" />
+                      <input type="text" name="addMoreInputFields[0][nama_bahan]" placeholder="Nama Bahan" class="form-control nama_bahan" id="nama_bahan" required />
                     </td>
                     <td>
-                      <input type="number" name="addMoreInputFields[0][harga]" placeholder="harga" class="form-control harga" id="harga" required="" />
+                      <input type="number" name="addMoreInputFields[0][harga]" placeholder="harga" class="form-control harga" id="harga" required />
                     </td>
                     <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">+</button>
                     </td>
@@ -48,7 +48,7 @@
     var i = 0;
     $("#dynamic-ar").click(function () {
         ++i;
-        $("#dynamicAddRemove").append('<tr><td><input type="text" name="addMoreInputFields[' + i + '][nama_bahan]" placeholder="Nama Bahan" class="form-control nama_bahan" id="nama_bahan" required="" /></td><td><input type="number" name="addMoreInputFields[' + i + '][harga]" placeholder="harga" class="form-control harga" id="harga" required="" /></td></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>');
+        $("#dynamicAddRemove").append('<tr><td><input type="text" name="addMoreInputFields[' + i + '][nama_bahan]" placeholder="Nama Bahan" class="form-control nama_bahan" id="nama_bahan" required /></td><td><input type="number" name="addMoreInputFields[' + i + '][harga]" placeholder="harga" class="form-control harga" id="harga" required /></td></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>');
         
     });
 

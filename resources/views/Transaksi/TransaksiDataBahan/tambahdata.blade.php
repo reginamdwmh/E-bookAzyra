@@ -26,7 +26,7 @@
               </div>
               <div class="form-group">
                 <label>Harga</label>
-                <input type="number" id="harga_satuan" onkeyup="sum();" name="harga" class="form-control" placeholder="Harga" required="">
+                <input type="number" id="harga_satuan" onkeyup="sum();" name="harga" class="form-control" placeholder="Harga" required>
               </div>
               <div class="form-group">
                 <label>Jumlah</label>
@@ -104,7 +104,7 @@
               <tbody>
                 <tr>
                     <td>
-                      <select name="addMoreInputFields[0][nama_bahan]" id="nama_bahan" class="form-control nama_bahan" >
+                      <select name="addMoreInputFields[0][nama_bahan]" id="nama_bahan" class="form-control nama_bahan" required>
                         <option value="">-Pilih-</option>
                         @foreach ($bahan as $b)
                         <option value="{{ $b->nama_bahan }}" data-harga="{{$b->harga}}">{{$b->nama_bahan}}</option>
@@ -112,10 +112,10 @@
                       </select>
                     </td>
                     <td>
-                      <input type="number" id="harga_satuan" onkeyup="sum();" name="addMoreInputFields[0][harga]" class="form-control harga_satuan" placeholder="Harga" required="">
+                      <input type="number" id="harga_satuan" onkeyup="sum();" name="addMoreInputFields[0][harga]" class="form-control harga_satuan" placeholder="Harga" required>
                     </td>
                     <td>
-                      <input type="number" id="jumlah_item" onkeyup="sum();" name="addMoreInputFields[0][jumlah]" class="form-control jumlah_item" placeholder="Jumlah" required="">
+                      <input type="number" id="jumlah_item" onkeyup="sum();" name="addMoreInputFields[0][jumlah]" class="form-control jumlah_item" placeholder="Jumlah" required>
                     </td>
                     <td>
                       <input type="number" id="hasil" onkeyup="sum();" name="addMoreInputFields[0][total]" class="form-control hasil" placeholder="Total" readonly>
@@ -143,7 +143,7 @@
 var i = 0;
 $("#dynamic-ar").click(function () {
     ++i;
-    $("#dynamicAddRemove").append('<tr><td><select name="addMoreInputFields[' + i + '][nama_bahan]"  id="nama_bahan" class="form-control nama_bahan" >  <option value="">-Pilih-</option>@foreach ($bahan as $b)<option value="{{ $b->nama_bahan }}" data-harga="{{$b->harga}}">{{$b->nama_bahan}}</option>@endforeach</select></td><td><input type="number" id="harga_satuan" onkeyup="sum();" name="addMoreInputFields[' + i + '][harga]" class="form-control harga_satuan" placeholder="Harga" required=""></td><td><input type="number" id="jumlah_item" onkeyup="sum();" name="addMoreInputFields[' + i + '][jumlah]" class="form-control jumlah_item" placeholder="Jumlah" required=""></td><td><input type="number" id="hasil" onkeyup="sum();" name="addMoreInputFields[' + i + '][total]" class="form-control hasil" placeholder="Total" readonly></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>'
+    $("#dynamicAddRemove").append('<tr><td><select name="addMoreInputFields[' + i + '][nama_bahan]"  id="nama_bahan" class="form-control nama_bahan" required>  <option value="">-Pilih-</option>@foreach ($bahan as $b)<option value="{{ $b->nama_bahan }}" data-harga="{{$b->harga}}">{{$b->nama_bahan}}</option>@endforeach</select></td><td><input type="number" id="harga_satuan" onkeyup="sum();" name="addMoreInputFields[' + i + '][harga]" class="form-control harga_satuan" placeholder="Harga" required></td><td><input type="number" id="jumlah_item" onkeyup="sum();" name="addMoreInputFields[' + i + '][jumlah]" class="form-control jumlah_item" placeholder="Jumlah" required></td><td><input type="number" id="hasil" onkeyup="sum();" name="addMoreInputFields[' + i + '][total]" class="form-control hasil" placeholder="Total" readonly></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>'
     );
     
 });

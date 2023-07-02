@@ -24,13 +24,13 @@
                 </tr>
                 <tr>
                     <td>
-                      <input type="text" id="keterangan_pemesanan" name="addMoreInputFields[0][keterangan_pemesanan]" class="form-control" placeholder="Keterangan Pemesanan" required="">
+                      <input type="text" id="keterangan_pemesanan" name="addMoreInputFields[0][keterangan_pemesanan]" class="form-control" placeholder="Keterangan Pemesanan" required>
                     </td>
                     <td>
-                      <input type="number" id="biaya_admin" name="addMoreInputFields[0][biaya_admin]" class="form-control" value="0" required="">
+                      <input type="number" id="biaya_admin" name="addMoreInputFields[0][biaya_admin]" class="form-control" value="0" required>
                     </td>
                     <td>
-                      <input type="number" id="ongkir" name="addMoreInputFields[0][ongkir]" class="form-control" value="0" required="">
+                      <input type="number" id="ongkir" name="addMoreInputFields[0][ongkir]" class="form-control" value="0" required>
                     </td>
                     <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">+</button>
                     </td>
@@ -54,7 +54,7 @@
     var i = 0;
     $("#dynamic-ar").click(function () {
         ++i;
-        $("#dynamicAddRemove").append('<tr><td><input type="text" id="keterangan_pemesanan" name="addMoreInputFields[' + i + '][keterangan_pemesanan]" class="form-control" placeholder="Keterangan Pemesanan" required=""></td><td><input type="number" id="biaya_admin" name="addMoreInputFields[' + i + '][biaya_admin]" class="form-control" value="0" required=""></td><td><input type="number" id="ongkir" name="addMoreInputFields[' + i + '][ongkir]" class="form-control" value="0" required=""></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>');
+        $("#dynamicAddRemove").append('<tr><td><input type="text" id="keterangan_pemesanan" name="addMoreInputFields[' + i + '][keterangan_pemesanan]" class="form-control" placeholder="Keterangan Pemesanan" required></td><td><input type="number" id="biaya_admin" name="addMoreInputFields[' + i + '][biaya_admin]" class="form-control" value="0" required></td><td><input type="number" id="ongkir" name="addMoreInputFields[' + i + '][ongkir]" class="form-control" value="0" required></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>');
         
     });
 

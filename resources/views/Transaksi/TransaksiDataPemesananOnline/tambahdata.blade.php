@@ -18,7 +18,7 @@
               <div class="row g-3">
                 <div class="col-sm-4">
                 <label>Keterangan Pemesanan</label>
-                <select name="keterangan_pemesanan" id="keterangan_pemesanan" class="form-control" >
+                <select name="keterangan_pemesanan" id="keterangan_pemesanan" class="form-control" required>
                   <option value="">-Pilih-</option>
                   @foreach ($transaksi_pemesanan_online as $tpo)
                   <option value="{{ $tpo->keterangan_pemesanan }}" data-biaya_admin="{{$tpo->biaya_admin}}" data-ongkir="{{$tpo->ongkir}}">{{$tpo->keterangan_pemesanan}}</option>
@@ -27,11 +27,11 @@
               </div>
               <div class="col-sm-4">
                 <label>Kode Pemesanan</label>
-                <input type="text" id="kode_pemesanan" name="kode_pemesanan" class="form-control" placeholder="Kode Pemesanan" required="">
+                <input type="text" id="kode_pemesanan" name="kode_pemesanan" class="form-control" placeholder="Kode Pemesanan" required>
               </div>
               <div class="col-sm-4">
                 <label>Jumlah</label>
-                <input type="number" id="jumlah_harga" onkeyup="sum();" name="jumlah" class="form-control" placeholder="Jumlah" required="">
+                <input type="number" id="jumlah_harga" onkeyup="sum();" name="jumlah" class="form-control" placeholder="Jumlah" required>
               </div>
               </div>
 

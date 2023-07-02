@@ -11,10 +11,10 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-            <div class="table-responsive">
+           
                 
                 <form action="#" method="GET" class="card">
-                
+                    <div class="table-responsive">
                 <div class="card-body">
                     <div class="row">
                     <div class="col-md-4">

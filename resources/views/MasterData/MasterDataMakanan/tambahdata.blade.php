@@ -26,7 +26,7 @@
                 </tr>
                 <tr>
                     <td>
-                      <select name="addMoreInputFields[0][nama_kategori]" class="form-control" >
+                      <select name="addMoreInputFields[0][nama_kategori]" class="form-control" required>
                         <option value="">-Pilih-</option>
                         @foreach ($kategori as $k)
                         <option value="{{ $k->nama_kategori }}">{{$k->nama_kategori}}</option>
@@ -34,7 +34,7 @@
                       </select>
                     </td>
                     <td>
-                      <select name="addMoreInputFields[0][id_alat]" class="form-control" >
+                      <select name="addMoreInputFields[0][id_alat]" class="form-control" required>
                         <option value="">-Pilih-</option>
                         @foreach ($alat as $a)
                         <option value="{{ $a->id_alat }}">{{$a->nama_alat}}</option>
@@ -42,13 +42,13 @@
                       </select>
                     </td>
                     <td>
-                      <input type="text" id="nama_makanan" name="addMoreInputFields[0][nama_makanan]" class="form-control" placeholder="Makanan" required="">
+                      <input type="text" id="nama_makanan" name="addMoreInputFields[0][nama_makanan]" class="form-control" placeholder="Makanan" required>
                     </td>
                     <td>
-                      <input type="number" id="harga" name="addMoreInputFields[0][harga]" class="form-control" placeholder="Harga" required="">
+                      <input type="number" id="harga" name="addMoreInputFields[0][harga]" class="form-control" placeholder="Harga" required>
                     </td>
                     <td>
-                      <input type="file" name="addMoreInputFields[0][image]" required="">
+                      <input type="file" name="addMoreInputFields[0][image]" required>
                       <p class="help-block">
                         <font color="red">"Format file Jpg/Png"</font>
                       </p>
@@ -76,15 +76,15 @@
               </div>
               <div class="form-group">
                 <label>Nama Makanan</label>
-                <input type="text" id="nama_makanan" name="nama_makanan" class="form-control" placeholder="Makanan" required="">
+                <input type="text" id="nama_makanan" name="nama_makanan" class="form-control" placeholder="Makanan" required>
               </div>
               <div class="form-group">
                 <label>Harga</label>
-                <input type="text" id="harga" name="harga" class="form-control" placeholder="Harga" required="">
+                <input type="text" id="harga" name="harga" class="form-control" placeholder="Harga" required>
               </div>
               <div class="form-group">
                 <label>Foto</label>
-                <input type="file" name="image" required="">
+                <input type="file" name="image" required>
                 <p class="help-block">
                   <font color="red">"Format file Jpg/Png"</font>
                 </p>
@@ -107,7 +107,7 @@
     var i = 0;
     $("#dynamic-ar").click(function () {
         ++i;
-        $("#dynamicAddRemove").append('<tr><td><select name="addMoreInputFields[' + i + '][nama_kategori]" class="form-control" >  <option value="">-Pilih-</option>  @foreach ($kategori as $k)  <option value="{{ $k->nama_kategori }}">{{$k->nama_kategori}}</option>  @endforeach</select></td><td><select name="addMoreInputFields[' + i + '][id_alat]" class="form-control" >  <option value="">-Pilih-</option>  @foreach ($alat as $a)  <option value="{{ $a->id_alat }}">{{$a->nama_alat}}</option>  @endforeach</select></td><td><input type="text" id="nama_makanan" name="addMoreInputFields[' + i + '][nama_makanan]" class="form-control" placeholder="Makanan" required=""></td><td><input type="number" id="harga" name="addMoreInputFields[' + i + '][harga]" class="form-control" placeholder="Harga" required=""></td><td><input type="file" name="addMoreInputFields[' + i + '][image]" required=""><p class="help-block">  <font color="red">"Format file Jpg/Png"</font></p></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>');
+        $("#dynamicAddRemove").append('<tr><td><select name="addMoreInputFields[' + i + '][nama_kategori]" class="form-control" required>  <option value="">-Pilih-</option>  @foreach ($kategori as $k)  <option value="{{ $k->nama_kategori }}">{{$k->nama_kategori}}</option>  @endforeach</select></td><td><select name="addMoreInputFields[' + i + '][id_alat]" class="form-control" required>  <option value="">-Pilih-</option>  @foreach ($alat as $a)  <option value="{{ $a->id_alat }}">{{$a->nama_alat}}</option>  @endforeach</select></td><td><input type="text" id="nama_makanan" name="addMoreInputFields[' + i + '][nama_makanan]" class="form-control" placeholder="Makanan" required></td><td><input type="number" id="harga" name="addMoreInputFields[' + i + '][harga]" class="form-control" placeholder="Harga" required></td><td><input type="file" name="addMoreInputFields[' + i + '][image]" required><p class="help-block">  <font color="red">"Format file Jpg/Png"</font></p></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>');
         
     });
     

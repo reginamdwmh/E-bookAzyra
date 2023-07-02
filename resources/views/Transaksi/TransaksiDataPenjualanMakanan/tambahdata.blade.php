@@ -108,7 +108,7 @@
               <tbody>
                 <tr>
                     <td>
-                      <select name="addMoreInputFields[0][nama_makanan]" id="nama_makanan" class="form-control nama_makanan" >
+                      <select name="addMoreInputFields[0][nama_makanan]" id="nama_makanan" class="form-control nama_makanan" required>
                         <option value="">-Pilih-</option>
                         @foreach ($transaksi_penjualan_makanan as $tpm)
                         <option value="{{ $tpm->nama_makanan }}" data-harga="{{$tpm->harga}}" data-alat="{{ $tpm->id_alat }}">{{$tpm->nama_makanan}}</option>
@@ -116,16 +116,16 @@
                       </select>
                     </td>
                     <td style="display:none">
-                      <input type="text" name="addMoreInputFields[0][id_alat]" placeholder="ID ALAT" class="form-control id_alat" id="id_alat" />
+                      <input type="text" name="addMoreInputFields[0][id_alat]" placeholder="ID ALAT" class="form-control id_alat" id="id_alat" required/>
                     </td>
                     <td>
-                      <input type="text" name="addMoreInputFields[0][harga]" placeholder="Enter harga" class="form-control harga_satuan" id="harga_satuan" onkeyup="sum();" required="" />
+                      <input type="text" name="addMoreInputFields[0][harga]" placeholder="Enter harga" class="form-control harga_satuan" id="harga_satuan" onkeyup="sum();" required/>
                     </td>
                     <td>
-                      <input type="text" name="addMoreInputFields[0][jumlah]" placeholder="Enter jumlah" class="form-control jumlah_item" id="jumlah_item" onkeyup="sum();" required="" />
+                      <input type="text" name="addMoreInputFields[0][jumlah]" placeholder="Enter jumlah" class="form-control jumlah_item" id="jumlah_item" onkeyup="sum();" required/>
                     </td>
                     <td>
-                      <input type="text" name="addMoreInputFields[0][diskon]" placeholder="Enter diskon" class="form-control diskon_makanan" id="diskon_makanan" onkeyup="sum();" required="" />
+                      <input type="text" name="addMoreInputFields[0][diskon]" placeholder="Enter diskon" class="form-control diskon_makanan" id="diskon_makanan" onkeyup="sum();" required/>
                     </td>
                     <td>
                       <input type="text" name="addMoreInputFields[0][total]" placeholder="Enter total" class="form-control hasil" id="hasil"  onkeyup="sum();" readonly/>
@@ -152,7 +152,7 @@
     var i = 0;
     $("#dynamic-ar").click(function () {
         ++i;
-        $("#dynamicAddRemove").append('<tr><td><select name="addMoreInputFields[' + i + '][nama_makanan]" id="nama_makanan" class="form-control nama_makanan" ><option value="">-Pilih-</option>@foreach ($transaksi_penjualan_makanan as $tpm)<option value="{{ $tpm->nama_makanan }}" data-harga="{{$tpm->harga}}" data-alat="{{ $tpm->id_alat }}">{{$tpm->nama_makanan}}</option>@endforeach</select></td><td style="display:none"><input type="text" name="addMoreInputFields[' + i + '][id_alat]" placeholder="ID ALAT" class="form-control id_alat" id="id_alat" /></td><td><input type="text" name="addMoreInputFields[' + i + '][harga]" placeholder="Enter subject" class="form-control harga_satuan" id="harga_satuan"  onkeyup="sum();" required="" /></td><td><input type="text" name="addMoreInputFields[' + i + '][jumlah]" placeholder="Enter subject" class="form-control jumlah_item" id="jumlah_item"  onkeyup="sum();" required="" /></td><td><input type="text" name="addMoreInputFields[' + i + '][diskon]" placeholder="Enter subject" class="form-control diskon_makanan" id="diskon_makanan"  onkeyup="sum();" required="" /></td><td><input type="text" name="addMoreInputFields[' + i + '][total]" placeholder="Enter subject" class="form-control hasil" id="hasil"  onkeyup="sum();" readonly/></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>'
+        $("#dynamicAddRemove").append('<tr><td><select name="addMoreInputFields[' + i + '][nama_makanan]" id="nama_makanan" class="form-control nama_makanan" required><option value="">-Pilih-</option>@foreach ($transaksi_penjualan_makanan as $tpm)<option value="{{ $tpm->nama_makanan }}" data-harga="{{$tpm->harga}}" data-alat="{{ $tpm->id_alat }}">{{$tpm->nama_makanan}}</option>@endforeach</select></td><td style="display:none"><input type="text" name="addMoreInputFields[' + i + '][id_alat]" placeholder="ID ALAT" class="form-control id_alat" id="id_alat" /></td><td><input type="text" name="addMoreInputFields[' + i + '][harga]" placeholder="Enter subject" class="form-control harga_satuan" id="harga_satuan"  onkeyup="sum();" required="" /></td><td><input type="text" name="addMoreInputFields[' + i + '][jumlah]" placeholder="Enter subject" class="form-control jumlah_item" id="jumlah_item"  onkeyup="sum();" required="" /></td><td><input type="text" name="addMoreInputFields[' + i + '][diskon]" placeholder="Enter subject" class="form-control diskon_makanan" id="diskon_makanan"  onkeyup="sum();" required="" /></td><td><input type="text" name="addMoreInputFields[' + i + '][total]" placeholder="Enter subject" class="form-control hasil" id="hasil"  onkeyup="sum();" readonly/></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>'
         );
         
     });

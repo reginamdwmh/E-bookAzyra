@@ -62,13 +62,13 @@
             <li class="nav-item">
               <a href="/transaksi/data-alat" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Data Alat</p>
+                <p>Data Pembelian Alat</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="/transaksi/data-bahan" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Data Bahan</p>
+                <p>Data Pembelian Bahan</p>
               </a>
             </li>
             <li class="nav-item">

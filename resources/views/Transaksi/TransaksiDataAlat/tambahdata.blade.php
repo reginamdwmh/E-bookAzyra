@@ -108,7 +108,7 @@
             <tbody>
               <tr>
                 <td>
-                  <select name="addMoreInputFields[0][nama_alat]" id="nama_alat" class="form-control nama_alat" >
+                  <select name="addMoreInputFields[0][nama_alat]" id="nama_alat" class="form-control nama_alat" required>
                     <option value="">-Pilih-</option>
                     @foreach ($alat as $a)
                     <option value="{{ $a->nama_alat }}" data-harga="{{$a->harga}}" data-alat="{{ $a->id_alat }}">{{$a->nama_alat}}</option>
@@ -119,10 +119,10 @@
                   <input type="text" name="addMoreInputFields[0][id_alat]" placeholder="ID ALAT" class="form-control id_alat" id="id_alat" />
                 </td>
                 <td>
-                  <input type="number" id="harga_satuan" onkeyup="sum();" name="addMoreInputFields[0][harga]" class="form-control harga_satuan" placeholder="Harga" required="">
+                  <input type="number" id="harga_satuan" onkeyup="sum();" name="addMoreInputFields[0][harga]" class="form-control harga_satuan" placeholder="Harga" required>
                 </td>
                 <td>
-                  <input type="number" id="jumlah_item" onkeyup="sum();" name="addMoreInputFields[0][jumlah]" class="form-control jumlah_item" placeholder="Jumlah" required="">
+                  <input type="number" id="jumlah_item" onkeyup="sum();" name="addMoreInputFields[0][jumlah]" class="form-control jumlah_item" placeholder="Jumlah" required>
                 </td>
                 <td>
                   <input type="number" id="hasil" onkeyup="sum();" name="addMoreInputFields[0][total]" class="form-control hasil" placeholder="Total" readonly>
@@ -146,11 +146,14 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="{{ asset ('assets/AdminLTE/plugins/priceformat/jquery.priceformat.min.js')}}"></script>
+{{-- <!-- Select2 -->
+<script src="{{ asset ('assets/AdminLTE/plugins/select2/js/select2.full.min.js')}}"></script> --}}
 <script type="text/javascript">
     var i = 0;
     $("#dynamic-ar").click(function () {
       ++i;
-      $("#dynamicAddRemove").append('<tr><td><select name="addMoreInputFields[' + i + '][nama_alat]" id="nama_alat" class="form-control nama_alat" >  <option value="">-Pilih-</option>  @foreach ($alat as $a)  <option value="{{ $a->nama_alat }}" data-harga="{{$a->harga}}" data-alat="{{ $a->id_alat }}">{{$a->nama_alat}}</option>  @endforeach</select></td><td style="display:none"><input type="text" name="addMoreInputFields[' + i + '][id_alat]" placeholder="ID ALAT" class="form-control id_alat" id="id_alat" /></td><td><input type="number" id="harga_satuan" onkeyup="sum();" name="addMoreInputFields[' + i + '][harga]" class="form-control harga_satuan" placeholder="Harga" required=""></td><td><input type="number" id="jumlah_item" onkeyup="sum();" name="addMoreInputFields[' + i + '][jumlah]" class="form-control jumlah_item" placeholder="Jumlah" required=""></td><td><input type="number" id="hasil" onkeyup="sum();" name="addMoreInputFields[' + i + '][total]" class="form-control hasil" placeholder="Total" readonly></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>'
+      $("#dynamicAddRemove").append('<tr><td><select name="addMoreInputFields[' + i + '][nama_alat]" id="nama_alat" class="form-control nama_alat" required>  <option value="">-Pilih-</option>  @foreach ($alat as $a)  <option value="{{ $a->nama_alat }}" data-harga="{{$a->harga}}" data-alat="{{ $a->id_alat }}">{{$a->nama_alat}}</option>  @endforeach</select></td><td style="display:none"><input type="text" name="addMoreInputFields[' + i + '][id_alat]" placeholder="ID ALAT" class="form-control id_alat" id="id_alat" /></td><td><input type="number" id="harga_satuan" onkeyup="sum();" name="addMoreInputFields[' + i + '][harga]" class="form-control harga_satuan" placeholder="Harga" required></td><td><input type="number" id="jumlah_item" onkeyup="sum();" name="addMoreInputFields[' + i + '][jumlah]" class="form-control jumlah_item" placeholder="Jumlah" required></td><td><input type="number" id="hasil" onkeyup="sum();" name="addMoreInputFields[' + i + '][total]" class="form-control hasil" placeholder="Total" readonly></td><td><button type="button" class="btn btn-outline-danger remove-input-field">-</button></td></tr>'
       );
       
     });
@@ -158,6 +161,13 @@
     $(document).on('click', '.remove-input-field', function () {
       $(this).parents('tr').remove();
     });
+
+    // $(document).ready(function(){
+
+    // Initialize Select2
+    // $('.nama_alat').select2({
+    //     theme: 'bootstrap4'
+    //   })
 
     $(document).on('change', '.nama_alat', function() {
     var tr = $(this).parent().parent();
@@ -170,6 +180,7 @@
     tr.find(".id_alat").val(alat);
     // $(".harga_satuan").eq(i).val(nb);
     });   
+    // });   
 
     $('tbody').delegate('.harga_satuan,.jumlah_item','keyup',function(){
       var tr = $(this).parent().parent();
@@ -178,7 +189,7 @@
       var total = (harga * jumlah);
       tr.find(".hasil").val(total);
     });
-
 </script>
+
 </section>
 @endsection
